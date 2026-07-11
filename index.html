@@ -6,31 +6,38 @@
     <title>Правовая защита бизнеса и интеллектуальной собственности</title>
     <style>
         :root {
-            --bg-dark: #1a1a1a;
-            --bg-block: #f5f0e8;
-            --bg-block-alt: #e8e4df;
-            --bg-card: #ffffff;
+            --bg-deep: #1c1c1e;
+            --bg-dark: #242426;
+            --bg-cream: #f5f0e9;
+            --bg-warm: #ece7df;
+            --bg-cool: #e9e7e2;
+            --bg-card: #fafaf7;
             --text-light: #ffffff;
-            --text-muted: #b0b0b0;
-            --text-dark: #1a1a1a;
-            --text-body: #444;
-            --accent: #3b6eff;
-            --accent-hover: #2b54d4;
-            --border: #ddd;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --shadow: 0 2px 8px rgba(0,0,0,0.04);
-            --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
+            --text-muted: #b0b0b2;
+            --text-dark: #1c1c1e;
+            --text-body: #5a5856;
+            --accent: #4b7aff;
+            --accent-hover: #3a62e0;
+            --accent-soft: #e8edff;
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-light: #e0dcd6;
+            --radius: 18px;
+            --radius-sm: 12px;
+            --radius-xs: 8px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.03);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.05);
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-            background: var(--bg-dark);
+            background: var(--bg-deep);
             color: var(--text-light);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         .container {
@@ -40,67 +47,88 @@
         }
 
         /* Типографика */
-        h1 { font-size: 48px; font-weight: 700; line-height: 1.15; letter-spacing: -0.5px; }
-        h2 { font-size: 36px; font-weight: 700; line-height: 1.25; letter-spacing: -0.3px; }
-        h3 { font-size: 20px; font-weight: 600; line-height: 1.4; }
-        h4 { font-size: 17px; font-weight: 600; line-height: 1.4; }
+        h1 { font-size: 52px; font-weight: 700; line-height: 1.12; letter-spacing: -1px; }
+        h2 { font-size: 38px; font-weight: 700; line-height: 1.2; letter-spacing: -0.4px; }
+        h3 { font-size: 19px; font-weight: 600; line-height: 1.45; letter-spacing: -0.2px; }
+        h4 { font-size: 16px; font-weight: 600; line-height: 1.5; }
 
         .section-label {
-            font-size: 13px;
+            display: inline-block;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: var(--accent);
-            margin-bottom: 12px;
-        }
-        .section-title {
             margin-bottom: 16px;
-            color: var(--text-dark);
+            background: var(--accent-soft);
+            padding: 5px 14px;
+            border-radius: 20px;
         }
+        .section-label-light {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        .section-title { margin-bottom: 18px; }
         .section-subtitle {
             color: var(--text-body);
             font-size: 17px;
-            margin-bottom: 48px;
-            max-width: 620px;
+            margin-bottom: 52px;
+            max-width: 580px;
+            line-height: 1.7;
+        }
+        .section-subtitle-light {
+            color: var(--text-muted);
+            font-size: 17px;
+            margin-bottom: 52px;
+            max-width: 580px;
+            line-height: 1.7;
         }
 
         /* Кнопки */
         .btn {
             display: inline-block;
-            padding: 14px 32px;
-            border-radius: 8px;
+            padding: 14px 30px;
+            border-radius: var(--radius-xs);
             font-size: 15px;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
             border: none;
-            transition: all 0.2s;
+            transition: var(--transition);
             text-align: center;
+            letter-spacing: -0.2px;
         }
         .btn-primary {
             background: var(--accent);
             color: #fff;
         }
-        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
         .btn-outline {
             background: transparent;
             color: #fff;
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.25);
         }
-        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
+        .btn-outline:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.04); }
         .btn-outline-dark {
             background: transparent;
             color: var(--text-dark);
-            border: 1px solid var(--text-dark);
+            border: 1px solid #ccc;
         }
-        .btn-outline-dark:hover { background: rgba(0,0,0,0.04); }
-        .btn-sm { padding: 9px 18px; font-size: 13px; }
+        .btn-outline-dark:hover { background: rgba(0,0,0,0.03); border-color: #aaa; }
+        .btn-sm { padding: 9px 18px; font-size: 13px; border-radius: 6px; }
 
         /* Навбар */
         .navbar {
-            background: var(--bg-dark);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 18px 0;
+            background: rgba(28,28,30,0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -120,7 +148,7 @@
         .navbar-logo span { color: var(--accent); }
         .navbar-links {
             display: flex;
-            gap: 24px;
+            gap: 28px;
             align-items: center;
         }
         .navbar-links a {
@@ -128,14 +156,14 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: color var(--transition);
         }
         .navbar-links a:hover { color: #fff; }
 
         /* Hero */
         .hero {
-            padding: 100px 0 80px;
-            background: var(--bg-dark);
+            padding: 110px 0 100px;
+            background: radial-gradient(ellipse at 30% 20%, #2a2a30 0%, var(--bg-deep) 70%);
         }
         .hero .container {
             display: grid;
@@ -147,44 +175,57 @@
             color: #fff;
             margin-bottom: 20px;
         }
+        .hero h1 span { color: var(--accent); }
         .hero p {
             font-size: 18px;
             color: var(--text-muted);
-            margin-bottom: 36px;
-            line-height: 1.7;
+            margin-bottom: 38px;
+            line-height: 1.75;
+            max-width: 480px;
         }
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
+        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
         .hero-visual {
-            background: var(--bg-block);
+            background: var(--bg-cream);
             border-radius: var(--radius);
-            height: 400px;
+            height: 420px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-dark);
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-visual::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--accent);
+            opacity: 0.6;
         }
 
-        /* Секция на светлом блоке */
-        .section-light {
-            background: var(--bg-block);
+        /* Секции */
+        .section-cream {
+            background: var(--bg-cream);
             color: var(--text-dark);
-            padding: 90px 0;
-            border-radius: 0;
+            padding: 100px 0;
         }
-        .section-light-alt {
-            background: var(--bg-block-alt);
+        .section-warm {
+            background: var(--bg-warm);
             color: var(--text-dark);
-            padding: 90px 0;
+            padding: 100px 0;
         }
-        .section-light .section-title,
-        .section-light-alt .section-title {
+        .section-cool {
+            background: var(--bg-cool);
             color: var(--text-dark);
+            padding: 100px 0;
+        }
+        .section-dark {
+            background: var(--bg-dark);
+            color: #fff;
+            padding: 100px 0;
         }
 
         /* Преимущества */
@@ -196,49 +237,47 @@
         .advantage-card {
             background: var(--bg-card);
             border-radius: var(--radius-sm);
-            padding: 32px;
-            box-shadow: var(--shadow);
-            transition: box-shadow 0.2s;
+            padding: 36px 30px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid transparent;
         }
-        .advantage-card:hover { box-shadow: var(--shadow-md); }
-        .advantage-icon {
-            width: 44px;
-            height: 44px;
-            background: #eef2ff;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
+        .advantage-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+        }
+        .advantage-num {
+            font-size: 13px;
             font-weight: 700;
             color: var(--accent);
-            margin-bottom: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
         }
-        .advantage-card h3 { margin-bottom: 8px; color: var(--text-dark); }
-        .advantage-card p { color: var(--text-body); font-size: 14px; }
+        .advantage-card h3 { margin-bottom: 10px; color: var(--text-dark); }
+        .advantage-card p { color: var(--text-body); font-size: 14px; line-height: 1.75; }
 
         /* Обо мне */
-        .about-content {
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 64px;
             align-items: start;
         }
         .about-text p {
             color: var(--text-body);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             font-size: 15px;
-            line-height: 1.8;
+            line-height: 1.85;
         }
-        .about-badge {
-            display: inline-block;
-            background: #e0e7ff;
-            color: var(--accent);
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 20px;
+        .about-highlight {
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 16px;
+            margin: 28px 0;
+            line-height: 1.7;
         }
         .about-stats {
             display: grid;
@@ -248,19 +287,53 @@
         .stat-card {
             background: var(--bg-card);
             border-radius: var(--radius-sm);
-            padding: 22px;
-            box-shadow: var(--shadow);
+            padding: 24px 20px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--transition);
         }
+        .stat-card:hover { box-shadow: var(--shadow-md); }
         .stat-number {
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 700;
             color: var(--accent);
+            letter-spacing: -0.5px;
         }
         .stat-label {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-body);
-            margin-top: 4px;
+            margin-top: 6px;
+            line-height: 1.5;
         }
+
+        /* Табы */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 11px 24px;
+            border-radius: 24px;
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-body);
+            transition: var(--transition);
+        }
+        .tab-btn.active {
+            background: var(--text-dark);
+            color: #fff;
+            border-color: var(--text-dark);
+        }
+        .tab-btn:hover:not(.active) {
+            background: #f0ede7;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
         /* Продукты */
         .products-grid {
@@ -271,228 +344,204 @@
         .product-card {
             background: var(--bg-card);
             border-radius: var(--radius-sm);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: all 0.2s;
+            padding: 32px 28px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
-            color: var(--text-dark);
+            border: 1px solid transparent;
         }
         .product-card:hover {
             box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
+            border-color: var(--border-light);
+            transform: translateY(-3px);
         }
         .product-card.featured {
             border: 2px solid var(--accent);
-            position: relative;
         }
         .featured-badge {
             position: absolute;
-            top: -12px;
-            right: 20px;
+            top: -11px;
+            right: 24px;
             background: var(--accent);
             color: #fff;
-            padding: 4px 14px;
+            padding: 4px 16px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
-        .product-icon {
-            font-size: 14px;
+        .product-tag {
+            font-size: 11px;
             font-weight: 700;
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 14px;
         }
-        .product-card h3 { margin-bottom: 8px; }
+        .product-card h3 { margin-bottom: 10px; color: var(--text-dark); }
         .product-card .price {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--text-dark);
-            margin: 14px 0;
+            margin: 16px 0 8px;
         }
         .product-card .price span {
             font-size: 14px;
             font-weight: 400;
             color: var(--text-body);
         }
-        .product-card p {
+        .product-card .desc {
             color: var(--text-body);
             font-size: 13px;
-            margin-bottom: 10px;
+            margin-bottom: 14px;
             flex-grow: 1;
+            line-height: 1.7;
         }
         .product-features {
             list-style: none;
-            margin: 14px 0;
+            margin: 10px 0 20px;
+            padding: 0;
         }
         .product-features li {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-body);
-            padding: 3px 0;
-            padding-left: 18px;
+            padding: 4px 0 4px 16px;
             position: relative;
+            line-height: 1.6;
         }
         .product-features li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 9px;
-            width: 6px;
-            height: 6px;
+            top: 10px;
+            width: 5px;
+            height: 5px;
             background: var(--accent);
             border-radius: 50%;
         }
-        .product-card .btn {
-            margin-top: auto;
-        }
-
-        /* Табы */
-        .tabs {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 36px;
-            flex-wrap: wrap;
-        }
-        .tab-btn {
-            padding: 10px 22px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            background: var(--bg-card);
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-dark);
-            transition: all 0.2s;
-        }
-        .tab-btn.active {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-        }
-        .tab-btn:hover:not(.active) {
-            background: #f0f0f0;
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .product-card .btn { margin-top: auto; }
 
         /* Услуги */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 18px;
         }
         .service-card {
             background: var(--bg-card);
             border-radius: var(--radius-sm);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: all 0.2s;
-            color: var(--text-dark);
+            padding: 30px 28px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
         }
         .service-card:hover {
             box-shadow: var(--shadow-md);
-            background: #fafaf7;
+            border-color: var(--border-light);
+            background: #fdfdfb;
         }
-        .service-card h3 { margin-bottom: 8px; }
-        .service-card p { color: var(--text-body); font-size: 13px; margin-bottom: 16px; }
+        .service-card h3 { margin-bottom: 8px; color: var(--text-dark); font-size: 17px; }
+        .service-card p { color: var(--text-body); font-size: 13px; margin-bottom: 14px; line-height: 1.7; flex-grow: 1; }
         .service-card .price {
             font-weight: 700;
             font-size: 16px;
             color: var(--text-dark);
+            margin-top: auto;
         }
 
         /* Форма */
         .cta-section {
-            padding: 90px 0;
-            background: var(--bg-dark);
+            padding: 110px 0;
+            background: radial-gradient(ellipse at 70% 80%, #2a2a30 0%, var(--bg-deep) 70%);
             text-align: center;
         }
         .cta-section h2 { color: #fff; margin-bottom: 12px; }
         .cta-section .subtitle {
             color: var(--text-muted);
             font-size: 16px;
-            margin-bottom: 36px;
+            margin-bottom: 40px;
         }
         .cta-form {
             max-width: 500px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
         .cta-form input,
         .cta-form textarea {
-            padding: 14px 18px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.06);
+            padding: 15px 20px;
+            border-radius: var(--radius-xs);
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
             color: #fff;
             font-size: 15px;
             font-family: inherit;
             outline: none;
+            transition: var(--transition);
         }
         .cta-form input::placeholder,
-        .cta-form textarea::placeholder {
-            color: rgba(255,255,255,0.45);
-        }
+        .cta-form textarea::placeholder { color: rgba(255,255,255,0.35); }
         .cta-form input:focus,
         .cta-form textarea:focus {
             border-color: var(--accent);
+            background: rgba(255,255,255,0.07);
         }
-        .cta-form textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
+        .cta-form textarea { resize: vertical; min-height: 90px; }
         .success-msg {
             display: none;
-            background: #10b981;
+            background: #1a9c6e;
             color: #fff;
-            padding: 16px;
-            border-radius: 8px;
-            margin-top: 16px;
+            padding: 16px 24px;
+            border-radius: var(--radius-xs);
+            margin-top: 18px;
             font-weight: 600;
+            font-size: 15px;
         }
 
         /* Футер */
         .footer {
             padding: 36px 0;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            background: var(--bg-deep);
+            border-top: 1px solid var(--border-subtle);
             text-align: center;
             color: var(--text-muted);
             font-size: 13px;
         }
-        .footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
+        .footer a { color: var(--accent); text-decoration: none; }
         .footer a:hover { text-decoration: underline; }
 
         html { scroll-behavior: smooth; }
 
+        /* Анимация появления */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
         /* Адаптив */
         @media (max-width: 768px) {
-            h1 { font-size: 32px; }
-            h2 { font-size: 26px; }
+            h1 { font-size: 34px; }
+            h2 { font-size: 27px; }
             .hero .container,
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            .hero-visual {
-                height: 240px;
-                order: -1;
-            }
+            .about-grid { grid-template-columns: 1fr; }
+            .hero-visual { height: 260px; order: -1; }
             .advantages-grid,
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .navbar-links a:not(.btn) {
-                display: none;
-            }
+            .products-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .navbar-links a:not(.btn) { display: none; }
+            .section-cream,
+            .section-warm,
+            .section-cool,
+            .section-dark { padding: 64px 0; }
+            .hero { padding: 80px 0 64px; }
+            .cta-section { padding: 80px 0; }
         }
     </style>
 </head>
@@ -506,7 +555,7 @@
                 <a href="#about">Об эксперте</a>
                 <a href="#products">Продукты</a>
                 <a href="#services">Услуги</a>
-                <a href="#cta" class="btn btn-outline btn-sm">Консультация</a>
+                <a href="#cta" class="btn btn-outline btn-sm">Связаться</a>
             </div>
         </div>
     </nav>
@@ -514,58 +563,60 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div>
-                <h1>Ваша безопасность —<br>мой стандарт</h1>
+            <div class="animate-in">
+                <p class="section-label-light">Юридическая практика</p>
+                <h1>Ваша безопасность — <span>мой стандарт</span></h1>
                 <p>Риск в праве не окупается никогда. Премиальная юридическая защита бизнеса, интеллектуальной собственности и личного бренда.</p>
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">Продукты и решения</a>
                     <a href="#about" class="btn btn-outline">Об эксперте</a>
                 </div>
             </div>
-            <div class="hero-visual">
+            <div class="hero-visual animate-in" style="animation-delay: 0.15s;">
                 Правовая архитектура бизнеса
             </div>
         </div>
     </section>
 
-    <!-- Главная ценность (преимущества) -->
-    <section class="section-light">
+    <!-- Главная ценность -->
+    <section class="section-cream">
         <div class="container">
-            <p class="section-label">Главная ценность</p>
+            <span class="section-label">Главная ценность</span>
             <h2 class="section-title">Почему выбирают меня</h2>
             <p class="section-subtitle">Фундаментальная академическая школа, системный подход и бескомпромиссное качество защиты</p>
             <div class="advantages-grid">
                 <div class="advantage-card">
-                    <div class="advantage-icon">01</div>
+                    <div class="advantage-num">01</div>
                     <h3>Академическая школа</h3>
-                    <p>РАНХиГС (2013–2018) и МГЮА им. Кутафина (2018–2026) — путь от бакалавра до магистра. Непрерывное повышение квалификации в Академии современной юриспруденции.</p>
+                    <p>РАНХиГС (2013–2018) и МГЮА им. Кутафина (2018–2026) — от бакалавра до магистра. Непрерывное повышение квалификации в Академии современной юриспруденции.</p>
                 </div>
                 <div class="advantage-card">
-                    <div class="advantage-icon">02</div>
+                    <div class="advantage-num">02</div>
                     <h3>Предиктивная аналитика</h3>
-                    <p>Член Союза юристов-блогеров при АЮР и МГЮА. Знание «внутренней кухни» законодательного процесса даёт клиентам исключительное преимущество — стратегии, сохраняющие актуальность годами.</p>
+                    <p>Член Союза юристов-блогеров при АЮР и МГЮА. Знание «внутренней кухни» законодательного процесса — стратегии, сохраняющие актуальность годами.</p>
                 </div>
                 <div class="advantage-card">
-                    <div class="advantage-icon">03</div>
+                    <div class="advantage-num">03</div>
                     <h3>8+ лет защиты активов</h3>
-                    <p>Специализация на интеллектуальном капитале — самом ценном и уязвимом активе современного бизнеса. Работа в крупнейших консалтинговых группах страны.</p>
+                    <p>Специализация на интеллектуальном капитале — самом ценном и уязвимом активе современного бизнеса. Опыт работы в крупнейших консалтинговых группах страны.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Обо мне -->
-    <section class="section-light-alt" id="about">
+    <section class="section-warm" id="about">
         <div class="container">
-            <p class="section-label">Обо мне</p>
-            <div class="about-content">
+            <span class="section-label">Обо мне</span>
+            <div class="about-grid">
                 <div class="about-text">
-                    <span class="about-badge">Эксперт-практик</span>
                     <h2 class="section-title">Правовая архитектура как безупречный механизм</h2>
-                    <p>В основе моей практики лежит фундаментальная академическая школа и многолетний опыт защиты интересов бизнеса в крупнейших консалтинговых группах страны. Я убеждена: в премиальном сегменте юридическая чистота — это не просто отсутствие претензий, а ключевой репутационный актив.</p>
-                    <p>Более 8 лет я специализируюсь на защите интеллектуального капитала. Работа в системном консалтинге научила меня проектировать правовую архитектуру бизнеса как безупречный механизм, где каждая деталь работает на опережение рисков.</p>
-                    <p>Являюсь действующим членом Союза юристов-блогеров при Ассоциации юристов России и МГЮА им. О.Е. Кутафина. Участие в законотворческих инициативах и проектах по правовому просвещению позволяет мне видеть «кухню» законодательного процесса изнутри.</p>
-                    <p>Выбирая работу со мной, вы получаете не просто консультанта, а доверенного партнёра, который трансформирует право в надёжную броню для вашего бизнеса и личного бренда.</p>
+                    <p>В основе моей практики лежит фундаментальная академическая школа и многолетний опыт защиты интересов бизнеса в крупнейших консалтинговых группах страны. В премиальном сегменте юридическая чистота — это не просто отсутствие претензий, а ключевой репутационный актив.</p>
+                    <div class="about-highlight">
+                        Более 8 лет я специализируюсь на защите интеллектуального капитала — самого ценного и уязвимого актива современного бизнеса.
+                    </div>
+                    <p>Работа в системном консалтинге научила меня проектировать правовую архитектуру как безупречный механизм, где каждая деталь работает на опережение рисков. Я создаю индивидуальные решения, которые отличаются стратегической глубиной и юридической бескомпромиссностью.</p>
+                    <p>Являюсь действующим членом Союза юристов-блогеров при Ассоциации юристов России и МГЮА. Участие в законотворческих инициативах позволяет видеть логику законодательного процесса изнутри, давая клиентам исключительное преимущество.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat-card">
@@ -589,35 +640,34 @@
         </div>
     </section>
 
-    <!-- Самостоятельные продукты -->
-    <section class="section-light" id="products">
+    <!-- Продукты -->
+    <section class="section-cream" id="products">
         <div class="container">
-            <p class="section-label">Самостоятельные продукты</p>
-            <h2 class="section-title">Готовые решения для самостоятельной защиты</h2>
+            <span class="section-label">Продукты</span>
+            <h2 class="section-title">Самостоятельные решения</h2>
             <p class="section-subtitle">Материалы, которые становятся вашим бессрочным интеллектуальным активом</p>
 
-            <!-- Табы -->
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTab('checkup')">Юридический Check-up</button>
                 <button class="tab-btn" onclick="switchTab('taxes')">Налоговый комплаенс</button>
                 <button class="tab-btn" onclick="switchTab('infobiz')">Инфобизнес</button>
-                <button class="tab-btn" onclick="switchTab('launch')">Самостоятельный запуск</button>
+                <button class="tab-btn" onclick="switchTab('launch')">Запуск проекта</button>
             </div>
 
             <!-- Check-up -->
             <div class="tab-content active" id="tab-checkup">
-                <div class="products-grid" style="max-width: 500px; margin: 0 auto; grid-template-columns: 1fr;">
-                    <div class="product-card featured">
+                <div style="max-width: 520px; margin: 0 auto;">
+                    <div class="product-card featured" style="position: relative;">
                         <div class="featured-badge">Бестселлер</div>
-                        <div class="product-icon">Диагностика</div>
+                        <div class="product-tag">Диагностика</div>
                         <h3>Юридический Check-up</h3>
-                        <p>Диагностика юридической устойчивости. 80% судебных споров и санкций — результат накопленных системных ошибок. Check-up — концентрированная методология, заменяющая полноценный первичный аудит.</p>
+                        <p class="desc">Диагностика юридической устойчивости. 80% судебных споров — результат накопленных системных ошибок. Check-up заменяет полноценный первичный аудит, предоставляя объективную картину устойчивости бизнеса.</p>
                         <ul class="product-features">
                             <li>Алгоритм самодиагностики без воды и юридического шума</li>
                             <li>Перечень критически уязвимых точек бизнеса</li>
                             <li>Пошаговый план устранения рисков и укрепления фундамента</li>
                         </ul>
-                        <p style="font-size:13px; color: var(--text-body);">Результат: полная прозрачность процессов и чёткая стратегия защиты. Материал — ваш бессрочный интеллектуальный актив.</p>
+                        <p style="font-size:13px;color:var(--text-body);margin-bottom:16px;">Результат: полная прозрачность процессов и стратегия защиты. Материал — ваш бессрочный интеллектуальный актив.</p>
                         <div class="price">1 990 <span>₽</span></div>
                         <a href="#cta" class="btn btn-primary">Приобрести</a>
                     </div>
@@ -628,31 +678,31 @@
             <div class="tab-content" id="tab-taxes">
                 <div class="products-grid">
                     <div class="product-card">
-                        <div class="product-icon">Чек-лист</div>
+                        <div class="product-tag">Чек-лист</div>
                         <h3>3-НДФЛ в 2026 году</h3>
-                        <p>Кому обязательно подавать и как не получить штраф. 5 блоков доходов: продажа имущества, аренда, доходы из-за границы, фриланс, специальные категории. Типовые мифы и реальные сроки.</p>
+                        <p class="desc">Кому обязательно подавать и как не получить штраф. 5 блоков доходов, типовые мифы и реальные сроки подачи.</p>
                         <div class="price">1 990 <span>₽</span></div>
                         <a href="#cta" class="btn btn-outline-dark btn-sm">Приобрести</a>
                     </div>
                     <div class="product-card">
-                        <div class="product-icon">Чек-лист</div>
-                        <h3>Осмотр помещения налоговым органом</h3>
-                        <p>Как проходит осмотр и как защитить права в 2026 году. Обязательные требования к процедуре, типовые нарушения инспекторов, судебная практика, чек-лист действий на месте.</p>
+                        <div class="product-tag">Чек-лист</div>
+                        <h3>Осмотр налоговым органом</h3>
+                        <p class="desc">Процедура осмотра и защита прав в 2026 году. Типовые нарушения инспекторов и судебная практика.</p>
                         <div class="price">2 490 <span>₽</span></div>
                         <a href="#cta" class="btn btn-outline-dark btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card featured">
-                        <div class="featured-badge">Рекомендую</div>
-                        <div class="product-icon">Чек-лист</div>
-                        <h3>Безопасный контрагент, безопасная сделка</h3>
-                        <p>Защита от доначислений по ст. 54.1 НК РФ. Пошаговая проверка контрагента, фиксация деловой цели, внутренние регламенты компании для усиления позиции на проверке.</p>
+                    <div class="product-card featured" style="position: relative;">
+                        <div class="featured-badge">Хит продаж</div>
+                        <div class="product-tag">Чек-лист</div>
+                        <h3>Безопасный контрагент</h3>
+                        <p class="desc">Защита от доначислений по ст. 54.1 НК РФ. Пошаговая проверка контрагента, фиксация деловой цели.</p>
                         <div class="price">3 990 <span>₽</span></div>
                         <a href="#cta" class="btn btn-primary btn-sm">Приобрести</a>
                     </div>
                     <div class="product-card">
-                        <div class="product-icon">Чек-лист</div>
+                        <div class="product-tag">Чек-лист</div>
                         <h3>Маркеры дробления бизнеса</h3>
-                        <p>Быстрая проверка риска квалификации как дробления. 15+ маркеров, шкала риска, актуальные пороги НДС на 2026–2028 годы, рекомендации по перестройке структуры.</p>
+                        <p class="desc">15+ маркеров риска, шкала оценки, пороги НДС на 2026–2028 годы, рекомендации.</p>
                         <div class="price">1 299 <span>₽</span></div>
                         <a href="#cta" class="btn btn-outline-dark btn-sm">Приобрести</a>
                     </div>
@@ -663,52 +713,52 @@
             <div class="tab-content" id="tab-infobiz">
                 <div class="products-grid">
                     <div class="product-card">
-                        <div class="product-icon">Руководство</div>
+                        <div class="product-tag">Руководство</div>
                         <h3>Контент под защитой</h3>
-                        <p>Методология охраны интеллектуальной собственности. Фиксация авторства, защита от внутренних утечек, протокол ликвидации сливов за 48 часов, техническая профилактика копирования.</p>
+                        <p class="desc">Охрана интеллектуальной собственности: фиксация авторства, защита от утечек, ликвидация сливов.</p>
                         <div class="price">5 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-outline-dark btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card featured">
-                        <div class="featured-badge">Хит</div>
-                        <div class="product-icon">Протокол</div>
+                    <div class="product-card featured" style="position: relative;">
+                        <div class="featured-badge">Рекомендую</div>
+                        <div class="product-tag">Протокол</div>
                         <h3>Юридический протокол запуска</h3>
-                        <p>Алгоритм безопасности до первого касания клиента. Налоговая безопасность, контрактная архитектура с командой, броня от возвратов, правовой дизайн модели, защита персональных данных.</p>
+                        <p class="desc">Безопасность до первого касания клиента: налоги, контракты, защита от возвратов, персональные данные.</p>
                         <div class="price">7 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-primary btn-sm">Приобрести</a>
                     </div>
                     <div class="product-card">
-                        <div class="product-icon">Руководство</div>
+                        <div class="product-tag">Руководство</div>
                         <h3>Персональные данные без риска</h3>
-                        <p>152-ФЗ: какие данные подлежат защите, легализация форм сбора, чек-лист документов, уведомление Роскомнадзора, цифровая гигиена хранения данных в CRM.</p>
+                        <p class="desc">152-ФЗ: легализация форм сбора, уведомление Роскомнадзора, гигиена хранения в CRM.</p>
                         <div class="price">5 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-outline-dark btn-sm">Приобрести</a>
                     </div>
                     <div class="product-card">
-                        <div class="product-icon">Гид</div>
+                        <div class="product-tag">Гид</div>
                         <h3>Реклама без штрафов</h3>
-                        <p>Правила маркировки интернет-рекламы с 2023 года. Диагностика контента, протокол получения токенов (erid), работа с ОРД, риски в договорах с блогерами.</p>
+                        <p class="desc">Маркировка интернет-рекламы: токены erid, работа с ОРД, безопасные договоры с блогерами.</p>
                         <div class="price">5 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-outline-dark btn-sm">Приобрести</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Самостоятельный запуск -->
+            <!-- Запуск -->
             <div class="tab-content" id="tab-launch">
-                <div class="products-grid">
+                <div class="products-grid" style="max-width: 740px; margin: 0 auto;">
                     <div class="product-card">
-                        <div class="product-icon">Комплект</div>
+                        <div class="product-tag">Комплект</div>
                         <h3>Base: Юридический старт</h3>
-                        <p>Минимально необходимый набор: Оферта, Политика конфиденциальности, Согласие на обработку ПДн, Согласие на отзывы. Видео-гайд по внедрению и чек-лист уведомления Роскомнадзора.</p>
+                        <p class="desc">Оферта, Политика конфиденциальности, Согласие на обработку ПДн и отзывы. Видео-гайд и чек-лист Роскомнадзора.</p>
                         <div class="price">12 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-outline-dark btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card featured">
-                        <div class="featured-badge">Максимум защиты</div>
-                        <div class="product-icon">Комплект</div>
+                    <div class="product-card featured" style="position: relative;">
+                        <div class="featured-badge">Максимум</div>
+                        <div class="product-tag">Комплект</div>
                         <h3>Expert: Право и Налоги</h3>
-                        <p>Всё из Base + чек-лист по выявлению признаков дробления бизнеса + гайд по налоговому планированию + скидка 10% на стратегическую сессию.</p>
+                        <p class="desc">Всё из Base + чек-лист дробления + гайд по налоговому планированию + скидка 10% на стратегическую сессию.</p>
                         <div class="price">15 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-primary btn-sm">Приобрести</a>
                     </div>
@@ -718,78 +768,78 @@
     </section>
 
     <!-- Услуги -->
-    <section class="section-light-alt" id="services">
+    <section class="section-cool" id="services">
         <div class="container">
-            <p class="section-label">Услуги</p>
-            <h2 class="section-title">Правовое сопровождение и защита</h2>
+            <span class="section-label">Услуги</span>
+            <h2 class="section-title">Правовое сопровождение</h2>
             <p class="section-subtitle">От точечных решений до комплексной правовой архитектуры бизнеса</p>
 
             <div class="services-grid">
                 <div class="service-card">
                     <h3>Стратегическая сессия 1:1</h3>
-                    <p>60 минут глубокого аудита проекта. Предварительный анализ документов, структурный разбор архитектуры, индивидуальный PDF-протокол с пошаговым планом внедрения.</p>
+                    <p>60 минут глубокого аудита. Анализ документов до встречи, структурный разбор проекта, PDF-протокол с планом внедрения.</p>
                     <div class="price">10 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Пакет I — Базовый стандарт</h3>
-                    <p>Проектирование первичного правового контура: оферта, регуляторный аудит, архитектура персональных данных, регистрация в Роскомнадзоре, 7 дней поддержки.</p>
+                    <p>Первичный правовой контур: оферта, аудит интерфейса, архитектура ПДн, регистрация в Роскомнадзоре, 7 дней поддержки.</p>
                     <div class="price">75 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Пакет II — Бизнес-система</h3>
-                    <p>Полноценный юридический фундамент: защита интеллектуальной собственности, кадровая безопасность, налоговый аудит 2026, 14 дней сопровождения.</p>
+                    <p>Юридический фундамент: защита интеллектуальной собственности, кадровая безопасность, налоговый аудит 2026, 14 дней сопровождения.</p>
                     <div class="price">100 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Пакет III — Премиальная защита</h3>
-                    <p>Высший стандарт: регистрация товарного знака, лицензирование, режим коммерческой тайны, налоговый щит, 2 месяца персонального патронажа.</p>
+                    <p>Товарный знак, лицензирование, коммерческая тайна, налоговый щит, 2 месяца персонального патронажа.</p>
                     <div class="price">от 200 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Товарные знаки</h3>
-                    <p>Регистрация «под ключ» от 60 000 ₽. Информационный поиск (12 000 ₽), работа с отказами Роспатента, Палата по патентным спорам, администрирование.</p>
+                    <p>Регистрация «под ключ» от 60 000 ₽. Поиск, ответы на отказы, Палата по патентным спорам, администрирование.</p>
                     <div class="price">от 12 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Защита контента и ПО</h3>
-                    <p>Депонирование объектов (7 000 ₽), регистрация ПО и баз данных в Роспатенте (50 000 ₽), IP-комплаенс с командой и подрядчиками (от 20 000 ₽).</p>
+                    <p>Депонирование (7 000 ₽), регистрация ПО (50 000 ₽), IP-комплаенс с командой (от 20 000 ₽).</p>
                     <div class="price">от 7 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Контрактная архитектура</h3>
-                    <p>Экспертиза договоров, аудит с корректировкой, публичная оферта, рекламные контракты, авторское право, комплект для подрядчиков.</p>
+                    <p>Экспертиза, аудит с корректировкой, оферта, рекламные контракты, авторское право, договоры с подрядчиками.</p>
                     <div class="price">от 10 000 ₽</div>
                 </div>
                 <div class="service-card">
-                    <h3>IP-аудит интеллектуального капитала</h3>
-                    <p>Анализ контента, бренда и правового фундамента. Отчёт с фиксацией уязвимостей и пошаговый план легализации.</p>
+                    <h3>IP-аудит</h3>
+                    <p>Анализ контента, бренда и правового фундамента. Отчёт с уязвимостями и пошаговый план легализации.</p>
                     <div class="price">50 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Лицензирование образования</h3>
-                    <p>Получение лицензии «под ключ» — 80 000 ₽. Лицензирование + 2 месяца сопровождения — 130 000 ₽.</p>
+                    <p>«Под ключ» — 80 000 ₽. С сопровождением 2 месяца — 130 000 ₽.</p>
                     <div class="price">от 80 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Маркировка рекламы</h3>
-                    <p>Администрирование от 4 000 ₽. Проектирование безопасного рекламного контракта (20 000 ₽), обучение команды (15 000 ₽).</p>
+                    <p>Администрирование от 4 000 ₽. Контракты (20 000 ₽), обучение команды (15 000 ₽).</p>
                     <div class="price">от 4 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Персональные данные</h3>
-                    <p>Аудит сайта (10 000 ₽), упаковка сайта (от 40 000 ₽), пакет «Безопасная обработка» (от 20 000 ₽), регистрация в Роскомнадзоре (7 000 ₽).</p>
+                    <p>Аудит сайта, упаковка, пакет «Безопасная обработка», регистрация в реестре Роскомнадзора.</p>
                     <div class="price">от 7 000 ₽</div>
                 </div>
                 <div class="service-card">
                     <h3>Суды и госорганы</h3>
-                    <p>Претензионная работа, исковое производство, суд «под ключ», представительство в заседаниях, защита в УФАС и Роскомнадзоре.</p>
+                    <p>Претензии, иски, суд «под ключ», представительство в УФАС и Роскомнадзоре.</p>
                     <div class="price">от 15 000 ₽</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Форма -->
+    <!-- CTA -->
     <section class="cta-section" id="cta">
         <div class="container">
             <h2>Обсудить проект</h2>
