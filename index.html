@@ -9,19 +9,21 @@
             --bg-deep: #1c1d20;
             --bg-section: #242529;
             --bg-card: #2c2d32;
-            --bg-card-hover: #323338;
+            --bg-card-hover: #34353a;
             --text-primary: #f0ede8;
             --text-secondary: #a8a6a1;
             --text-muted: #6b6a66;
             --accent: #5b8af7;
-            --accent-soft: rgba(91, 138, 247, 0.1);
-            --accent-border: rgba(91, 138, 247, 0.3);
+            --accent-soft: rgba(91, 138, 247, 0.08);
+            --accent-border: rgba(91, 138, 247, 0.25);
             --border-subtle: rgba(255, 255, 255, 0.06);
             --border-card: rgba(255, 255, 255, 0.04);
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --radius-sm: 10px;
-            --transition: 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --radius-2xl: 28px;
+            --radius-xl: 20px;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition: 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,43 +40,59 @@
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 36px;
         }
 
         /* Типографика */
-        h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; color: #fff; }
-        h2 { font-size: clamp(30px, 4vw, 42px); font-weight: 600; line-height: 1.2; letter-spacing: -0.5px; }
-        h3 { font-size: 20px; font-weight: 600; line-height: 1.4; }
+        h1 { font-size: clamp(44px, 7vw, 72px); font-weight: 700; line-height: 1.08; letter-spacing: -2px; color: #fff; }
+        h2 { font-size: clamp(30px, 4.5vw, 44px); font-weight: 600; line-height: 1.18; letter-spacing: -0.8px; }
+        h3 { font-size: 20px; font-weight: 600; line-height: 1.4; letter-spacing: -0.3px; }
 
         .section-tag {
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
+            letter-spacing: 3px;
             color: var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             display: inline-block;
-            padding: 6px 14px;
+            padding: 7px 16px;
             border-radius: 20px;
             background: var(--accent-soft);
             border: 1px solid var(--accent-border);
         }
-        .section-title { margin-bottom: 16px; }
+        .section-title { margin-bottom: 18px; }
         .section-desc {
             color: var(--text-secondary);
             font-size: 17px;
-            margin-bottom: 56px;
-            max-width: 560px;
-            line-height: 1.7;
+            margin-bottom: 60px;
+            max-width: 540px;
+            line-height: 1.75;
         }
+
+        /* Анимация появления */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+                        transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* Кнопки */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 28px;
-            border-radius: 40px;
+            padding: 15px 30px;
+            border-radius: 50px;
             font-size: 15px;
             font-weight: 600;
             text-decoration: none;
@@ -82,29 +100,38 @@
             border: none;
             transition: var(--transition);
             gap: 8px;
-            letter-spacing: -0.2px;
+            letter-spacing: -0.3px;
+            position: relative;
+            overflow: hidden;
         }
         .btn-primary {
             background: var(--accent);
             color: #fff;
-            box-shadow: 0 4px 14px rgba(91, 138, 247, 0.3);
+            box-shadow: 0 6px 20px rgba(91, 138, 247, 0.25);
         }
-        .btn-primary:hover { background: #6a9af8; box-shadow: 0 6px 20px rgba(91, 138, 247, 0.45); transform: translateY(-1px); }
+        .btn-primary:hover {
+            background: #6a9af8;
+            box-shadow: 0 10px 28px rgba(91, 138, 247, 0.4);
+            transform: translateY(-2px);
+        }
         .btn-ghost {
             background: transparent;
             color: var(--text-primary);
             border: 1px solid var(--border-subtle);
         }
-        .btn-ghost:hover { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.15); }
-        .btn-sm { padding: 10px 20px; font-size: 13px; }
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.2);
+        }
+        .btn-sm { padding: 10px 22px; font-size: 13px; }
 
         /* Навбар */
         .navbar {
-            background: rgba(28, 29, 32, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(28, 29, 32, 0.82);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--border-subtle);
-            padding: 16px 0;
+            padding: 17px 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -122,50 +149,75 @@
             letter-spacing: -0.5px;
         }
         .navbar-logo span { color: var(--accent); }
-        .navbar-links { display: flex; gap: 32px; align-items: center; }
+        .navbar-links { display: flex; gap: 34px; align-items: center; }
         .navbar-links a {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: color 0.25s;
         }
         .navbar-links a:hover { color: #fff; }
 
         /* Секции */
-        section { padding: 100px 0; }
+        section { padding: 110px 0; }
         .section-alt { background: var(--bg-section); }
 
         /* Hero */
         .hero {
-            padding: 120px 0 100px;
+            padding: 130px 0 110px;
             position: relative;
             overflow: hidden;
         }
         .hero::before {
             content: '';
             position: absolute;
-            top: -30%;
-            right: -15%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(91,138,247,0.06) 0%, transparent 70%);
+            top: -35%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(91,138,247,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(91,138,247,0.03) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 640px;
+            max-width: 660px;
         }
-        .hero h1 { margin-bottom: 24px; }
-        .hero h1 span { color: var(--accent); }
+        .hero h1 { margin-bottom: 26px; }
+        .hero h1 span {
+            color: var(--accent);
+            position: relative;
+        }
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(91,138,247,0.2);
+            border-radius: 3px;
+            z-index: -1;
+        }
         .hero p {
             font-size: 18px;
             color: var(--text-secondary);
-            margin-bottom: 40px;
+            margin-bottom: 44px;
             line-height: 1.8;
-            max-width: 500px;
+            max-width: 480px;
         }
         .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
 
@@ -173,19 +225,19 @@
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 26px;
         }
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 22px;
         }
 
         /* Карточка преимущества */
         .feature-card {
             background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 40px 32px;
+            border-radius: var(--radius-2xl);
+            padding: 44px 36px;
             transition: var(--transition);
             border: 1px solid var(--border-card);
             position: relative;
@@ -194,7 +246,8 @@
         .feature-card:hover {
             background: var(--bg-card-hover);
             border-color: var(--accent-border);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         .feature-card::before {
             content: '';
@@ -207,74 +260,86 @@
         }
         .feature-card:hover::before { opacity: 1; }
         .feature-num {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--accent);
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            margin-bottom: 22px;
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--accent-soft);
+            border-radius: 6px;
         }
-        .feature-card h3 { margin-bottom: 12px; color: #fff; }
-        .feature-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.8; }
+        .feature-card h3 { margin-bottom: 14px; color: #fff; }
+        .feature-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.85; }
 
         /* Обо мне */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 64px;
+            gap: 56px;
             align-items: start;
         }
+        .about-text { max-width: 540px; }
         .about-text p {
             color: var(--text-secondary);
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             font-size: 15px;
             line-height: 1.9;
         }
         .about-quote {
-            border-left: 2px solid var(--accent);
-            padding: 8px 0 8px 24px;
-            margin: 32px 0;
+            border-left: 3px solid var(--accent);
+            padding: 12px 0 12px 28px;
+            margin: 36px 0;
             color: #fff;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 500;
             line-height: 1.7;
             font-style: italic;
+            letter-spacing: -0.2px;
         }
         .about-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 14px;
         }
         .stat-card {
             background: var(--bg-card);
-            border-radius: var(--radius-md);
-            padding: 28px 24px;
+            border-radius: var(--radius-xl);
+            padding: 30px 22px;
             border: 1px solid var(--border-card);
             text-align: center;
             transition: var(--transition);
         }
-        .stat-card:hover { background: var(--bg-card-hover); }
+        .stat-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-border);
+            transform: translateY(-3px);
+        }
         .stat-num {
-            font-size: 38px;
+            font-size: 40px;
             font-weight: 700;
             color: var(--accent);
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
+            margin-bottom: 4px;
         }
         .stat-label {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-secondary);
-            margin-top: 8px;
             line-height: 1.6;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Табы */
         .tabs {
             display: flex;
-            gap: 8px;
-            margin-bottom: 48px;
+            gap: 10px;
+            margin-bottom: 52px;
             flex-wrap: wrap;
         }
         .tab-btn {
-            padding: 12px 26px;
+            padding: 13px 28px;
             border-radius: 30px;
             border: 1px solid var(--border-subtle);
             background: transparent;
@@ -289,6 +354,7 @@
             color: #000;
             border-color: #fff;
             font-weight: 600;
+            box-shadow: 0 4px 12px rgba(255,255,255,0.08);
         }
         .tab-btn:hover:not(.active) {
             border-color: rgba(255,255,255,0.2);
@@ -300,8 +366,8 @@
         /* Карточка продукта */
         .product-card {
             background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 36px 32px;
+            border-radius: var(--radius-2xl);
+            padding: 38px 32px;
             border: 1px solid var(--border-card);
             transition: var(--transition);
             display: flex;
@@ -310,23 +376,24 @@
         .product-card:hover {
             background: var(--bg-card-hover);
             border-color: var(--accent-border);
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.25);
         }
         .product-card.featured {
             border-color: var(--accent);
-            background: linear-gradient(160deg, var(--bg-card) 0%, rgba(91,138,247,0.06) 100%);
+            background: linear-gradient(160deg, var(--bg-card) 0%, rgba(91,138,247,0.05) 100%);
         }
         .product-badge {
             display: inline-block;
             background: var(--accent);
             color: #fff;
-            padding: 3px 12px;
+            padding: 4px 14px;
             border-radius: 14px;
             font-size: 10px;
             font-weight: 700;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             align-self: flex-start;
         }
         .product-cat {
@@ -334,43 +401,44 @@
             font-weight: 700;
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             margin-bottom: 14px;
         }
-        .product-card h3 { margin-bottom: 10px; color: #fff; }
+        .product-card h3 { margin-bottom: 12px; color: #fff; }
         .product-card .desc {
             color: var(--text-secondary);
             font-size: 13px;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             flex-grow: 1;
             line-height: 1.8;
         }
         .product-features {
             list-style: none;
-            margin: 8px 0 20px;
+            margin: 6px 0 22px;
         }
         .product-features li {
             font-size: 12px;
             color: var(--text-secondary);
-            padding: 3px 0 3px 14px;
+            padding: 4px 0 4px 16px;
             position: relative;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         .product-features li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 9px;
-            width: 4px;
-            height: 4px;
+            top: 10px;
+            width: 5px;
+            height: 5px;
             background: var(--accent);
             border-radius: 50%;
         }
         .product-price {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
             color: #fff;
-            margin: 8px 0 16px;
+            margin: 4px 0 18px;
+            letter-spacing: -0.5px;
         }
         .product-price span {
             font-size: 13px;
@@ -382,8 +450,8 @@
         /* Карточка услуги */
         .service-card {
             background: var(--bg-card);
-            border-radius: var(--radius-md);
-            padding: 32px 28px;
+            border-radius: var(--radius-xl);
+            padding: 34px 30px;
             border: 1px solid var(--border-card);
             transition: var(--transition);
             display: flex;
@@ -392,19 +460,20 @@
         .service-card:hover {
             background: var(--bg-card-hover);
             border-color: var(--accent-border);
+            transform: translateY(-3px);
         }
-        .service-card h3 { margin-bottom: 8px; color: #fff; font-size: 17px; }
-        .service-card p { color: var(--text-secondary); font-size: 13px; margin-bottom: 16px; line-height: 1.8; flex-grow: 1; }
+        .service-card h3 { margin-bottom: 10px; color: #fff; font-size: 17px; }
+        .service-card p { color: var(--text-secondary); font-size: 13px; margin-bottom: 18px; line-height: 1.8; flex-grow: 1; }
         .service-card .price {
             font-weight: 700;
-            font-size: 15px;
+            font-size: 16px;
             color: var(--accent);
             margin-top: auto;
         }
 
         /* Форма */
         .cta-section {
-            padding: 120px 0;
+            padding: 130px 0;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -412,45 +481,45 @@
         .cta-section::before {
             content: '';
             position: absolute;
-            bottom: -20%;
+            bottom: -25%;
             left: 50%;
             transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(91,138,247,0.05) 0%, transparent 70%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(91,138,247,0.04) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
         .cta-content { position: relative; z-index: 1; }
-        .cta-section h2 { color: #fff; margin-bottom: 12px; }
+        .cta-section h2 { color: #fff; margin-bottom: 14px; }
         .cta-section .subtitle {
             color: var(--text-secondary);
             font-size: 16px;
-            margin-bottom: 44px;
+            margin-bottom: 48px;
         }
         .cta-form {
             max-width: 480px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 13px;
         }
         .cta-form input,
         .cta-form textarea {
-            padding: 15px 22px;
+            padding: 16px 24px;
             border-radius: 40px;
             border: 1px solid var(--border-subtle);
             background: var(--bg-card);
             color: #fff;
-            font-size: 14px;
+            font-size: 15px;
             font-family: inherit;
             outline: none;
             transition: var(--transition);
         }
         .cta-form textarea {
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             resize: vertical;
-            min-height: 90px;
+            min-height: 96px;
         }
         .cta-form input::placeholder,
         .cta-form textarea::placeholder { color: var(--text-muted); }
@@ -458,21 +527,22 @@
         .cta-form textarea:focus {
             border-color: var(--accent-border);
             background: var(--bg-card-hover);
+            box-shadow: 0 0 0 4px var(--accent-soft);
         }
         .success-msg {
             display: none;
             background: #1a9c6e;
             color: #fff;
-            padding: 14px 24px;
+            padding: 15px 26px;
             border-radius: 30px;
-            margin-top: 16px;
+            margin-top: 18px;
             font-weight: 600;
             font-size: 14px;
         }
 
         /* Футер */
         .footer {
-            padding: 32px 0;
+            padding: 34px 0;
             border-top: 1px solid var(--border-subtle);
             text-align: center;
             color: var(--text-muted);
@@ -485,9 +555,10 @@
 
         @media (max-width: 768px) {
             .grid-3, .about-grid, .grid-2 { grid-template-columns: 1fr; }
-            .hero { padding: 80px 0 64px; }
-            section { padding: 64px 0; }
+            .hero { padding: 90px 0 70px; }
+            section { padding: 70px 0; }
             .navbar-links a:not(.btn) { display: none; }
+            .container { padding: 0 20px; }
         }
     </style>
 </head>
@@ -509,7 +580,7 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content reveal">
                 <span class="section-tag">Юридическая практика</span>
                 <h1>Ваша безопасность — <span>мой стандарт</span></h1>
                 <p>Риск в праве не окупается никогда. Премиальная юридическая защита бизнеса, интеллектуальной собственности и личного бренда.</p>
@@ -524,21 +595,21 @@
     <!-- Главная ценность -->
     <section class="section-alt">
         <div class="container">
-            <span class="section-tag">Главная ценность</span>
-            <h2 class="section-title">Почему выбирают меня</h2>
-            <p class="section-desc">Фундаментальная академическая школа, системный подход и бескомпромиссное качество защиты</p>
+            <span class="section-tag reveal">Главная ценность</span>
+            <h2 class="section-title reveal reveal-delay-1">Почему выбирают меня</h2>
+            <p class="section-desc reveal reveal-delay-1">Фундаментальная академическая школа, системный подход и бескомпромиссное качество защиты</p>
             <div class="grid-3">
-                <div class="feature-card">
+                <div class="feature-card reveal reveal-delay-1">
                     <div class="feature-num">01</div>
                     <h3>Академическая школа</h3>
                     <p>РАНХиГС (2013–2018) и МГЮА им. Кутафина (2018–2026) — от бакалавра до магистра. Непрерывное повышение квалификации в Академии современной юриспруденции.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card reveal reveal-delay-2">
                     <div class="feature-num">02</div>
                     <h3>Предиктивная аналитика</h3>
                     <p>Член Союза юристов-блогеров при АЮР и МГЮА. Знание логики законодательного процесса даёт клиентам стратегии, сохраняющие актуальность годами.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card reveal reveal-delay-3">
                     <div class="feature-num">03</div>
                     <h3>8+ лет защиты активов</h3>
                     <p>Специализация на интеллектуальном капитале — самом ценном и уязвимом активе бизнеса. Опыт работы в крупнейших консалтинговых группах.</p>
@@ -550,9 +621,9 @@
     <!-- Обо мне -->
     <section id="about">
         <div class="container">
-            <span class="section-tag">Обо мне</span>
+            <span class="section-tag reveal">Обо мне</span>
             <div class="about-grid">
-                <div class="about-text">
+                <div class="about-text reveal reveal-delay-1">
                     <h2 class="section-title">Правовая архитектура как безупречный механизм</h2>
                     <p>В основе моей практики — фундаментальная академическая школа и многолетний опыт защиты бизнеса в крупнейших консалтинговых группах. В премиальном сегменте юридическая чистота — это не просто отсутствие претензий, а ключевой репутационный актив.</p>
                     <div class="about-quote">
@@ -561,7 +632,7 @@
                     <p>Работа в системном консалтинге научила проектировать правовую архитектуру как механизм, где каждая деталь работает на опережение рисков. Я создаю решения, отличающиеся стратегической глубиной и юридической бескомпромиссностью.</p>
                     <p>Действующий член Союза юристов-блогеров при АЮР и МГЮА. Участие в законотворческих инициативах позволяет видеть логику законодательного процесса изнутри.</p>
                 </div>
-                <div class="about-stats">
+                <div class="about-stats reveal reveal-delay-2">
                     <div class="stat-card">
                         <div class="stat-num">8+</div>
                         <div class="stat-label">лет практики в защите интеллектуального капитала</div>
@@ -586,11 +657,11 @@
     <!-- Продукты -->
     <section class="section-alt" id="products">
         <div class="container">
-            <span class="section-tag">Продукты</span>
-            <h2 class="section-title">Самостоятельные решения</h2>
-            <p class="section-desc">Материалы, которые становятся вашим бессрочным интеллектуальным активом</p>
+            <span class="section-tag reveal">Продукты</span>
+            <h2 class="section-title reveal reveal-delay-1">Самостоятельные решения</h2>
+            <p class="section-desc reveal reveal-delay-1">Материалы, которые становятся вашим бессрочным интеллектуальным активом</p>
 
-            <div class="tabs">
+            <div class="tabs reveal reveal-delay-2">
                 <button class="tab-btn active" onclick="switchTab('checkup')">Check-up</button>
                 <button class="tab-btn" onclick="switchTab('taxes')">Налоги</button>
                 <button class="tab-btn" onclick="switchTab('infobiz')">Инфобизнес</button>
@@ -598,8 +669,8 @@
             </div>
 
             <div class="tab-content active" id="tab-checkup">
-                <div class="grid-3" style="max-width: 400px; margin: 0 auto;">
-                    <div class="product-card featured">
+                <div class="grid-3" style="max-width: 420px; margin: 0 auto;">
+                    <div class="product-card featured reveal reveal-delay-2">
                         <span class="product-badge">Бестселлер</span>
                         <div class="product-cat">Диагностика</div>
                         <h3>Юридический Check-up</h3>
@@ -609,7 +680,7 @@
                             <li>Критически уязвимые точки</li>
                             <li>Пошаговый план устранения рисков</li>
                         </ul>
-                        <p style="font-size:12px;color:var(--text-secondary);margin-bottom:16px;">Материал — ваш бессрочный интеллектуальный актив.</p>
+                        <p style="font-size:12px;color:var(--text-secondary);margin-bottom:18px;">Материал — ваш бессрочный интеллектуальный актив.</p>
                         <div class="product-price">1 990 <span>₽</span></div>
                         <a href="#cta" class="btn btn-primary btn-sm">Приобрести</a>
                     </div>
@@ -618,21 +689,21 @@
 
             <div class="tab-content" id="tab-taxes">
                 <div class="grid-3">
-                    <div class="product-card">
+                    <div class="product-card reveal reveal-delay-1">
                         <div class="product-cat">Чек-лист</div>
                         <h3>3-НДФЛ в 2026 году</h3>
                         <p class="desc">Кому подавать и как избежать штрафа. 5 блоков доходов, сроки, мифы.</p>
                         <div class="product-price">1 990 <span>₽</span></div>
                         <a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card">
+                    <div class="product-card reveal reveal-delay-2">
                         <div class="product-cat">Чек-лист</div>
                         <h3>Осмотр налоговым органом</h3>
                         <p class="desc">Процедура и защита прав в 2026 году. Нарушения инспекторов и судебная практика.</p>
                         <div class="product-price">2 490 <span>₽</span></div>
                         <a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card featured">
+                    <div class="product-card featured reveal reveal-delay-3">
                         <span class="product-badge">Хит</span>
                         <div class="product-cat">Чек-лист</div>
                         <h3>Безопасный контрагент</h3>
@@ -640,7 +711,7 @@
                         <div class="product-price">3 990 <span>₽</span></div>
                         <a href="#cta" class="btn btn-primary btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card">
+                    <div class="product-card reveal reveal-delay-4">
                         <div class="product-cat">Чек-лист</div>
                         <h3>Маркеры дробления</h3>
                         <p class="desc">15+ маркеров риска, пороги НДС 2026–2028, рекомендации по перестройке.</p>
@@ -652,14 +723,14 @@
 
             <div class="tab-content" id="tab-infobiz">
                 <div class="grid-3">
-                    <div class="product-card">
+                    <div class="product-card reveal reveal-delay-1">
                         <div class="product-cat">Руководство</div>
                         <h3>Контент под защитой</h3>
                         <p class="desc">Охрана интеллектуальной собственности: авторство, защита от утечек, ликвидация сливов.</p>
                         <div class="product-price">5 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card featured">
+                    <div class="product-card featured reveal reveal-delay-2">
                         <span class="product-badge">Рекомендую</span>
                         <div class="product-cat">Протокол</div>
                         <h3>Юрпротокол запуска</h3>
@@ -667,14 +738,14 @@
                         <div class="product-price">7 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-primary btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card">
+                    <div class="product-card reveal reveal-delay-3">
                         <div class="product-cat">Руководство</div>
                         <h3>Персональные данные</h3>
                         <p class="desc">152-ФЗ: легализация сбора, уведомление Роскомнадзора, гигиена хранения в CRM.</p>
                         <div class="product-price">5 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card">
+                    <div class="product-card reveal reveal-delay-4">
                         <div class="product-cat">Гид</div>
                         <h3>Реклама без штрафов</h3>
                         <p class="desc">Маркировка: токены erid, ОРД, безопасные договоры с блогерами.</p>
@@ -685,15 +756,15 @@
             </div>
 
             <div class="tab-content" id="tab-launch">
-                <div class="grid-2" style="max-width: 700px; margin: 0 auto;">
-                    <div class="product-card">
+                <div class="grid-2" style="max-width: 720px; margin: 0 auto;">
+                    <div class="product-card reveal reveal-delay-1">
                         <div class="product-cat">Комплект</div>
                         <h3>Base: Юридический старт</h3>
                         <p class="desc">Оферта, Политика конфиденциальности, Согласия на ПДн и отзывы. Видео-гайд и чек-лист Роскомнадзора.</p>
                         <div class="product-price">12 000 <span>₽</span></div>
                         <a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a>
                     </div>
-                    <div class="product-card featured">
+                    <div class="product-card featured reveal reveal-delay-2">
                         <span class="product-badge">Максимум</span>
                         <div class="product-cat">Комплект</div>
                         <h3>Expert: Право и Налоги</h3>
@@ -709,66 +780,66 @@
     <!-- Услуги -->
     <section id="services">
         <div class="container">
-            <span class="section-tag">Услуги</span>
-            <h2 class="section-title">Правовое сопровождение</h2>
-            <p class="section-desc">От точечных решений до комплексной архитектуры бизнеса</p>
+            <span class="section-tag reveal">Услуги</span>
+            <h2 class="section-title reveal reveal-delay-1">Правовое сопровождение</h2>
+            <p class="section-desc reveal reveal-delay-1">От точечных решений до комплексной архитектуры бизнеса</p>
             <div class="grid-2">
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-1">
                     <h3>Стратегическая сессия 1:1</h3>
                     <p>60 минут аудита, анализ документов, PDF-протокол с планом внедрения.</p>
                     <div class="price">10 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-2">
                     <h3>Пакет I — Базовый стандарт</h3>
                     <p>Оферта, аудит интерфейса, архитектура ПДн, регистрация в РКН, 7 дней поддержки.</p>
                     <div class="price">75 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-1">
                     <h3>Пакет II — Бизнес-система</h3>
                     <p>Защита IP, кадровая безопасность, налоговый аудит 2026, 14 дней сопровождения.</p>
                     <div class="price">100 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-2">
                     <h3>Пакет III — Премиальная защита</h3>
                     <p>Товарный знак, лицензирование, коммерческая тайна, 2 месяца патронажа.</p>
                     <div class="price">от 200 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-1">
                     <h3>Товарные знаки</h3>
                     <p>Регистрация от 60 000 ₽, поиск, ответы на отказы, Палата по патентным спорам.</p>
                     <div class="price">от 12 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-2">
                     <h3>Защита контента и ПО</h3>
                     <p>Депонирование, регистрация ПО, IP-комплаенс с командой.</p>
                     <div class="price">от 7 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-1">
                     <h3>Контрактная архитектура</h3>
                     <p>Экспертиза, аудит, оферта, рекламные контракты, авторское право.</p>
                     <div class="price">от 10 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-2">
                     <h3>IP-аудит</h3>
                     <p>Анализ контента, бренда и фундамента. Отчёт с уязвимостями и планом.</p>
                     <div class="price">50 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-1">
                     <h3>Лицензирование</h3>
                     <p>Образовательная лицензия «под ключ» и с сопровождением.</p>
                     <div class="price">от 80 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-2">
                     <h3>Маркировка рекламы</h3>
                     <p>Администрирование, контракты, обучение команды.</p>
                     <div class="price">от 4 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-1">
                     <h3>Персональные данные</h3>
                     <p>Аудит, упаковка сайта, регистрация в реестре Роскомнадзора.</p>
                     <div class="price">от 7 000 ₽</div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal reveal-delay-2">
                     <h3>Суды и госорганы</h3>
                     <p>Претензии, иски, суд «под ключ», защита в УФАС и Роскомнадзоре.</p>
                     <div class="price">от 15 000 ₽</div>
@@ -780,7 +851,7 @@
     <!-- CTA -->
     <section class="cta-section" id="cta">
         <div class="container">
-            <div class="cta-content">
+            <div class="cta-content reveal">
                 <span class="section-tag">Связаться</span>
                 <h2>Обсудить проект</h2>
                 <p class="subtitle">Оставьте заявку — я свяжусь с вами в течение 2 часов</p>
@@ -805,13 +876,37 @@
     </footer>
 
     <script>
+        // Intersection Observer — анимация появления
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // Табы
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             event.target.classList.add('active');
-            document.getElementById('tab-' + tabId).classList.add('active');
+            const targetContent = document.getElementById('tab-' + tabId);
+            targetContent.classList.add('active');
+            // Перезапуск анимации для элементов внутри нового контента
+            targetContent.querySelectorAll('.reveal').forEach(el => {
+                el.classList.remove('visible');
+                observer.observe(el);
+            });
         }
 
+        // Форма
         document.getElementById('leadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
