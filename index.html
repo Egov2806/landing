@@ -101,8 +101,6 @@
             transition: var(--transition);
             gap: 8px;
             letter-spacing: -0.3px;
-            position: relative;
-            overflow: hidden;
         }
         .btn-primary {
             background: var(--accent);
@@ -266,18 +264,18 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 56px;
+            gap: 64px;
             align-items: start;
         }
         .about-text {
-            max-width: 520px;
-            padding-right: 20px;
+            max-width: 500px;
         }
         .about-text p {
             color: var(--text-secondary);
             margin-bottom: 18px;
             font-size: 14px;
             line-height: 1.85;
+            padding-right: 12px;
         }
         .about-quote {
             border-left: 3px solid var(--accent);
@@ -289,6 +287,7 @@
             line-height: 1.65;
             font-style: italic;
             letter-spacing: -0.2px;
+            margin-right: 12px;
         }
         .about-stats {
             display: grid;
@@ -298,9 +297,9 @@
         .stat-card {
             background: var(--bg-card);
             border-radius: var(--radius-xl);
-            padding: 28px 20px;
+            padding: 26px 22px;
             border: 1px solid var(--border-card);
-            text-align: center;
+            text-align: left;
             transition: var(--transition);
         }
         .stat-card:hover {
@@ -309,14 +308,15 @@
             transform: translateY(-3px);
         }
         .stat-num {
-            font-size: 38px;
+            font-size: 34px;
             font-weight: 700;
             color: var(--accent);
             letter-spacing: -1.5px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            line-height: 1;
         }
         .stat-label {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-secondary);
             line-height: 1.5;
             text-transform: uppercase;
@@ -443,7 +443,7 @@
         .service-card {
             background: var(--bg-card);
             border-radius: var(--radius-xl);
-            padding: 30px 28px;
+            padding: 32px 30px;
             border: 1px solid var(--border-card);
             transition: var(--transition);
             display: flex;
@@ -454,8 +454,8 @@
             border-color: var(--accent-border);
             transform: translateY(-3px);
         }
-        .service-card h3 { margin-bottom: 8px; color: #fff; font-size: 16px; }
-        .service-card p { color: var(--text-secondary); font-size: 12px; margin-bottom: 14px; line-height: 1.7; flex-grow: 1; }
+        .service-card h3 { margin-bottom: 10px; color: #fff; font-size: 16px; }
+        .service-card p { color: var(--text-secondary); font-size: 12px; margin-bottom: 16px; line-height: 1.7; flex-grow: 1; }
         .service-card .price {
             font-weight: 700;
             font-size: 15px;
@@ -552,6 +552,8 @@
             .navbar-links a:not(.btn) { display: none; }
             .container { padding: 0 20px; }
             .about-text { padding-right: 0; }
+            .about-text p { padding-right: 0; }
+            .about-quote { margin-right: 0; }
         }
     </style>
 </head>
@@ -662,7 +664,7 @@
             </div>
 
             <div class="tab-content active" id="tab-checkup">
-                <div class="grid-3" style="max-width: 420px; margin: 0 auto;">
+                <div style="max-width: 420px; margin: 0 auto;">
                     <div class="product-card featured reveal reveal-delay-2">
                         <span class="product-badge">Бестселлер</span>
                         <div class="product-cat">Диагностика</div>
@@ -869,7 +871,6 @@
     </footer>
 
     <script>
-        // Intersection Observer
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -885,7 +886,6 @@
 
         revealElements.forEach(el => observer.observe(el));
 
-        // Табы
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -898,7 +898,6 @@
             });
         }
 
-        // Форма
         document.getElementById('leadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
