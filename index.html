@@ -582,8 +582,6 @@
 
             const payload = { name, phone, email, comment: comment + cartInfo, cart: cart };
 
-            console.log('Отправка на сервер...', payload);
-
             try {
                 const response = await fetch('https://egorovslava.pythonanywhere.com/api/lead', {
                     method: 'POST',
@@ -591,20 +589,12 @@
                     body: JSON.stringify(payload)
                 });
 
-                console.log('Ответ сервера:', response.status);
-
                 if (response.ok) {
-                    document.getElementById('leadForm').style.display = 'none';
-                    document.getElementById('successMsg').style.display = 'block';
-                    cart = []; updateCartCount(); updateCartPopup();
-                } else {
-                    console.log('Ошибка сервера:', await response.text());
                     document.getElementById('leadForm').style.display = 'none';
                     document.getElementById('successMsg').style.display = 'block';
                     cart = []; updateCartCount(); updateCartPopup();
                 }
             } catch(error) {
-                console.error('Ошибка отправки:', error);
                 document.getElementById('leadForm').style.display = 'none';
                 document.getElementById('successMsg').style.display = 'block';
                 cart = []; updateCartCount(); updateCartPopup();
