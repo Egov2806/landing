@@ -36,12 +36,6 @@
         .btn-view { background: var(--accent); color: #fff; padding: 10px 22px; border-radius: 8px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; }
         .btn-view:hover { background: #6a9af8; }
         .empty { text-align: center; color: var(--text-muted); padding: 60px 20px; font-size: 15px; }
-        .viewer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.92); z-index: 1000; align-items: center; justify-content: center; }
-        .viewer.active { display: flex; }
-        .viewer-container { position: relative; width: 90%; height: 90%; max-width: 1000px; }
-        .viewer-iframe { width: 100%; height: 100%; border: none; border-radius: 12px; }
-        .watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(-25deg); font-size: 42px; color: rgba(255,255,255,0.05); pointer-events: none; white-space: nowrap; z-index: 10; }
-        .close-viewer { position: absolute; top: -40px; right: 0; background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
         .tabs { display: flex; gap: 8px; margin-bottom: 32px; }
         .tab { padding: 10px 22px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: var(--text-muted); font-size: 14px; cursor: pointer; transition: 0.3s; }
         .tab.active { background: #fff; color: #000; border-color: #fff; font-weight: 600; }
@@ -80,13 +74,6 @@
             <div class="tab-content" id="tab-profile">
                 <div class="material-card"><div><h3 id="profileName"></h3><div class="date" id="profilePhone"></div></div></div>
             </div>
-        </div>
-    </div>
-    <div class="viewer" id="viewer">
-        <div class="viewer-container">
-            <button class="close-viewer" onclick="closeViewer()">✕</button>
-            <div class="watermark" id="watermark"></div>
-            <iframe class="viewer-iframe" id="viewerFrame" sandbox="allow-scripts allow-same-origin" allow="fullscreen"></iframe>
         </div>
     </div>
     <script>
@@ -140,12 +127,8 @@
         }
 
         function openViewer(url, materialId) {
-            document.getElementById('viewerFrame').src = url + '?token=' + token;
-            document.getElementById('watermark').textContent = user.email;
-            document.getElementById('viewer').classList.add('active');
+            window.open(url + '?token=' + token, '_blank');
         }
-
-        function closeViewer() { document.getElementById('viewerFrame').src = ''; document.getElementById('viewer').classList.remove('active'); }
 
         function switchTab(tab) {
             document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
