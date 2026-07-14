@@ -140,10 +140,9 @@
         }
 
         function openViewer(url, materialId) {
-            document.getElementById('viewerFrame').src = url;
+            document.getElementById('viewerFrame').src = url + '?token=' + token;
             document.getElementById('watermark').textContent = user.email;
             document.getElementById('viewer').classList.add('active');
-            fetch(`${API}/api/log-view`, { method:'POST', headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`}, body:JSON.stringify({material_id:materialId}) }).catch(()=>{});
         }
 
         function closeViewer() { document.getElementById('viewerFrame').src = ''; document.getElementById('viewer').classList.remove('active'); }
