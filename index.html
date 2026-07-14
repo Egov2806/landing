@@ -74,19 +74,20 @@
         .btn-ghost { background: transparent; color: var(--text-primary); border: 1px solid var(--border-subtle); }
         .btn-ghost:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.2); }
         .btn-sm { padding: 10px 22px; font-size: 13px; }
+        .btn-accent { background: var(--accent); color: #fff; border-radius: 8px; font-size: 13px; padding: 9px 18px; }
+        .btn-accent:hover { background: #6a9af8; }
 
         .navbar {
             background: rgba(28, 29, 32, 0.82); backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border-subtle);
-            padding: 17px 0; position: sticky; top: 0; z-index: 100;
+            padding: 14px 0; position: sticky; top: 0; z-index: 100;
         }
         .navbar .container { display: flex; justify-content: space-between; align-items: center; }
-        .navbar-logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
+        .navbar-logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; letter-spacing: -0.5px; white-space: nowrap; }
         .navbar-logo span { color: var(--accent); }
-        .navbar-links { display: flex; gap: 34px; align-items: center; }
-        .navbar-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.25s; }
+        .navbar-links { display: flex; gap: 28px; align-items: center; }
+        .navbar-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.25s; white-space: nowrap; }
         .navbar-links a:hover { color: #fff; }
-        .navbar-links .lk-btn { color: var(--accent); font-weight: 600; }
 
         section { padding: 110px 0; }
         .section-alt { background: var(--bg-section); }
@@ -222,7 +223,9 @@
             .grid-3, .about-grid, .grid-2 { grid-template-columns: 1fr; }
             .hero { padding: 90px 0 70px; }
             section { padding: 70px 0; }
-            .navbar-links a:not(.btn):not(.lk-btn) { display: none; }
+            .navbar .container { flex-wrap: wrap; gap: 10px; }
+            .navbar-links { gap: 10px; flex-wrap: wrap; }
+            .navbar-links a:not(.btn):not(.btn-accent) { display: none; }
             .container { padding: 0 20px; }
             .about-text { padding-right: 0; }
             .about-text p { padding-right: 0; }
@@ -240,7 +243,7 @@
                 <a href="#products">Продукты</a>
                 <a href="#cart">Корзина <span id="cart-count" style="display:none; background:var(--accent); color:#fff; border-radius:50%; padding:1px 6px; font-size:11px; margin-left:4px;">0</span></a>
                 <a href="#services">Услуги</a>
-                <a href="/lk" class="lk-btn">Личный кабинет</a>
+                <a href="/lk" class="btn btn-accent">Личный кабинет</a>
                 <a href="#cta" class="btn btn-ghost btn-sm">Связаться</a>
             </div>
         </div>
@@ -347,7 +350,6 @@
         </div>
     </section>
 
-    <!-- Корзина -->
     <section class="cart-section" id="cart">
         <div class="container">
             <span class="section-tag reveal">Корзина</span>
