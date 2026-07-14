@@ -74,8 +74,6 @@
         .btn-ghost { background: transparent; color: var(--text-primary); border: 1px solid var(--border-subtle); }
         .btn-ghost:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.2); }
         .btn-sm { padding: 10px 22px; font-size: 13px; }
-        .btn-accent { background: var(--accent); color: #fff; border-radius: 8px; font-size: 13px; padding: 9px 18px; }
-        .btn-accent:hover { background: #6a9af8; }
 
         .navbar {
             background: rgba(28, 29, 32, 0.82); backdrop-filter: blur(24px);
@@ -159,7 +157,6 @@
         .product-features li::before { content: ''; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
         .product-price { font-size: 26px; font-weight: 700; color: #fff; margin: 2px 0 16px; letter-spacing: -0.5px; }
         .product-price span { font-size: 12px; font-weight: 400; color: var(--text-secondary); }
-        .product-card .btn { align-self: flex-start; }
         .add-to-cart-btn {
             display: inline-flex; align-items: center; gap: 6px;
             margin-top: 6px; padding: 8px 16px; border-radius: 6px;
@@ -225,7 +222,7 @@
             section { padding: 70px 0; }
             .navbar .container { flex-wrap: wrap; gap: 10px; }
             .navbar-links { gap: 10px; flex-wrap: wrap; }
-            .navbar-links a:not(.btn):not(.btn-accent) { display: none; }
+            .navbar-links a:not(.btn) { display: none; }
             .container { padding: 0 20px; }
             .about-text { padding-right: 0; }
             .about-text p { padding-right: 0; }
@@ -243,7 +240,10 @@
                 <a href="#products">Продукты</a>
                 <a href="#cart">Корзина <span id="cart-count" style="display:none; background:var(--accent); color:#fff; border-radius:50%; padding:1px 6px; font-size:11px; margin-left:4px;">0</span></a>
                 <a href="#services">Услуги</a>
-                <a href="/lk" class="btn btn-accent">Личный кабинет</a>
+                <a href="/lk" class="btn btn-ghost btn-sm" style="gap:6px;" title="Личный кабинет">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Кабинет
+                </a>
                 <a href="#cta" class="btn btn-ghost btn-sm">Связаться</a>
             </div>
         </div>
@@ -453,14 +453,9 @@
             const totalItems = cart.reduce((s,i) => s + i.qty, 0);
 
             if (countEl) {
-                if (totalItems > 0) {
-                    countEl.style.display = 'inline';
-                    countEl.textContent = totalItems;
-                } else {
-                    countEl.style.display = 'none';
-                }
+                if (totalItems > 0) { countEl.style.display = 'inline'; countEl.textContent = totalItems; }
+                else { countEl.style.display = 'none'; }
             }
-
             if (cart.length === 0) {
                 container.innerHTML = '<div class="cart-empty">Корзина пуста — добавьте продукты</div>';
                 totalEl.style.display = 'none';
