@@ -127,7 +127,9 @@
         }
 
         function openViewer(url, materialId) {
-            window.open(url + '?token=' + token, '_blank');
+            const productId = url.split('/').pop();
+            const viewerUrl = `https://bespalovalegal.ru/viewer?product=${productId}&token=${token}&email=${encodeURIComponent(user.email)}`;
+            window.open(viewerUrl, '_blank');
         }
 
         function switchTab(tab) {
