@@ -219,7 +219,7 @@
         .cart-popup-body { flex-grow: 1; overflow-y: auto; }
         .cart-popup-footer {
             padding-top: 16px; border-top: 1px solid var(--border-subtle);
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; flex-direction: column; gap: 12px;
             margin-top: 12px;
         }
         .cart-item {
@@ -230,16 +230,18 @@
         .cart-item-info h4 { color: #fff; font-size: 15px; margin-bottom: 4px; }
         .cart-item-price { color: var(--accent); font-size: 14px; font-weight: 600; }
         .cart-item-remove {
-            background: none; border: 1px solid rgba(255,255,255,0.15);
-            color: var(--text-muted); width: 32px; height: 32px;
-            border-radius: 8px; cursor: pointer; font-size: 14px; transition: var(--transition);
+            background: none; border: none;
+            color: var(--text-muted); width: 28px; height: 28px;
+            border-radius: 6px; cursor: pointer; font-size: 15px; transition: var(--transition);
+            display: flex; align-items: center; justify-content: center;
         }
-        .cart-item-remove:hover { border-color: #e94560; color: #e94560; }
+        .cart-item-remove:hover { color: #e94560; }
         .cart-total {
             display: flex; justify-content: space-between; align-items: center;
-            gap: 16px;
+            font-size: 15px; color: #fff;
         }
-        .cart-total span { color: #fff; font-size: 18px; font-weight: 700; }
+        .cart-total span:first-child { color: var(--text-secondary); font-weight: 400; }
+        .cart-total span:last-child { font-weight: 700; }
         .cart-empty { text-align: center; color: var(--text-muted); padding: 24px; font-size: 14px; }
 
         .cta-section { padding: 130px 0; text-align: center; position: relative; overflow: hidden; }
@@ -296,8 +298,8 @@
                 <div class="cart-empty">Корзина пуста — добавьте продукты</div>
             </div>
             <div class="cart-popup-footer" id="cartPopupFooter" style="display:none;">
-                <div class="cart-total"><span>Итого:</span><span id="cartPopupSum">0 ₽</span></div>
-                <a href="#cta" class="btn btn-primary btn-sm" onclick="closeCart()">Оформить заказ</a>
+                <div class="cart-total"><span>Итого</span><span id="cartPopupSum">0 ₽</span></div>
+                <a href="#cta" class="btn btn-primary" style="width:100%; border-radius:12px; padding:12px;" onclick="closeCart()">Оформить заказ</a>
             </div>
         </div>
     </div>
@@ -521,7 +523,6 @@
             if (existing) { existing.qty += 1; }
             else { cart.push({ id, title, price, qty: 1 }); }
             updateCartCount();
-            openCart();
         }
 
         function removeFromCart(id) {
