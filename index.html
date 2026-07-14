@@ -37,41 +37,23 @@
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 36px;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 36px; }
 
         h1 { font-size: clamp(44px, 7vw, 72px); font-weight: 700; line-height: 1.08; letter-spacing: -2px; color: #fff; }
         h2 { font-size: clamp(30px, 4.5vw, 44px); font-weight: 600; line-height: 1.18; letter-spacing: -0.8px; }
         h3 { font-size: 19px; font-weight: 600; line-height: 1.4; letter-spacing: -0.3px; }
 
         .section-tag {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 24px;
-            display: inline-block;
-            padding: 7px 16px;
-            border-radius: 20px;
-            background: var(--accent-soft);
+            font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px;
+            color: var(--accent); margin-bottom: 24px; display: inline-block;
+            padding: 7px 16px; border-radius: 20px; background: var(--accent-soft);
             border: 1px solid var(--accent-border);
         }
         .section-title { margin-bottom: 18px; }
-        .section-desc {
-            color: var(--text-secondary);
-            font-size: 16px;
-            margin-bottom: 56px;
-            max-width: 520px;
-            line-height: 1.7;
-        }
+        .section-desc { color: var(--text-secondary); font-size: 16px; margin-bottom: 56px; max-width: 520px; line-height: 1.7; }
 
         .reveal {
-            opacity: 0;
-            transform: translateY(36px);
+            opacity: 0; transform: translateY(36px);
             transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
                         transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
@@ -82,19 +64,10 @@
         .reveal-delay-4 { transition-delay: 0.4s; }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: var(--transition);
-            gap: 8px;
-            letter-spacing: -0.3px;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 15px 30px; border-radius: 50px; font-size: 15px; font-weight: 600;
+            text-decoration: none; cursor: pointer; border: none;
+            transition: var(--transition); gap: 8px; letter-spacing: -0.3px;
         }
         .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 20px rgba(91, 138, 247, 0.25); }
         .btn-primary:hover { background: #6a9af8; box-shadow: 0 10px 28px rgba(91, 138, 247, 0.4); transform: translateY(-2px); }
@@ -103,14 +76,9 @@
         .btn-sm { padding: 10px 22px; font-size: 13px; }
 
         .navbar {
-            background: rgba(28, 29, 32, 0.82);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 17px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background: rgba(28, 29, 32, 0.82); backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border-subtle);
+            padding: 17px 0; position: sticky; top: 0; z-index: 100;
         }
         .navbar .container { display: flex; justify-content: space-between; align-items: center; }
         .navbar-logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
@@ -190,12 +158,46 @@
         .product-price { font-size: 26px; font-weight: 700; color: #fff; margin: 2px 0 16px; letter-spacing: -0.5px; }
         .product-price span { font-size: 12px; font-weight: 400; color: var(--text-secondary); }
         .product-card .btn { align-self: flex-start; }
+        .add-to-cart-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-top: 6px; padding: 8px 16px; border-radius: 6px;
+            border: 1px solid var(--accent); background: transparent;
+            color: var(--accent); font-size: 12px; font-weight: 600; cursor: pointer;
+            transition: var(--transition); align-self: flex-start;
+        }
+        .add-to-cart-btn:hover { background: var(--accent); color: #fff; }
 
         .service-card { background: var(--bg-card); border-radius: var(--radius-xl); padding: 32px 30px; border: 1px solid var(--border-card); transition: var(--transition); display: flex; flex-direction: column; }
         .service-card:hover { background: var(--bg-card-hover); border-color: var(--accent-border); transform: translateY(-3px); }
         .service-card h3 { margin-bottom: 10px; color: #fff; font-size: 16px; }
         .service-card p { color: var(--text-secondary); font-size: 12px; margin-bottom: 16px; line-height: 1.7; flex-grow: 1; }
         .service-card .price { font-weight: 700; font-size: 15px; color: var(--accent); margin-top: auto; }
+
+        /* Корзина */
+        .cart-section { padding: 80px 0; background: var(--bg-section); }
+        .cart-container {
+            max-width: 700px; margin: 0 auto; background: var(--bg-card);
+            border-radius: var(--radius-2xl); padding: 40px; border: 1px solid var(--border-card);
+        }
+        .cart-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 0; border-bottom: 1px solid var(--border-subtle);
+        }
+        .cart-item:last-child { border-bottom: none; }
+        .cart-item-info h4 { color: #fff; font-size: 15px; margin-bottom: 4px; }
+        .cart-item-price { color: var(--accent); font-size: 14px; font-weight: 600; }
+        .cart-item-remove {
+            background: none; border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text-muted); width: 32px; height: 32px;
+            border-radius: 8px; cursor: pointer; font-size: 14px; transition: var(--transition);
+        }
+        .cart-item-remove:hover { border-color: #e94560; color: #e94560; }
+        .cart-total {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-top: 20px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .cart-total span { color: #fff; font-size: 20px; font-weight: 700; }
+        .cart-empty { text-align: center; color: var(--text-muted); padding: 24px; font-size: 14px; }
 
         .cta-section { padding: 130px 0; text-align: center; position: relative; overflow: hidden; }
         .cta-section::before { content: ''; position: absolute; bottom: -25%; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(91,138,247,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
@@ -235,7 +237,9 @@
             <div class="navbar-links">
                 <a href="#about">Об эксперте</a>
                 <a href="#products">Продукты</a>
+                <a href="#cart">Корзина</a>
                 <a href="#services">Услуги</a>
+                <a href="/lk">Личный кабинет</a>
                 <a href="#cta" class="btn btn-ghost btn-sm">Связаться</a>
             </div>
         </div>
@@ -261,21 +265,9 @@
             <h2 class="section-title reveal reveal-delay-1">Почему выбирают меня</h2>
             <p class="section-desc reveal reveal-delay-1">Фундаментальная академическая школа, системный подход и бескомпромиссное качество защиты</p>
             <div class="grid-3">
-                <div class="feature-card reveal reveal-delay-1">
-                    <div class="feature-num">01</div>
-                    <h3>Академическая школа</h3>
-                    <p>РАНХиГС (2013–2018) и МГЮА им. Кутафина (2018–2026) — от бакалавра до магистра. Непрерывное повышение квалификации в Академии современной юриспруденции.</p>
-                </div>
-                <div class="feature-card reveal reveal-delay-2">
-                    <div class="feature-num">02</div>
-                    <h3>Предиктивная аналитика</h3>
-                    <p>Член Союза юристов-блогеров при АЮР и МГЮА. Знание логики законодательного процесса даёт клиентам стратегии, сохраняющие актуальность годами.</p>
-                </div>
-                <div class="feature-card reveal reveal-delay-3">
-                    <div class="feature-num">03</div>
-                    <h3>8+ лет защиты активов</h3>
-                    <p>Специализация на интеллектуальном капитале — самом ценном и уязвимом активе бизнеса. Опыт работы в крупнейших консалтинговых группах.</p>
-                </div>
+                <div class="feature-card reveal reveal-delay-1"><div class="feature-num">01</div><h3>Академическая школа</h3><p>РАНХиГС (2013–2018) и МГЮА им. Кутафина (2018–2026) — от бакалавра до магистра. Непрерывное повышение квалификации в Академии современной юриспруденции.</p></div>
+                <div class="feature-card reveal reveal-delay-2"><div class="feature-num">02</div><h3>Предиктивная аналитика</h3><p>Член Союза юристов-блогеров при АЮР и МГЮА. Знание логики законодательного процесса даёт клиентам стратегии, сохраняющие актуальность годами.</p></div>
+                <div class="feature-card reveal reveal-delay-3"><div class="feature-num">03</div><h3>8+ лет защиты активов</h3><p>Специализация на интеллектуальном капитале — самом ценном и уязвимом активе бизнеса. Опыт работы в крупнейших консалтинговых группах.</p></div>
             </div>
         </div>
     </section>
@@ -312,6 +304,7 @@
                 <button class="tab-btn" onclick="switchTab('infobiz')">Инфобизнес</button>
                 <button class="tab-btn" onclick="switchTab('launch')">Запуск</button>
             </div>
+
             <div class="tab-content active" id="tab-checkup">
                 <div style="max-width: 420px; margin: 0 auto;">
                     <div class="product-card featured reveal reveal-delay-2">
@@ -320,33 +313,47 @@
                         <h3>Юридический Check-up</h3>
                         <p class="desc">Диагностика устойчивости. 80% споров — результат системных ошибок. Методология заменяет первичный аудит.</p>
                         <ul class="product-features"><li>Алгоритм самодиагностики</li><li>Критически уязвимые точки</li><li>Пошаговый план устранения рисков</li></ul>
-                        <p style="font-size:11px;color:var(--text-secondary);margin-bottom:16px;">Материал — ваш бессрочный интеллектуальный актив.</p>
                         <div class="product-price">1 990 <span>₽</span></div>
-                        <a href="#cta" class="btn btn-primary btn-sm">Приобрести</a>
+                        <a href="#cart" class="btn btn-primary btn-sm" onclick="addToCart('checkup','Юридический Check-up',1990)">В корзину</a>
                     </div>
                 </div>
             </div>
+
             <div class="tab-content" id="tab-taxes">
                 <div class="grid-3">
-                    <div class="product-card reveal reveal-delay-1"><div class="product-cat">Чек-лист</div><h3>3-НДФЛ в 2026 году</h3><p class="desc">Кому подавать и как избежать штрафа. 5 блоков доходов, сроки, мифы.</p><div class="product-price">1 990 <span>₽</span></div><a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a></div>
-                    <div class="product-card reveal reveal-delay-2"><div class="product-cat">Чек-лист</div><h3>Осмотр налоговым органом</h3><p class="desc">Процедура и защита прав в 2026 году. Нарушения инспекторов и судебная практика.</p><div class="product-price">2 490 <span>₽</span></div><a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a></div>
-                    <div class="product-card featured reveal reveal-delay-3"><span class="product-badge">Хит</span><div class="product-cat">Чек-лист</div><h3>Безопасный контрагент</h3><p class="desc">Защита от доначислений по ст. 54.1 НК РФ. Проверка контрагента и фиксация деловой цели.</p><div class="product-price">3 990 <span>₽</span></div><a href="#cta" class="btn btn-primary btn-sm">Приобрести</a></div>
-                    <div class="product-card reveal reveal-delay-4"><div class="product-cat">Чек-лист</div><h3>Маркеры дробления</h3><p class="desc">15+ маркеров риска, пороги НДС 2026–2028, рекомендации по перестройке.</p><div class="product-price">1 299 <span>₽</span></div><a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a></div>
+                    <div class="product-card reveal reveal-delay-1"><div class="product-cat">Чек-лист</div><h3>3-НДФЛ в 2026 году</h3><p class="desc">Кому подавать и как избежать штрафа. 5 блоков доходов, сроки, мифы.</p><div class="product-price">1 990 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('ndfl','3-НДФЛ в 2026 году',1990)">+ В корзину</button></div>
+                    <div class="product-card reveal reveal-delay-2"><div class="product-cat">Чек-лист</div><h3>Осмотр налоговым органом</h3><p class="desc">Процедура и защита прав в 2026 году. Нарушения инспекторов и судебная практика.</p><div class="product-price">2 490 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('tax_inspection','Осмотр налоговым органом',2490)">+ В корзину</button></div>
+                    <div class="product-card featured reveal reveal-delay-3"><span class="product-badge">Хит</span><div class="product-cat">Чек-лист</div><h3>Безопасный контрагент</h3><p class="desc">Защита от доначислений по ст. 54.1 НК РФ. Проверка контрагента и фиксация деловой цели.</p><div class="product-price">3 990 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('safe_agent','Безопасный контрагент',3990)">+ В корзину</button></div>
+                    <div class="product-card reveal reveal-delay-4"><div class="product-cat">Чек-лист</div><h3>Маркеры дробления</h3><p class="desc">15+ маркеров риска, пороги НДС 2026–2028, рекомендации по перестройке.</p><div class="product-price">1 299 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('division_markers','Маркеры дробления',1299)">+ В корзину</button></div>
                 </div>
             </div>
+
             <div class="tab-content" id="tab-infobiz">
                 <div class="grid-3">
-                    <div class="product-card reveal reveal-delay-1"><div class="product-cat">Руководство</div><h3>Контент под защитой</h3><p class="desc">Охрана интеллектуальной собственности: авторство, защита от утечек, ликвидация сливов.</p><div class="product-price">5 000 <span>₽</span></div><a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a></div>
-                    <div class="product-card featured reveal reveal-delay-2"><span class="product-badge">Рекомендую</span><div class="product-cat">Протокол</div><h3>Юрпротокол запуска</h3><p class="desc">Безопасность до первого клиента: налоги, контракты, защита от возвратов и ПДн.</p><div class="product-price">7 000 <span>₽</span></div><a href="#cta" class="btn btn-primary btn-sm">Приобрести</a></div>
-                    <div class="product-card reveal reveal-delay-3"><div class="product-cat">Руководство</div><h3>Персональные данные</h3><p class="desc">152-ФЗ: легализация сбора, уведомление Роскомнадзора, гигиена хранения в CRM.</p><div class="product-price">5 000 <span>₽</span></div><a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a></div>
-                    <div class="product-card reveal reveal-delay-4"><div class="product-cat">Гид</div><h3>Реклама без штрафов</h3><p class="desc">Маркировка: токены erid, ОРД, безопасные договоры с блогерами.</p><div class="product-price">5 000 <span>₽</span></div><a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a></div>
+                    <div class="product-card reveal reveal-delay-1"><div class="product-cat">Руководство</div><h3>Контент под защитой</h3><p class="desc">Охрана интеллектуальной собственности: авторство, защита от утечек, ликвидация сливов.</p><div class="product-price">5 000 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('content_protect','Контент под защитой',5000)">+ В корзину</button></div>
+                    <div class="product-card featured reveal reveal-delay-2"><span class="product-badge">Рекомендую</span><div class="product-cat">Протокол</div><h3>Юрпротокол запуска</h3><p class="desc">Безопасность до первого клиента: налоги, контракты, защита от возвратов и ПДн.</p><div class="product-price">7 000 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('launch_protocol','Юрпротокол запуска',7000)">+ В корзину</button></div>
+                    <div class="product-card reveal reveal-delay-3"><div class="product-cat">Руководство</div><h3>Персональные данные</h3><p class="desc">152-ФЗ: легализация сбора, уведомление Роскомнадзора, гигиена хранения в CRM.</p><div class="product-price">5 000 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('personal_data','Персональные данные',5000)">+ В корзину</button></div>
+                    <div class="product-card reveal reveal-delay-4"><div class="product-cat">Гид</div><h3>Реклама без штрафов</h3><p class="desc">Маркировка: токены erid, ОРД, безопасные договоры с блогерами.</p><div class="product-price">5 000 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('ad_marking','Реклама без штрафов',5000)">+ В корзину</button></div>
                 </div>
             </div>
+
             <div class="tab-content" id="tab-launch">
                 <div class="grid-2" style="max-width: 720px; margin: 0 auto;">
-                    <div class="product-card reveal reveal-delay-1"><div class="product-cat">Комплект</div><h3>Base: Юридический старт</h3><p class="desc">Оферта, Политика конфиденциальности, Согласия на ПДн и отзывы. Видео-гайд и чек-лист Роскомнадзора.</p><div class="product-price">12 000 <span>₽</span></div><a href="#cta" class="btn btn-ghost btn-sm">Приобрести</a></div>
-                    <div class="product-card featured reveal reveal-delay-2"><span class="product-badge">Максимум</span><div class="product-cat">Комплект</div><h3>Expert: Право и Налоги</h3><p class="desc">Всё из Base + чек-лист дробления + гайд по налогам + скидка 10% на сессию.</p><div class="product-price">15 000 <span>₽</span></div><a href="#cta" class="btn btn-primary btn-sm">Приобрести</a></div>
+                    <div class="product-card reveal reveal-delay-1"><div class="product-cat">Комплект</div><h3>Base: Юридический старт</h3><p class="desc">Оферта, Политика конфиденциальности, Согласия на ПДн и отзывы. Видео-гайд и чек-лист Роскомнадзора.</p><div class="product-price">12 000 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('base_start','Base: Юридический старт',12000)">+ В корзину</button></div>
+                    <div class="product-card featured reveal reveal-delay-2"><span class="product-badge">Максимум</span><div class="product-cat">Комплект</div><h3>Expert: Право и Налоги</h3><p class="desc">Всё из Base + чек-лист дробления + гайд по налогам + скидка 10% на сессию.</p><div class="product-price">15 000 <span>₽</span></div><button class="add-to-cart-btn" onclick="addToCart('expert_tax','Expert: Право и Налоги',15000)">+ В корзину</button></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Корзина -->
+    <section class="cart-section" id="cart">
+        <div class="container">
+            <span class="section-tag reveal">Корзина</span>
+            <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Ваш заказ</h2>
+            <div class="cart-container reveal reveal-delay-2">
+                <div id="cart-items"><div class="cart-empty">Корзина пуста — добавьте продукты</div></div>
+                <div class="cart-total" id="cart-total" style="display:none;"><span>Итого:</span><span id="cart-sum">0 ₽</span></div>
             </div>
         </div>
     </section>
@@ -397,7 +404,7 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 Право<span style="color: var(--accent);">Эксперт</span>. Все права защищены.</p>
-            <p><a href="#">Политика конфиденциальности</a> &middot; <a href="#">Публичная оферта</a></p>
+            <p><a href="/lk">Личный кабинет</a> &middot; <a href="#">Политика конфиденциальности</a></p>
         </div>
     </footer>
 
@@ -411,7 +418,6 @@
                 }
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
         revealElements.forEach(el => observer.observe(el));
 
         function switchTab(tabId) {
@@ -426,32 +432,64 @@
             });
         }
 
+        // Корзина
+        let cart = [];
+        function addToCart(id, title, price) {
+            const existing = cart.find(item => item.id === id);
+            if (existing) { existing.qty += 1; }
+            else { cart.push({ id, title, price, qty: 1 }); }
+            updateCartUI();
+            document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+        }
+        function removeFromCart(id) { cart = cart.filter(item => item.id !== id); updateCartUI(); }
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const sumEl = document.getElementById('cart-sum');
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="cart-empty">Корзина пуста — добавьте продукты</div>';
+                totalEl.style.display = 'none';
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info"><h4>${item.title} ${item.qty > 1 ? '×'+item.qty : ''}</h4><div class="cart-item-price">${(item.price*item.qty).toLocaleString()} ₽</div></div>
+                        <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">✕</button>
+                    </div>`).join('');
+                totalEl.style.display = 'flex';
+                sumEl.textContent = cart.reduce((s,i) => s + i.price*i.qty, 0).toLocaleString() + ' ₽';
+            }
+        }
+
+        // Форма
         document.getElementById('leadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const comment = document.getElementById('comment').value;
-
+            let cartInfo = '';
+            if (cart.length > 0) {
+                cartInfo = '\n\n🛒 Заказ:\n';
+                cart.forEach(item => { cartInfo += `- ${item.title} ×${item.qty} = ${(item.price*item.qty).toLocaleString()} ₽\n`; });
+                cartInfo += `Итого: ${cart.reduce((s,i)=>s+i.price*i.qty,0).toLocaleString()} ₽`;
+            }
             try {
                 const response = await fetch('https://egorovslava.pythonanywhere.com/api/lead', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-API-Key': 'Eg0v2026Pr@voSecretKey!!'
-                    },
-                    body: JSON.stringify({ name, phone, email, comment })
+                    headers: { 'Content-Type': 'application/json', 'X-API-Key': 'Eg0v2026Pr@voSecretKey!!' },
+                    body: JSON.stringify({ name, phone, email, comment: comment + cartInfo, cart: cart })
                 });
                 if (response.ok) {
                     document.getElementById('leadForm').style.display = 'none';
                     document.getElementById('successMsg').style.display = 'block';
+                    cart = []; updateCartUI();
                 }
             } catch(error) {
                 document.getElementById('leadForm').style.display = 'none';
                 document.getElementById('successMsg').style.display = 'block';
+                cart = []; updateCartUI();
             }
         });
     </script>
-
 </body>
 </html>
