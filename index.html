@@ -86,6 +86,7 @@
         .navbar-links { display: flex; gap: 34px; align-items: center; }
         .navbar-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.25s; }
         .navbar-links a:hover { color: #fff; }
+        .navbar-links .lk-btn { color: var(--accent); font-weight: 600; }
 
         section { padding: 110px 0; }
         .section-alt { background: var(--bg-section); }
@@ -221,7 +222,7 @@
             .grid-3, .about-grid, .grid-2 { grid-template-columns: 1fr; }
             .hero { padding: 90px 0 70px; }
             section { padding: 70px 0; }
-            .navbar-links a:not(.btn) { display: none; }
+            .navbar-links a:not(.btn):not(.lk-btn) { display: none; }
             .container { padding: 0 20px; }
             .about-text { padding-right: 0; }
             .about-text p { padding-right: 0; }
@@ -237,9 +238,9 @@
             <div class="navbar-links">
                 <a href="#about">Об эксперте</a>
                 <a href="#products">Продукты</a>
-                <a href="#cart">Корзина</a>
+                <a href="#cart">Корзина <span id="cart-count" style="display:none; background:var(--accent); color:#fff; border-radius:50%; padding:1px 6px; font-size:11px; margin-left:4px;">0</span></a>
                 <a href="#services">Услуги</a>
-                <a href="/lk">Личный кабинет</a>
+                <a href="/lk" class="lk-btn">Личный кабинет</a>
                 <a href="#cta" class="btn btn-ghost btn-sm">Связаться</a>
             </div>
         </div>
@@ -314,7 +315,7 @@
                         <p class="desc">Диагностика устойчивости. 80% споров — результат системных ошибок. Методология заменяет первичный аудит.</p>
                         <ul class="product-features"><li>Алгоритм самодиагностики</li><li>Критически уязвимые точки</li><li>Пошаговый план устранения рисков</li></ul>
                         <div class="product-price">1 990 <span>₽</span></div>
-                        <a href="#cart" class="btn btn-primary btn-sm" onclick="addToCart('checkup','Юридический Check-up',1990)">В корзину</a>
+                        <button class="add-to-cart-btn" onclick="addToCart('checkup','Юридический Check-up',1990)">+ В корзину</button>
                     </div>
                 </div>
             </div>
@@ -446,6 +447,18 @@
             const container = document.getElementById('cart-items');
             const totalEl = document.getElementById('cart-total');
             const sumEl = document.getElementById('cart-sum');
+            const countEl = document.getElementById('cart-count');
+            const totalItems = cart.reduce((s,i) => s + i.qty, 0);
+
+            if (countEl) {
+                if (totalItems > 0) {
+                    countEl.style.display = 'inline';
+                    countEl.textContent = totalItems;
+                } else {
+                    countEl.style.display = 'none';
+                }
+            }
+
             if (cart.length === 0) {
                 container.innerHTML = '<div class="cart-empty">Корзина пуста — добавьте продукты</div>';
                 totalEl.style.display = 'none';
