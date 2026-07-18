@@ -87,69 +87,122 @@ img { max-width: 100%; }
 .arrow-link span { color: var(--gold); font-size: 27px; font-weight: 200; transform: translateY(-1px); }
 .planet { position: absolute; border-radius: 50%; pointer-events: none; }
 .planet-one, .planet-two {
-  background: radial-gradient(circle at 48% 42%, #080706 0%, #090807 45%, #120d09 60%, #24160e 72%, #553017 84%, #a95f2c 94%, #d58a47 98.2%, #130d0a 100%);
+  background: radial-gradient(circle at 48% 42%,
+    #080706 0%,
+    #090807 43%,
+    #130d09 59%,
+    #28180e 72%,
+    #633817 85%,
+    #ad642c 94%,
+    #d89449 98.1%,
+    #150e09 100%);
   box-shadow:
-    inset -42px -30px 122px rgba(0,0,0,.96),
-    inset 14px 9px 62px rgba(199,120,49,.12),
-    0 0 48px rgba(221,151,78,.10);
+    inset -44px -32px 126px rgba(0,0,0,.96),
+    inset 16px 10px 66px rgba(210,132,50,.14),
+    0 0 54px rgba(231,164,77,.12);
 }
 .planet-one {
   width: 430px;
   height: 430px;
   top: -248px;
   left: calc(50% - 12px);
-  opacity: .99;
+  opacity: .995;
 }
 .planet-two {
   width: 560px;
   height: 560px;
   top: 255px;
   left: calc(50% + 165px);
-  opacity: .965;
+  opacity: .975;
 }
+
+/* Яркая металлическая золотая дуга — примерно 62% окружности */
 .planet-one::before, .planet-two::before {
   content: "";
   position: absolute;
-  inset: -5px;
+  inset: -3px;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%,
-    transparent 72%,
-    rgba(186,105,39,.18) 82%,
-    rgba(229,151,67,.72) 89%,
-    rgba(255,190,91,.98) 94.5%,
-    rgba(255,222,158,.98) 97.5%,
+  padding: 0;
+  filter: drop-shadow(0 0 2px rgba(255,190,88,.82))
+          drop-shadow(0 0 7px rgba(226,143,49,.42));
+  -webkit-mask: radial-gradient(farthest-side,
+    transparent calc(100% - 4px),
+    #000 calc(100% - 3px),
+    #000 calc(100% - 1px),
     transparent 100%);
-  filter: blur(.35px);
+  mask: radial-gradient(farthest-side,
+    transparent calc(100% - 4px),
+    #000 calc(100% - 3px),
+    #000 calc(100% - 1px),
+    transparent 100%);
 }
 .planet-one::before {
-  -webkit-mask: conic-gradient(from 150deg, transparent 0deg 38deg, #000 38deg 258deg, transparent 258deg 360deg);
-  mask: conic-gradient(from 150deg, transparent 0deg 38deg, #000 38deg 258deg, transparent 258deg 360deg);
+  background: conic-gradient(from 138deg,
+    transparent 0deg 35deg,
+    rgba(178,102,29,.22) 42deg,
+    #c77e25 58deg,
+    #f0b74f 90deg,
+    #ffe19a 132deg,
+    #fff0bd 158deg,
+    #ffd77d 186deg,
+    #eead42 222deg,
+    #c87922 250deg,
+    rgba(177,98,27,.18) 263deg,
+    transparent 270deg 360deg);
 }
 .planet-two::before {
-  -webkit-mask: conic-gradient(from 160deg, transparent 0deg 34deg, #000 34deg 254deg, transparent 254deg 360deg);
-  mask: conic-gradient(from 160deg, transparent 0deg 34deg, #000 34deg 254deg, transparent 254deg 360deg);
+  background: conic-gradient(from 149deg,
+    transparent 0deg 32deg,
+    rgba(178,102,29,.20) 40deg,
+    #c77e25 56deg,
+    #efb44b 88deg,
+    #ffdf91 128deg,
+    #ffefb8 154deg,
+    #ffd477 184deg,
+    #eca93e 220deg,
+    #c47621 247deg,
+    rgba(177,98,27,.16) 259deg,
+    transparent 267deg 360deg);
 }
+
+/* Мягкое золотое свечение только вдоль той же дуги */
 .planet-one::after, .planet-two::after {
   content: "";
   position: absolute;
-  inset: -12%;
+  inset: -10px;
   border-radius: 50%;
-  background: radial-gradient(circle at 52% 58%,
-    transparent 64%,
-    rgba(255,171,71,.03) 75%,
-    rgba(255,187,87,.14) 84%,
-    rgba(255,202,114,.34) 91%,
-    rgba(255,221,158,.42) 95%,
+  filter: blur(8px);
+  opacity: .78;
+  -webkit-mask: radial-gradient(farthest-side,
+    transparent calc(100% - 11px),
+    #000 calc(100% - 9px),
+    #000 calc(100% - 2px),
     transparent 100%);
-  filter: blur(16px);
+  mask: radial-gradient(farthest-side,
+    transparent calc(100% - 11px),
+    #000 calc(100% - 9px),
+    #000 calc(100% - 2px),
+    transparent 100%);
 }
 .planet-one::after {
-  -webkit-mask: conic-gradient(from 150deg, transparent 0deg 38deg, #000 38deg 258deg, transparent 258deg 360deg);
-  mask: conic-gradient(from 150deg, transparent 0deg 38deg, #000 38deg 258deg, transparent 258deg 360deg);
+  background: conic-gradient(from 138deg,
+    transparent 0deg 35deg,
+    rgba(226,139,43,.12) 43deg,
+    rgba(255,180,67,.48) 78deg,
+    rgba(255,215,130,.70) 145deg,
+    rgba(255,181,65,.48) 222deg,
+    rgba(218,128,37,.10) 263deg,
+    transparent 270deg 360deg);
 }
 .planet-two::after {
-  -webkit-mask: conic-gradient(from 160deg, transparent 0deg 34deg, #000 34deg 254deg, transparent 254deg 360deg);
-  mask: conic-gradient(from 160deg, transparent 0deg 34deg, #000 34deg 254deg, transparent 254deg 360deg);
+  background: conic-gradient(from 149deg,
+    transparent 0deg 32deg,
+    rgba(226,139,43,.11) 40deg,
+    rgba(255,180,67,.44) 76deg,
+    rgba(255,215,130,.66) 141deg,
+    rgba(255,181,65,.44) 218deg,
+    rgba(218,128,37,.09) 259deg,
+    transparent 267deg 360deg);
 }
 
 .hero-services { width: min(calc(100% - 100px), 1122px); margin: 0 auto 13px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; position: relative; z-index: 6; }
