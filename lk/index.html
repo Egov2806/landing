@@ -3,79 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Личный кабинет | ПравоЭксперт</title>
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="Личный кабинет клиентов юридического бутика «Беспалова и партнеры».">
+    <title>Личный кабинет | Беспалова и партнеры — юридический бутик</title>
     <style>
         :root {
-            --bg: #1c1d20; --bg-card: #242529;
-            --text: #f0ede8; --text-muted: #a8a6a1; --accent: #5b8af7;
-            --radius: 16px;
+            --black: #050505;
+            --black-soft: #0a0a09;
+            --panel: #0f0f0e;
+            --panel-light: #151513;
+            --text: #f4f1eb;
+            --muted: #b9b6b0;
+            --muted-dark: #77746e;
+            --gold: #b98449;
+            --gold-bright: #c8995e;
+            --gold-pale: #d7b27c;
+            --line: rgba(213,184,137,.22);
+            --line-soft: rgba(255,255,255,.08);
+            --danger: #d67b72;
+            --max: 1180px;
+            --ease: cubic-bezier(.22,.61,.36,1);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; user-select: none; -webkit-user-select: none; }
-        .navbar { background: rgba(28,29,32,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
-        .navbar-logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; }
-        .navbar-logo span { color: var(--accent); }
-        .navbar-user { display: flex; gap: 20px; align-items: center; }
-        .navbar-user a { color: var(--text-muted); text-decoration: none; font-size: 14px; }
-        .navbar-user a:hover { color: #fff; }
-        .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
-        h1 { font-size: 32px; margin-bottom: 8px; color: #fff; }
-        .subtitle { color: var(--text-muted); margin-bottom: 36px; }
-        .login-box { max-width: 420px; margin: 80px auto; background: var(--bg-card); padding: 48px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.06); }
-        .login-box h2 { font-size: 26px; margin-bottom: 8px; }
-        .login-box p { color: var(--text-muted); font-size: 14px; margin-bottom: 28px; }
-        input { width: 100%; padding: 14px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: #2c2d32; color: #fff; font-size: 15px; margin-bottom: 14px; outline: none; }
-        input:focus { border-color: var(--accent); }
-        button { width: 100%; padding: 14px; border-radius: 10px; border: none; background: var(--accent); color: #fff; font-size: 16px; font-weight: 600; cursor: pointer; }
-        button:hover { background: #6a9af8; }
-        .error { color: #e94560; font-size: 13px; margin-bottom: 14px; display: none; }
+        html { min-width: 320px; background: var(--black); }
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: var(--black);
+            color: var(--text);
+            font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        a { color: inherit; text-decoration: none; }
+        button, input { font: inherit; }
+        button { color: inherit; }
+
+        .site-header {
+            height: 122px;
+            position: relative;
+            z-index: 20;
+            border-bottom: 1px solid #1e1d1a;
+            background: rgba(5,5,5,.96);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+        .header-inner {
+            width: min(100%, var(--max));
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            min-width: 350px;
+        }
+        .brand-mark {
+            width: 77px;
+            height: 78px;
+            position: relative;
+            display: inline-block;
+            color: var(--gold-pale);
+            font-family: Georgia, "Times New Roman", serif;
+            flex: 0 0 auto;
+        }
+        .brand-mark i, .brand-mark b {
+            position: absolute;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+        }
+        .brand-mark i { left: 0; top: 2px; font-size: 62px; }
+        .brand-mark b { left: 34px; top: 30px; font-size: 53px; }
+        .brand-copy { display: flex; flex-direction: column; padding-left: 9px; transform: translateY(1px); }
+        .brand-copy strong { font-size: 15px; line-height: 1.2; letter-spacing: .18em; font-weight: 400; white-space: nowrap; }
+        .brand-copy small { margin-top: 10px; color: var(--gold-pale); font-size: 10px; letter-spacing: .34em; white-space: nowrap; }
+        .brand-copy::after {
+            content: "";
+            width: 250px;
+            height: 1px;
+            margin-top: -25px;
+            margin-bottom: 23px;
+            opacity: .65;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+        .header-right { display: flex; align-items: center; gap: 14px; }
+        .home-link, .logout-link {
+            min-height: 42px;
+            padding: 0 19px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid rgba(185,132,73,.48);
+            background: rgba(185,132,73,.055);
+            color: var(--gold-pale);
+            font-size: 10px;
+            letter-spacing: .10em;
+            transition: transform .25s var(--ease), color .25s ease, border-color .25s ease, background .25s ease;
+        }
+        .home-link:hover, .logout-link:hover { color: #fff; border-color: var(--gold); background: rgba(185,132,73,.14); transform: translateY(-2px); }
+        .home-link svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+        .navbar-user { display: flex; gap: 14px; align-items: center; }
+        .navbar-user > span { color: #dedbd5; font-size: 12px; letter-spacing: .04em; }
+
+        .page {
+            min-height: calc(100vh - 122px);
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -4;
+            background:
+                linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px) 0 0 / 115px 115px,
+                linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px) 0 0 / 115px 115px,
+                radial-gradient(circle at 50% 10%, rgba(185,132,73,.055), transparent 38%),
+                #050505;
+        }
+        .planet {
+            position: absolute;
+            z-index: -3;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle at 48% 47%, #090807 0%, #090807 56%, #17100b 74%, #5f371d 92%, #b97838 99%, #12100f 100%);
+            box-shadow: inset -25px -18px 80px rgba(0,0,0,.96), inset 16px 8px 55px rgba(132,72,31,.06), 0 0 42px rgba(183,109,48,.08);
+            opacity: .72;
+        }
+        .planet-one { width: 500px; height: 500px; top: -330px; right: 4vw; }
+        .planet-two { width: 470px; height: 470px; bottom: -320px; left: -90px; opacity: .48; }
+        .planet::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, transparent 73%, rgba(220,137,64,.22) 91%, rgba(255,177,93,.62) 99%, transparent 100%);
+        }
+
+        .container { width: min(100%, var(--max)); margin: 0 auto; padding: 58px 36px 80px; }
+
+        /* Экран входа */
+        #loginScreen { min-height: calc(100vh - 260px); display: grid; place-items: center; }
+        .login-shell { width: min(100%, 1000px); display: grid; grid-template-columns: 1fr 460px; align-items: stretch; border: 1px solid var(--line-soft); background: rgba(8,8,7,.78); box-shadow: 0 32px 90px rgba(0,0,0,.42); }
+        .login-intro { position: relative; overflow: hidden; padding: 66px 54px; border-right: 1px solid var(--line-soft); background: linear-gradient(145deg, rgba(185,132,73,.08), transparent 48%), #080807; }
+        .login-intro::before { content: ""; position: absolute; width: 390px; height: 390px; border: 1px solid rgba(215,178,124,.16); border-radius: 50%; right: -210px; bottom: -205px; }
+        .login-intro::after { content: ""; position: absolute; width: 260px; height: 260px; border: 1px solid rgba(215,178,124,.09); border-radius: 50%; right: -80px; bottom: -180px; }
+        .eyebrow { display: inline-flex; align-items: center; gap: 14px; color: var(--gold-pale); font-size: 10px; letter-spacing: .25em; }
+        .eyebrow::before { content: ""; width: 55px; height: 1px; background: var(--gold); }
+        .login-intro h1 { margin: 35px 0 23px; max-width: 480px; font-size: clamp(40px, 4.4vw, 62px); line-height: 1.08; font-weight: 300; letter-spacing: -.04em; }
+        .login-intro h1 span { display: block; color: var(--gold); }
+        .login-intro p { max-width: 430px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+        .intro-note { position: absolute; left: 54px; bottom: 47px; color: #68655f; font-size: 9px; letter-spacing: .18em; }
+
+        .login-box { padding: 64px 46px 52px; background: rgba(15,15,14,.94); }
+        .login-box h2 { font-size: 31px; line-height: 1.2; font-weight: 300; margin-bottom: 12px; }
+        .login-box > p { color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 34px; }
+        .field { display: block; margin-bottom: 23px; }
+        .field > span { display: block; margin-bottom: 9px; color: #817e78; font-size: 9px; letter-spacing: .17em; }
+        input {
+            width: 100%;
+            height: 49px;
+            padding: 0 0 11px;
+            border: 0;
+            border-bottom: 1px solid #3d3b37;
+            border-radius: 0;
+            outline: none;
+            background: transparent;
+            color: #fff;
+            font-size: 15px;
+            transition: border-color .25s ease, transform .25s var(--ease);
+        }
+        input::placeholder { color: #605d58; }
+        input:focus { border-color: var(--gold); transform: translateY(-1px); }
+        .login-button {
+            width: 100%;
+            min-height: 49px;
+            margin-top: 7px;
+            border: 0;
+            background: linear-gradient(90deg, #b88749 0%, #c69757 100%);
+            color: #fff;
+            font-size: 11px;
+            letter-spacing: .09em;
+            cursor: pointer;
+            transition: transform .25s var(--ease), filter .25s ease, box-shadow .25s ease;
+        }
+        .login-button:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 14px 34px rgba(185,132,73,.16); }
+        .error { min-height: 19px; color: var(--danger); font-size: 12px; line-height: 1.5; margin: -12px 0 14px; display: none; }
         .error.show { display: block; }
-        .material-card { background: var(--bg-card); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
-        .material-card h3 { color: #fff; font-size: 16px; margin-bottom: 4px; }
-        .material-card .date { color: var(--text-muted); font-size: 12px; }
-        .btn-view { background: var(--accent); color: #fff; padding: 10px 22px; border-radius: 8px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; }
-        .btn-view:hover { background: #6a9af8; }
-        .empty { text-align: center; color: var(--text-muted); padding: 60px 20px; font-size: 15px; }
-        .tabs { display: flex; gap: 8px; margin-bottom: 32px; }
-        .tab { padding: 10px 22px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: var(--text-muted); font-size: 14px; cursor: pointer; transition: 0.3s; }
-        .tab.active { background: #fff; color: #000; border-color: #fff; font-weight: 600; }
+        .back-link { display: block; width: fit-content; margin: 24px auto 0; color: var(--gold-pale); font-size: 10px; letter-spacing: .09em; transition: color .25s ease, transform .25s var(--ease); }
+        .back-link:hover { color: #fff; transform: translateX(-3px); }
+
+        /* Кабинет */
+        #cabinetScreen { padding-top: 18px; }
+        .cabinet-head { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; padding-bottom: 38px; border-bottom: 1px solid var(--line-soft); }
+        .cabinet-head h1 { margin: 0; font-size: clamp(42px, 5vw, 68px); line-height: 1.05; font-weight: 300; letter-spacing: -.045em; }
+        .subtitle { color: var(--gold-pale); margin-top: 13px; font-size: 12px; letter-spacing: .08em; }
+        .cabinet-status { width: 190px; padding: 17px 20px; border: 1px solid var(--line); background: rgba(185,132,73,.045); }
+        .cabinet-status span { display: block; color: #77736d; font-size: 9px; letter-spacing: .18em; }
+        .cabinet-status strong { display: block; margin-top: 8px; color: var(--gold-pale); font-size: 13px; font-weight: 400; }
+        .tabs { display: flex; gap: 10px; margin: 36px 0 32px; }
+        .tab {
+            width: auto;
+            min-height: 43px;
+            padding: 0 24px;
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 0;
+            background: transparent;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: .12em;
+            cursor: pointer;
+            transition: .28s var(--ease);
+        }
+        .tab:hover { color: #fff; border-color: rgba(185,132,73,.55); transform: translateY(-2px); }
+        .tab.active { background: var(--gold); color: #080706; border-color: var(--gold); font-weight: 600; }
         .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .back-link { display: block; text-align: center; color: var(--accent); margin-top: 18px; font-size: 13px; text-decoration: none; }
+        .tab-content.active { display: block; animation: contentIn .45s var(--ease); }
+        @keyframes contentIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        #materialsList { display: grid; gap: 14px; }
+        .material-card {
+            min-height: 100px;
+            padding: 25px 27px;
+            border: 1px solid var(--line-soft);
+            background: linear-gradient(105deg, rgba(185,132,73,.045), transparent 34%), var(--panel);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: transform .32s var(--ease), border-color .32s ease, background .32s ease, box-shadow .32s ease;
+        }
+        .material-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--gold); opacity: .55; }
+        .material-card:hover { transform: translateY(-4px); border-color: rgba(185,132,73,.42); background: linear-gradient(105deg, rgba(185,132,73,.08), transparent 42%), var(--panel-light); box-shadow: 0 17px 45px rgba(0,0,0,.22); }
+        .material-card h3 { color: #fff; font-size: 17px; line-height: 1.4; font-weight: 400; margin-bottom: 7px; }
+        .material-card .date { color: var(--muted-dark); font-size: 10px; letter-spacing: .06em; }
+        .btn-view {
+            flex: 0 0 auto;
+            min-width: 126px;
+            min-height: 43px;
+            padding: 0 18px;
+            border: 1px solid var(--gold);
+            border-radius: 0;
+            background: transparent;
+            color: var(--gold-pale);
+            font-size: 10px;
+            letter-spacing: .11em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform .25s var(--ease), background .25s ease, color .25s ease;
+        }
+        .btn-view:hover { transform: translateY(-2px); background: var(--gold); color: #080706; }
+        .empty { min-height: 250px; display: grid; place-items: center; text-align: center; color: var(--muted-dark); padding: 55px 20px; border: 1px dashed rgba(185,132,73,.22); background: rgba(15,15,14,.58); font-size: 14px; }
+        #tab-profile .material-card { max-width: 580px; min-height: 130px; }
+        #tab-profile .material-card h3 { font-size: 22px; font-weight: 300; }
+
+        .site-footer { padding: 25px 36px 35px; color: #5f5c57; font-size: 9px; letter-spacing: .08em; text-align: center; }
+
+        @media (hover: hover) and (pointer: fine) {
+            .brand { transition: transform .28s var(--ease), filter .28s ease; }
+            .brand:hover { transform: translateY(-2px); filter: brightness(1.08); }
+            .login-intro h1, .login-intro p, .login-box h2, .login-box > p, .cabinet-head h1, .subtitle {
+                transition: transform .28s var(--ease);
+            }
+            .login-intro h1:hover, .login-box h2:hover, .cabinet-head h1:hover { transform: translateY(-3px); }
+            .login-intro p:hover, .login-box > p:hover, .subtitle:hover { transform: translateX(3px); }
+        }
+
+        @media (max-width: 900px) {
+            .site-header { height: 100px; }
+            .header-inner { padding: 0 22px; }
+            .brand { min-width: 0; transform: scale(.82); transform-origin: left center; margin-right: -70px; }
+            .login-shell { grid-template-columns: 1fr; max-width: 520px; }
+            .login-intro { min-height: 315px; border-right: 0; border-bottom: 1px solid var(--line-soft); padding: 48px 38px; }
+            .intro-note { left: 38px; bottom: 35px; }
+            .login-box { padding: 48px 38px 42px; }
+            .page { min-height: calc(100vh - 100px); }
+        }
+        @media (max-width: 620px) {
+            .site-header { height: 87px; }
+            .header-inner { padding: 0 16px; gap: 12px; }
+            .brand { transform: scale(.67); margin-right: -112px; }
+            .home-link { width: 43px; min-width: 43px; padding: 0; }
+            .home-link span { display: none; }
+            .navbar-user > span { display: none; }
+            .logout-link { padding: 0 14px; }
+            .container { padding: 28px 16px 58px; }
+            #loginScreen { min-height: calc(100vh - 165px); }
+            .login-intro { min-height: 285px; padding: 42px 28px; }
+            .login-intro h1 { margin-top: 29px; }
+            .login-intro p { font-size: 13px; }
+            .intro-note { left: 28px; bottom: 28px; }
+            .login-box { padding: 40px 28px 36px; }
+            .cabinet-head { grid-template-columns: 1fr; }
+            .cabinet-status { width: 100%; }
+            .tabs { width: 100%; }
+            .tab { flex: 1; padding: 0 12px; }
+            .material-card { align-items: flex-start; flex-direction: column; }
+            .btn-view { width: 100%; }
+            .planet-one { right: -260px; }
+            .site-footer { padding-left: 18px; padding-right: 18px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="/" class="navbar-logo">Право<span>Эксперт</span></a>
-        <div class="navbar-user" id="userBar" style="display:none;"><span id="userName"></span> <a href="#" onclick="logout()">Выйти</a></div>
-    </nav>
-    <div class="container">
-        <div id="loginScreen">
-            <div class="login-box">
-                <h2>Личный кабинет</h2>
-                <p>Войдите для доступа к материалам</p>
-                <div class="error" id="loginError"></div>
-                <form onsubmit="login(event)">
-                    <input type="email" id="loginEmail" placeholder="Email" required>
-                    <input type="password" id="loginPassword" placeholder="Пароль" required>
-                    <button type="submit">Войти</button>
-                </form>
-                <a href="/" class="back-link">← На главную</a>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="/" aria-label="Беспалова и партнеры — на главную">
+                <span class="brand-mark" aria-hidden="true"><i>Б</i><b>П</b></span>
+                <span class="brand-copy">
+                    <strong>БЕСПАЛОВА И ПАРТНЕРЫ</strong>
+                    <small>ЮРИДИЧЕСКИЙ БУТИК</small>
+                </span>
+            </a>
+            <div class="header-right">
+                <a class="home-link" href="/" aria-label="Вернуться на главную">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5.5 9.5V21h13V9.5M9.5 21v-7h5v7"/></svg>
+                    <span>НА ГЛАВНУЮ</span>
+                </a>
+                <div class="navbar-user" id="userBar" style="display:none;"><span id="userName"></span> <a class="logout-link" href="#" onclick="logout()">ВЫЙТИ</a></div>
             </div>
         </div>
-        <div id="cabinetScreen" style="display:none;">
-            <h1>Мои материалы</h1>
-            <p class="subtitle" id="cabinetEmail"></p>
-            <div class="tabs">
-                <button class="tab active" onclick="switchTab('materials')">Материалы</button>
-                <button class="tab" onclick="switchTab('profile')">Профиль</button>
+    </header>
+
+    <main class="page">
+        <div class="planet planet-one" aria-hidden="true"></div>
+        <div class="planet planet-two" aria-hidden="true"></div>
+
+        <div class="container">
+            <div id="loginScreen">
+                <div class="login-shell">
+                    <section class="login-intro" aria-label="О личном кабинете">
+                        <span class="eyebrow">ЗАКРЫТЫЙ ДОСТУП</span>
+                        <h1>Личный кабинет<span>клиента</span></h1>
+                        <p>Ваши приобретённые материалы, практические руководства и юридические решения — в одном защищённом пространстве.</p>
+                        <div class="intro-note">БЕСПАЛОВА И ПАРТНЕРЫ · ЮРИДИЧЕСКИЙ БУТИК</div>
+                    </section>
+
+                    <section class="login-box">
+                        <h2>Войти</h2>
+                        <p>Используйте email и пароль, полученные после оформления заказа.</p>
+                        <div class="error" id="loginError"></div>
+                        <form onsubmit="login(event)">
+                            <label class="field">
+                                <span>EMAIL</span>
+                                <input type="email" id="loginEmail" placeholder="name@example.ru" required autocomplete="email">
+                            </label>
+                            <label class="field">
+                                <span>ПАРОЛЬ</span>
+                                <input type="password" id="loginPassword" placeholder="Введите пароль" required autocomplete="current-password">
+                            </label>
+                            <button class="login-button" type="submit">ВОЙТИ В КАБИНЕТ</button>
+                        </form>
+                        <a href="/" class="back-link">← ВЕРНУТЬСЯ НА ГЛАВНУЮ</a>
+                    </section>
+                </div>
             </div>
-            <div class="tab-content active" id="tab-materials"><div id="materialsList"></div></div>
-            <div class="tab-content" id="tab-profile">
-                <div class="material-card"><div><h3 id="profileName"></h3><div class="date" id="profilePhone"></div></div></div>
+
+            <div id="cabinetScreen" style="display:none;">
+                <div class="cabinet-head">
+                    <div>
+                        <span class="eyebrow">ЛИЧНЫЙ КАБИНЕТ</span>
+                        <h1>Мои материалы</h1>
+                        <p class="subtitle" id="cabinetEmail"></p>
+                    </div>
+                    <div class="cabinet-status"><span>СТАТУС ДОСТУПА</span><strong>АКТИВЕН</strong></div>
+                </div>
+
+                <div class="tabs">
+                    <button type="button" class="tab active" onclick="switchTab('materials')">МАТЕРИАЛЫ</button>
+                    <button type="button" class="tab" onclick="switchTab('profile')">ПРОФИЛЬ</button>
+                </div>
+
+                <div class="tab-content active" id="tab-materials"><div id="materialsList"></div></div>
+                <div class="tab-content" id="tab-profile">
+                    <div class="material-card"><div><h3 id="profileName"></h3><div class="date" id="profilePhone"></div></div></div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer class="site-footer">© 2026 БЕСПАЛОВА И ПАРТНЕРЫ · ЮРИДИЧЕСКИЙ БУТИК</footer>
+
     <script>
         const API = 'https://egorovslava.pythonanywhere.com';
         let token = localStorage.getItem('token');
@@ -121,7 +445,7 @@
                 const resp = await fetch(`${API}/api/my-materials`, { headers:{'Authorization':`Bearer ${token}`} });
                 const data = await resp.json();
                 if (data.materials && data.materials.length > 0) {
-                    container.innerHTML = data.materials.map(m => `<div class="material-card"><div><h3>${m.title}</h3><div class="date">Приобретено: ${m.date}</div></div><button class="btn-view" onclick="openViewer('${m.view_url}','${m.id}')">Смотреть</button></div>`).join('');
+                    container.innerHTML = data.materials.map(m => `<div class="material-card"><div><h3>${m.title}</h3><div class="date">Приобретено: ${m.date}</div></div><button class="btn-view" onclick="openViewer('${m.view_url}','${m.id}')">СМОТРЕТЬ</button></div>`).join('');
                 } else { container.innerHTML = '<div class="empty">У вас пока нет материалов.</div>'; }
             } catch(err) { container.innerHTML = '<div class="empty">Ошибка загрузки</div>'; }
         }
