@@ -283,6 +283,305 @@ img { max-width: 100%; }
 .service-row p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
 .service-row > strong { color: var(--gold-pale); font-size: 16px; font-weight: 400; text-align: right; white-space: nowrap; }
 
+
+/* Переход к экспертным материалам */
+.materials-jump-wrap {
+  padding: 0 0 112px;
+  background: #080807;
+}
+.materials-jump-link {
+  min-height: 132px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 40px;
+  padding: 27px 30px 27px 36px;
+  border: 1px solid rgba(215,178,124,.34);
+  background:
+    linear-gradient(100deg, rgba(185,132,73,.16), rgba(185,132,73,.035) 48%, rgba(255,255,255,.012)),
+    #0c0c0b;
+  transition: transform .36s var(--ease), border-color .3s ease, box-shadow .3s ease, background .3s ease;
+}
+.materials-jump-link::before {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  right: 8%;
+  top: 50%;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(216,168,101,.16), rgba(185,132,73,.035) 43%, transparent 69%);
+  pointer-events: none;
+}
+.materials-jump-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, transparent, #e0b273 20%, #c88d48 80%, transparent);
+  box-shadow: 0 0 22px rgba(224,178,115,.34);
+}
+.materials-jump-copy {
+  position: relative;
+  z-index: 1;
+}
+.materials-jump-copy small {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--gold-pale);
+  font-size: 9px;
+  letter-spacing: .24em;
+}
+.materials-jump-copy strong {
+  display: block;
+  color: #f5f0e7;
+  font-size: clamp(21px, 2.1vw, 30px);
+  line-height: 1.24;
+  font-weight: 300;
+  letter-spacing: -.02em;
+}
+.materials-jump-copy span {
+  display: block;
+  margin-top: 8px;
+  color: #aaa69f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.materials-jump-action {
+  min-width: 204px;
+  height: 48px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  border: 1px solid rgba(201,153,94,.52);
+  color: var(--gold-pale);
+  font-size: 9px;
+  letter-spacing: .14em;
+  position: relative;
+  z-index: 1;
+  transition: color .3s ease, border-color .3s ease, background .3s ease;
+}
+.materials-jump-action i {
+  color: #e2aa61;
+  font-size: 22px;
+  line-height: 1;
+  font-style: normal;
+  transition: transform .32s var(--ease);
+}
+.materials-jump-link:hover {
+  transform: translateY(-4px);
+  border-color: rgba(230,189,130,.74);
+  background:
+    linear-gradient(100deg, rgba(185,132,73,.23), rgba(185,132,73,.055) 48%, rgba(255,255,255,.017)),
+    #0d0d0c;
+  box-shadow: 0 22px 58px rgba(0,0,0,.34), 0 0 40px rgba(185,132,73,.075);
+}
+.materials-jump-link:hover .materials-jump-action {
+  color: #fff;
+  border-color: var(--gold-bright);
+  background: rgba(185,132,73,.12);
+}
+.materials-jump-link:hover .materials-jump-action i { transform: translateX(5px); }
+
+/* Экспертные статьи */
+.articles-section {
+  scroll-margin-top: 28px;
+  padding: 124px 0 136px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 86% 18%, rgba(185,132,73,.12), transparent 27%),
+    radial-gradient(circle at 12% 92%, rgba(185,132,73,.065), transparent 25%),
+    #070706;
+  border-top: 1px solid rgba(215,178,124,.15);
+}
+.articles-section::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  right: -280px;
+  top: -270px;
+  border-radius: 50%;
+  border: 1px solid rgba(215,178,124,.15);
+  box-shadow: 0 0 90px rgba(185,132,73,.055);
+}
+.articles-heading {
+  max-width: 790px;
+  margin-bottom: 58px;
+  position: relative;
+  z-index: 1;
+}
+.articles-heading h2 {
+  margin: 0;
+  color: #f4f0e9;
+  font-size: clamp(42px, 4.7vw, 65px);
+  line-height: 1.08;
+  font-weight: 300;
+  letter-spacing: -.04em;
+}
+.articles-heading p {
+  max-width: 650px;
+  margin: 23px 0 0;
+  color: #aaa69f;
+  font-size: 15px;
+  line-height: 1.78;
+}
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+  position: relative;
+  z-index: 1;
+}
+.article-card {
+  min-height: 370px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 29px 29px 25px;
+  border: 1px solid rgba(255,255,255,.085);
+  border-radius: 22px;
+  background:
+    linear-gradient(155deg, rgba(185,132,73,.105), transparent 33%),
+    linear-gradient(180deg, #11110f, #0b0b0a);
+  transition: transform .38s var(--ease), border-color .32s ease, box-shadow .32s ease, background .32s ease;
+}
+.article-card::before {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  right: -125px;
+  top: -120px;
+  border-radius: 50%;
+  border: 1px solid rgba(215,178,124,.18);
+  box-shadow: inset 0 0 55px rgba(185,132,73,.045);
+  transition: transform .55s var(--ease), border-color .32s ease;
+}
+.article-card::after {
+  content: "";
+  position: absolute;
+  left: 29px;
+  right: 29px;
+  bottom: 70px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201,153,94,.62), transparent);
+  opacity: .45;
+}
+.article-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+.article-index {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(215,178,124,.42);
+  color: var(--gold-pale);
+  background: rgba(185,132,73,.06);
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+.article-topic {
+  color: #8f8b84;
+  font-size: 8px;
+  letter-spacing: .19em;
+  text-align: right;
+}
+.article-card h3 {
+  margin: 42px 0 17px;
+  color: #f4f0e9;
+  font-size: clamp(20px, 1.75vw, 25px);
+  line-height: 1.35;
+  font-weight: 300;
+  letter-spacing: -.02em;
+  position: relative;
+  z-index: 1;
+}
+.article-card > p {
+  margin: 0;
+  color: #aaa69f;
+  font-size: 12px;
+  line-height: 1.75;
+  position: relative;
+  z-index: 1;
+}
+.article-open {
+  margin-top: auto;
+  padding-top: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--gold-pale);
+  font-size: 9px;
+  letter-spacing: .13em;
+  position: relative;
+  z-index: 1;
+}
+.article-open i {
+  font-style: normal;
+  color: #dc9c4b;
+  font-size: 25px;
+  line-height: 1;
+  transition: transform .32s var(--ease);
+}
+.article-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(215,178,124,.48);
+  background:
+    linear-gradient(155deg, rgba(185,132,73,.17), transparent 35%),
+    linear-gradient(180deg, #131311, #0c0c0b);
+  box-shadow: 0 26px 60px rgba(0,0,0,.34), 0 0 38px rgba(185,132,73,.065);
+}
+.article-card:hover::before {
+  transform: scale(1.08) translate(-5px, 5px);
+  border-color: rgba(215,178,124,.35);
+}
+.article-card:hover .article-open { color: #fff; }
+.article-card:hover .article-open i { transform: translateX(6px); }
+
+@media (max-width: 900px) {
+  .materials-jump-link { grid-template-columns: minmax(0, 1fr) auto; gap: 24px; }
+  .materials-jump-action { grid-column: auto; width: fit-content; min-width: 220px; }
+  .articles-grid { grid-template-columns: 1fr; }
+  .article-card { min-height: 310px; }
+}
+
+@media (max-width: 620px) {
+  .materials-jump-wrap { padding-bottom: 78px; }
+  .materials-jump-link {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 26px 23px 23px;
+  }
+  .materials-jump-action { grid-column: 1; width: 100%; min-width: 0; }
+  .articles-section { padding: 91px 0 96px; }
+  .articles-heading { margin-bottom: 37px; }
+  .articles-heading h2 { font-size: 39px; }
+  .articles-grid { gap: 12px; }
+  .article-card { min-height: 330px; padding: 25px 23px 22px; border-radius: 18px; }
+  .article-card::after { left: 23px; right: 23px; }
+  .article-card h3 { margin-top: 34px; font-size: 22px; }
+}
+
 .contact-section { min-height: 680px; padding: 130px 0; position: relative; overflow: hidden; background: #090908; border-top: 1px solid var(--line-soft); }
 .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 100px; position: relative; z-index: 2; }
 .contact-copy h2 { margin: 0; font-size: clamp(48px, 5vw, 72px); font-weight: 300; line-height: 1.05; letter-spacing: -.04em; }
@@ -934,6 +1233,19 @@ img { max-width: 100%; }
       </div>
     </section>
 
+    <div class="materials-jump-wrap">
+      <div class="section-shell">
+        <a class="materials-jump-link reveal" href="#articles" aria-label="Перейти к полезным материалам и экспертным статьям">
+          <span class="materials-jump-copy">
+            <small>ЭКСПЕРТНЫЕ РАЗБОРЫ ДЛЯ БИЗНЕСА</small>
+            <strong>Полезные материалы и статьи</strong>
+            <span>Изучайте практические разборы из опыта экспертов.</span>
+          </span>
+          <span class="materials-jump-action">ПЕРЕЙТИ К СТАТЬЯМ <i>⟶</i></span>
+        </a>
+      </div>
+    </div>
+
     <section class="products section" id="products">
       <div class="section-shell">
         <div class="section-heading section-heading-wide product-heading reveal">
@@ -1043,6 +1355,40 @@ img { max-width: 100%; }
           </div>
           <div class="form-message full" id="formMessage" role="status" aria-live="polite"></div>
         </form>
+      </div>
+    </section>
+
+    <section class="articles-section" id="articles" aria-labelledby="articlesTitle">
+      <div class="section-shell">
+        <div class="articles-heading reveal">
+          <span class="eyebrow">ПОЛЕЗНЫЕ МАТЕРИАЛЫ</span>
+          <h2 id="articlesTitle">Статьи, которые стоит изучить</h2>
+          <p>Практические экспертные разборы для предпринимателей и компаний. Нажмите на карточку, чтобы открыть материал и перейти к чтению.</p>
+          <div class="heading-rule"></div>
+        </div>
+
+        <div class="articles-grid">
+          <a class="article-card reveal" href="https://support-magazine.ru/rabota/chto-na-samom-dele-oznachaet-obrabotat-personalnye-dannye-razbor/" target="_blank" rel="noopener noreferrer">
+            <span class="article-card-top"><span class="article-index">01</span><span class="article-topic">ПЕРСОНАЛЬНЫЕ ДАННЫЕ</span></span>
+            <h3>Что на самом деле означает «обработать персональные данные»: разбор</h3>
+            <p>Понятный материал о действиях с персональными данными и точках, на которые бизнесу важно обратить внимание.</p>
+            <span class="article-open">ОТКРЫТЬ И ЧИТАТЬ СТАТЬЮ <i>⟶</i></span>
+          </a>
+
+          <a class="article-card reveal delay-1" href="https://support-magazine.ru/rabota/kreativnaya-reklama-chto-mozhno-a-chto-riskovanno-ispolzovat/" target="_blank" rel="noopener noreferrer">
+            <span class="article-card-top"><span class="article-index">02</span><span class="article-topic">РЕКЛАМА И КРЕАТИВ</span></span>
+            <h3>Креативная реклама: что можно, а что рискованно использовать</h3>
+            <p>Практический разбор допустимых рекламных решений и правовых рисков, которые стоит оценить до публикации.</p>
+            <span class="article-open">ОТКРЫТЬ И ЧИТАТЬ СТАТЬЮ <i>⟶</i></span>
+          </a>
+
+          <a class="article-card reveal delay-2" href="https://support-magazine.ru/rabota/persdannye-likbez-chtoby-zashhitit-kompaniyu-ot-shtrafov-i-vnimaniya-rkn/" target="_blank" rel="noopener noreferrer">
+            <span class="article-card-top"><span class="article-index">03</span><span class="article-topic">ЗАЩИТА БИЗНЕСА</span></span>
+            <h3>Персданные: ликбез, чтобы защитить компанию от штрафов и внимания РКН</h3>
+            <p>Базовый материал о персональных данных, обязанностях бизнеса и профилактике наиболее распространённых рисков.</p>
+            <span class="article-open">ОТКРЫТЬ И ЧИТАТЬ СТАТЬЮ <i>⟶</i></span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
