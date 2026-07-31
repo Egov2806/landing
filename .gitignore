@@ -1,0 +1,23 @@
+﻿# Локальные секреты и конфигурация
+.env
+.env.*
+!.env.example
+
+# Резервные архивы
+*.bundle
+*.zip
+*.tar
+*.tar.gz
+
+# Редакторы и ОС
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Временные файлы
+*.tmp
+*.bak
+*.log
+coverage/
+dist/

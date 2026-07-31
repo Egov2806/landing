@@ -1,0 +1,71 @@
+﻿name: UAT frontend checks
+
+on:
+  push:
+    branches:
+      - uat
+  pull_request:
+    branches:
+      - uat
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify required files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          required=(
+            "index.html"
+            "lk/index.html"
+            "viewer/index.html"
+            "CNAME"
+            ".nojekyll"
+            "assets/js/config.uat.js"
+            "assets/js/api-client.js"
+            "assets/js/uat-bootstrap.js"
+            "docs/UAT_BASELINE.md"
+          )
+
+          for file in "${required[@]}"; do
+            test -f "$file" || {
+              echo "Missing required file: $file"
+              exit 1
+            }
+          done
+
+      - name: Verify CNAME
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(tr -d '\r\n' < CNAME)" = "bespalovalegal.ru"
+
+      - name: Reject obvious secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if git grep -nE \
+            'SECRET_KEY=|SMTP_PASS=|PRODAMUS_SECRET=|KINESCOPE_API_KEY=|ADMIN_TOTP_SECRET=|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY'; then
+            echo "Potential secret detected"
+            exit 1
+          fi
+
+      - name: Report sizes
+        shell: bash
+        run: |
+          find . -type f \
+            -not -path './.git/*' \
+            -printf '%10s %p\n' |
+            sort -nr |
+            head -30
