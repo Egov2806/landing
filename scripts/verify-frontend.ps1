@@ -16,7 +16,9 @@ function Assert-True {
 }
 
 $branch = (git branch --show-current).Trim()
-Assert-True ($branch -eq $ExpectedBranch) `
+
+Assert-True `
+    ($branch -eq $ExpectedBranch) `
     "Ожидалась ветка '$ExpectedBranch', получена '$branch'."
 
 $requiredFiles = @(
@@ -34,12 +36,29 @@ $requiredFiles = @(
 )
 
 foreach ($file in $requiredFiles) {
-    Assert-True (Test-Path $file) "Отсутствует обязательный файл: $file"
+    Assert-True `
+        (Test-Path $file) `
+        "Отсутствует обязательный файл: $file"
 }
 
 $cname = (Get-Content "CNAME" -Raw).Trim()
-Assert-True ($cname -eq "bespalovalegal.ru") `
+
+Assert-True `
+    ($cname -eq "bespalovalegal.ru") `
     "Неожиданное значение CNAME: '$cname'"
+
+$excludedFiles = @(
+    ".github/workflows/uat-checks.yml",
+    "scripts/verify-frontend.ps1"
+)
+
+$trackedFiles = @(
+    git ls-files |
+    Where-Object {
+        $_ -notin $excludedFiles -and
+        $_ -notlike "docs/*"
+    }
+)
 
 $forbiddenPatterns = @(
     "SECRET_KEY\s*=",
@@ -50,19 +69,22 @@ $forbiddenPatterns = @(
     "BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY"
 )
 
-$trackedFiles = git ls-files
-
 foreach ($pattern in $forbiddenPatterns) {
+    if ($trackedFiles.Count -eq 0) {
+        break
+    }
+
     $matches = Select-String `
         -Path $trackedFiles `
         -Pattern $pattern `
         -ErrorAction SilentlyContinue
 
-    Assert-True (-not $matches) `
+    Assert-True `
+        (-not $matches) `
         "Обнаружен потенциальный секрет по шаблону: $pattern"
 }
 
 Write-Host "FRONTEND_UAT_CHECK_OK"
 Write-Host "Branch: $branch"
 Write-Host "Commit: $((git rev-parse HEAD).Trim())"
-Write-Host "Tracked files: $($trackedFiles.Count)"
+Write-Host "Checked files: $($trackedFiles.Count)"

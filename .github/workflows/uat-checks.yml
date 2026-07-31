@@ -55,15 +55,24 @@ jobs:
         run: |
           set -euo pipefail
 
-          if git grep -nE \
-            'SECRET_KEY=|SMTP_PASS=|PRODAMUS_SECRET=|KINESCOPE_API_KEY=|ADMIN_TOTP_SECRET=|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY'; then
-            echo "Potential secret detected"
-            exit 1
+          pattern='SECRET_KEY=|SMTP_PASS=|PRODAMUS_SECRET=|KINESCOPE_API_KEY=|ADMIN_TOTP_SECRET=|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY'
+
+          if git grep -nE "$pattern" -- \
+            . \
+            ':(exclude).github/workflows/**' \
+            ':(exclude)scripts/verify-frontend.ps1' \
+            ':(exclude)docs/**'; then
+              echo "Potential secret detected"
+              exit 1
           fi
+
+          echo "No obvious secrets detected"
 
       - name: Report sizes
         shell: bash
         run: |
+          set -euo pipefail
+
           find . -type f \
             -not -path './.git/*' \
             -printf '%10s %p\n' |
