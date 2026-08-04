@@ -612,6 +612,25 @@ img { max-width: 100%; }
 .footer-links a:hover { color: var(--gold-pale); }
 .footer-inner > p { grid-column: 1 / -1; color: #5f5c57; font-size: 10px; margin: -15px 0 0; }
 
+.footer-requisites {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: -10px;
+  padding: 18px 0 4px;
+  border-top: 1px solid rgba(215, 178, 124, .18);
+  color: #9b968e;
+  font-size: 11px;
+  line-height: 1.65;
+  letter-spacing: .04em;
+}
+
+.footer-requisites div:first-child {
+  color: #c7b99f;
+}
+
+
 .cart-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.74); backdrop-filter: blur(7px); display: flex; justify-content: flex-end; }
 .cart-overlay[hidden] { display: none; }
 .cart-drawer { width: min(100%, 510px); height: 100%; background: #0d0d0c; border-left: 1px solid var(--line-soft); padding: 34px; display: flex; flex-direction: column; animation: drawerIn .35s var(--ease); }
@@ -816,6 +835,14 @@ img { max-width: 100%; }
   .brand-footer { transform: scale(.68); margin-right: -100px; }
   .footer-links { justify-content: flex-start; flex-direction: column; gap: 15px; }
   .footer-inner > p { grid-column: 1; margin-top: 0; }
+
+  .footer-requisites {
+    grid-column: 1;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 0;
+  }
+
   .cart-drawer { padding: 25px 20px; }
 }
 
@@ -1548,6 +1575,10 @@ img { max-width: 100%; }
 <div class="section-shell footer-inner">
 <a class="brand brand-footer" href="#top"><span class="brand-mark"><i>Б</i><b>П</b></span><span class="brand-copy"><strong>БЕСПАЛОВА И ПАРТНЕРЫ</strong><small>ЮРИДИЧЕСКИЙ БУТИК</small></span></a>
 <div class="footer-links"><a href="/lk">ЛИЧНЫЙ КАБИНЕТ</a><a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></div>
+<div class="footer-requisites">
+<div>ИП Беспалова Марина Константиновна</div>
+<div>ИНН 772606129659</div>
+</div>
 <p>© 2026. Все права защищены.</p>
 </div>
 </footer>
