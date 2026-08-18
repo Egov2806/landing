@@ -1536,6 +1536,232 @@ body.services-page {
     gap: 30px;
   }
 }
+
+
+/* ===== Services page visual refinement — 2026-08-18 ===== */
+/* The header is sticky, so the section navigator must sit below it, never under it. */
+.services-page {
+  --services-header-h: 122px;
+  --services-sticky-gap: 26px;
+}
+
+.services-page .services-catalog {
+  padding-top: 126px;
+  padding-bottom: 180px;
+}
+
+.services-page .services-catalog > .section-shell > .section-heading {
+  max-width: 940px;
+  margin-bottom: 0;
+}
+
+.services-page .services-layout {
+  grid-template-columns: 228px minmax(0, 1fr);
+  gap: clamp(46px, 5vw, 72px);
+  margin-top: 78px;
+}
+
+.services-page .services-fast-nav {
+  top: calc(var(--services-header-h) + var(--services-sticky-gap));
+  z-index: 20;
+  padding: 22px 18px 20px;
+  gap: 3px;
+  border: 1px solid rgba(201,153,94,.24);
+  border-radius: 0;
+  background: #0d0d0b;
+  box-shadow: 0 24px 54px rgba(0,0,0,.22);
+}
+
+.services-page .services-fast-nav::before {
+  padding: 2px 8px 17px;
+  font-size: 8px;
+  letter-spacing: .22em;
+}
+
+.services-page .services-fast-nav a {
+  padding: 12px 30px 12px 8px;
+  border-radius: 0;
+  font-size: 9px;
+  line-height: 1.42;
+  letter-spacing: .055em;
+}
+
+.services-page .services-fast-nav a:hover {
+  background: rgba(201,153,94,.08);
+}
+
+.services-page .services-fast-nav a.is-active,
+.services-page .services-fast-nav a[aria-current="location"] {
+  color: var(--gold-pale);
+  background: rgba(201,153,94,.11);
+  box-shadow: inset 2px 0 0 var(--gold);
+}
+
+.services-page .services-fast-nav a.is-active::after,
+.services-page .services-fast-nav a[aria-current="location"]::after {
+  color: var(--gold-pale);
+  transform: translateY(-52%) translateX(2px);
+}
+
+.services-page .service-category {
+  scroll-margin-top: calc(var(--services-header-h) + 42px);
+  padding: 102px 0 122px;
+}
+
+.services-page .service-category:first-of-type {
+  padding-top: 0;
+}
+
+.services-page .service-category-head {
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 42px;
+  margin-bottom: 54px;
+}
+
+.services-page .service-category-head > span {
+  padding-top: 9px;
+}
+
+.services-page .service-category-head > div > p {
+  margin-bottom: 16px;
+}
+
+.services-page .service-category-rule {
+  margin: 30px 0 31px;
+}
+
+.services-page .service-category-intro {
+  max-width: 850px;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.services-page .service-category-intro p {
+  margin-bottom: 18px;
+}
+
+.services-page .service-offers {
+  gap: 18px;
+}
+
+.services-page .service-offer {
+  min-height: 300px;
+  padding: 34px 32px 30px;
+  gap: 34px;
+  border-radius: 0;
+}
+
+.services-page .service-offer h4 {
+  margin-bottom: 18px;
+}
+
+.services-page .service-offer p {
+  line-height: 1.78;
+}
+
+.services-page .service-offer ul {
+  margin-top: 22px;
+}
+
+.services-page .service-offer li {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.services-page .service-category-note {
+  margin-top: 38px;
+  padding: 28px 30px;
+}
+
+.services-page .services-contact-cta {
+  padding: 118px 0;
+}
+
+.services-page .services-contact-cta .section-shell {
+  gap: 76px;
+}
+
+@media (max-width: 1120px) and (min-width: 901px) {
+  .services-page .services-layout {
+    grid-template-columns: 205px minmax(0, 1fr);
+    gap: 42px;
+  }
+  .services-page .services-fast-nav {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 761px) {
+  .services-page {
+    --services-header-h: 94px;
+    --services-sticky-gap: 22px;
+  }
+  .services-page .services-layout {
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 30px;
+    margin-top: 64px;
+  }
+  .services-page .services-fast-nav {
+    padding: 17px 13px;
+  }
+  .services-page .services-fast-nav a {
+    padding: 10px 25px 10px 7px;
+    font-size: 8.5px;
+  }
+  .services-page .service-category {
+    padding: 86px 0 104px;
+  }
+  .services-page .service-category-head {
+    grid-template-columns: 68px minmax(0, 1fr);
+    gap: 28px;
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: 760px) {
+  .services-page .services-catalog {
+    padding-top: 80px;
+    padding-bottom: 120px;
+  }
+  .services-page .services-layout {
+    margin-top: 52px;
+  }
+  .services-page .services-fast-nav {
+    position: relative;
+    top: auto;
+    z-index: 1;
+    margin-bottom: 68px;
+    padding: 16px;
+    border-radius: 0;
+  }
+  .services-page .services-fast-nav a {
+    border-radius: 0;
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+  .services-page .service-category {
+    scroll-margin-top: 102px;
+    padding: 72px 0 88px;
+  }
+  .services-page .service-category-head {
+    gap: 18px;
+    margin-bottom: 40px;
+  }
+  .services-page .service-category-rule {
+    margin: 24px 0 25px;
+  }
+  .services-page .service-offers {
+    gap: 14px;
+  }
+  .services-page .service-offer {
+    padding: 29px 24px 27px;
+  }
+  .services-page .services-contact-cta {
+    padding: 92px 0;
+  }
+}
+
 </style>
 </head>
 <body class="services-page">
@@ -1662,6 +1888,82 @@ body.services-page {
         menu.hidden = true;
       });
     });
+  }
+
+  // Подсветка текущего раздела услуг при прокрутке.
+  const serviceNav = document.querySelector('.services-fast-nav');
+  const serviceSections = Array.from(document.querySelectorAll('.service-category[id]'));
+  const serviceLinks = serviceNav
+    ? Array.from(serviceNav.querySelectorAll('a[href^="#"]'))
+    : [];
+
+  if (serviceNav && serviceSections.length && serviceLinks.length) {
+    const linkById = new Map(
+      serviceLinks.map(link => [decodeURIComponent(link.hash.slice(1)), link])
+    );
+
+    let activeId = '';
+    let ticking = false;
+
+    const setActiveService = id => {
+      if (!id || id === activeId) return;
+      activeId = id;
+
+      serviceLinks.forEach(link => {
+        const active = decodeURIComponent(link.hash.slice(1)) === id;
+        link.classList.toggle('is-active', active);
+        if (active) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    };
+
+    const updateActiveService = () => {
+      ticking = false;
+
+      const header = document.querySelector('.site-header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      const readingLine = headerHeight + Math.min(150, window.innerHeight * 0.22);
+
+      let current = serviceSections[0];
+
+      for (const section of serviceSections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= readingLine) {
+          current = section;
+        } else {
+          break;
+        }
+      }
+
+      setActiveService(current.id);
+    };
+
+    const requestScrollSpyUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateActiveService);
+    };
+
+    serviceLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const id = decodeURIComponent(link.hash.slice(1));
+        if (linkById.has(id)) setActiveService(id);
+      });
+    });
+
+    window.addEventListener('scroll', requestScrollSpyUpdate, { passive: true });
+    window.addEventListener('resize', requestScrollSpyUpdate);
+    window.addEventListener('hashchange', requestScrollSpyUpdate);
+
+    if (window.location.hash) {
+      const initialId = decodeURIComponent(window.location.hash.slice(1));
+      if (linkById.has(initialId)) setActiveService(initialId);
+    }
+
+    updateActiveService();
   }
 
   const reveal = document.querySelectorAll('.reveal');
