@@ -2396,6 +2396,218 @@ body,
   filter: saturate(.99) contrast(1.015) brightness(1.005) !important;
 }
 
+
+
+/* ===== Customer comments — 20.08.2026 ===== */
+
+/* 1. ABOUT: move the accumulated-experience paragraph to the end of the
+   factual part and give it a deliberate gold editorial emphasis. */
+.why-section .why-history-highlight {
+  grid-column: 1 / -1;
+  margin-top: 46px;
+  padding: 34px 0 38px;
+  border-top: 1px solid rgba(142,97,46,.28);
+  border-bottom: 1px solid rgba(142,97,46,.18);
+}
+.why-section .why-history-highlight p {
+  max-width: 1050px;
+  margin: 0;
+  color: #9a672d !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 2.15vw, 30px);
+  line-height: 1.58;
+  font-weight: 400;
+}
+.why-section .why-history-highlight + .why-expertise {
+  margin-top: 52px;
+}
+
+/* 2. The principles are now a single horizontal strip. */
+.values-section .values-grid,
+.support-level-section .support-level-grid {
+  display: flex !important;
+  grid-template-columns: none !important;
+  flex-wrap: nowrap !important;
+  gap: 18px !important;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0 22px;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1px;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,153,94,.58) rgba(255,255,255,.06);
+  cursor: grab;
+}
+.values-section .values-grid:active,
+.support-level-section .support-level-grid:active {
+  cursor: grabbing;
+}
+.values-section .values-grid::-webkit-scrollbar,
+.support-level-section .support-level-grid::-webkit-scrollbar {
+  height: 6px;
+}
+.values-section .values-grid::-webkit-scrollbar-track,
+.support-level-section .support-level-grid::-webkit-scrollbar-track {
+  background: rgba(255,255,255,.055);
+}
+.values-section .values-grid::-webkit-scrollbar-thumb,
+.support-level-section .support-level-grid::-webkit-scrollbar-thumb {
+  background: rgba(201,153,94,.58);
+}
+.values-section .value-card,
+.support-level-section .support-level-card {
+  flex: 0 0 clamp(320px, 31vw, 405px) !important;
+  width: clamp(320px, 31vw, 405px) !important;
+  min-height: 390px;
+  scroll-snap-align: start;
+  transform: none !important;
+  border-radius: 0 !important;
+}
+.values-section .value-card:hover,
+.values-section .value-card:nth-child(2):hover,
+.values-section .value-card:nth-child(5):hover,
+.support-level-section .support-level-card:hover {
+  transform: translateY(-4px) !important;
+}
+
+/* 3. New "Другой уровень..." section, visually continuing the dark values
+   composition without another page-height stack of cards. */
+.support-level-section {
+  position: relative;
+  padding: 102px 0 118px;
+  background: var(--dark-section) !important;
+  color: var(--text);
+  border: 0 !important;
+}
+.support-level-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: max(20px, calc((100% - 1440px) / 2));
+  right: max(20px, calc((100% - 1440px) / 2));
+  height: 1px;
+  background: rgba(215,178,124,.20);
+}
+.support-level-intro {
+  max-width: 1080px;
+  margin-bottom: 52px;
+}
+.support-level-intro h2 {
+  max-width: 1020px;
+  margin: 0;
+  color: var(--gold-pale);
+  font-size: clamp(34px, 4.6vw, 64px);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+}
+.support-level-intro p {
+  max-width: 920px;
+  margin: 30px 0 0;
+  color: #d5d0c7;
+  font-size: clamp(17px, 1.55vw, 21px);
+  line-height: 1.75;
+  font-weight: 300;
+}
+.support-level-card {
+  background: linear-gradient(145deg, rgba(20,20,18,.98), rgba(10,10,9,.98)) !important;
+  border: 1px solid rgba(255,255,255,.075) !important;
+  box-shadow: none !important;
+}
+.support-level-card .value-number {
+  color: var(--gold);
+}
+.support-level-card h3 {
+  margin: 52px 0 20px;
+  color: #f3efe8 !important;
+  font-size: 23px;
+  line-height: 1.3;
+  font-weight: 300;
+}
+.support-level-card p {
+  margin: 0 0 15px;
+  color: #aaa69e !important;
+  font-size: 13px;
+  line-height: 1.72;
+}
+.support-level-card p:last-child {
+  margin-bottom: 30px;
+}
+.support-level-card p strong {
+  color: var(--gold-pale);
+  font-weight: 500;
+}
+.support-level-card::before {
+  background: radial-gradient(circle, rgba(201,153,94,.14), transparent 68%);
+}
+.support-level-card::after {
+  background: linear-gradient(90deg, rgba(201,153,94,.68), transparent);
+}
+
+/* Keep the principles quote attached to the carousel, but reduce the empty
+   vertical travel now that the cards no longer stack. */
+.values-section .why-closing {
+  margin-top: 66px;
+}
+
+@media (max-width: 900px) {
+  .why-section .why-history-highlight {
+    margin-top: 38px;
+  }
+  .support-level-section {
+    padding: 86px 0 96px;
+  }
+  .support-level-intro {
+    margin-bottom: 42px;
+  }
+  .values-section .value-card,
+  .support-level-section .support-level-card {
+    flex-basis: min(78vw, 380px) !important;
+    width: min(78vw, 380px) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .why-section .why-history-highlight {
+    margin-top: 32px;
+    padding: 28px 0 30px;
+  }
+  .why-section .why-history-highlight p {
+    font-size: 20px;
+    line-height: 1.55;
+  }
+  .support-level-section {
+    padding: 72px 0 82px;
+  }
+  .support-level-intro h2 {
+    font-size: clamp(31px, 9vw, 44px);
+  }
+  .support-level-intro p {
+    margin-top: 24px;
+    font-size: 16px;
+  }
+  .values-section .values-grid,
+  .support-level-section .support-level-grid {
+    gap: 14px !important;
+    padding-bottom: 18px;
+  }
+  .values-section .value-card,
+  .support-level-section .support-level-card {
+    flex: 0 0 86vw !important;
+    width: 86vw !important;
+    min-height: 0;
+    padding: 30px 25px 38px;
+  }
+  .support-level-card h3 {
+    margin-top: 42px;
+    font-size: 22px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2528,10 +2740,6 @@ body,
         <p>В основе нашей работы — фундаментальная академическая школа, многолетний опыт сопровождения бизнеса в консалтинге и постоянное профессиональное развитие. Мы объединяем глубокую теоретическую подготовку с практикой решения сложных задач в сфере:</p>
       </div>
 
-      <div class="why-text-block">
-        <p>За годы работы мы сопровождали бизнес на разных этапах: от создания и структурирования компаний до защиты интересов в корпоративных, налоговых и коммерческих спорах. Этот опыт позволяет нам видеть не отдельную юридическую проблему, а всю систему рисков, предлагая решения, рассчитанные на долгосрочную перспективу.</p>
-      </div>
-
       <div class="why-practice-wide reveal">
         <ul class="why-points why-points-areas">
           <li>Корпоративного права</li>
@@ -2541,6 +2749,11 @@ body,
           <li>Судебной защиты</li>
         </ul>
       </div>
+
+      <div class="why-history-highlight reveal delay-1">
+        <p>За годы работы мы сопровождали бизнес на разных этапах: от создания и структурирования компаний до защиты интересов в корпоративных, налоговых и коммерческих спорах. Этот опыт позволяет нам видеть не отдельную юридическую проблему, а всю систему рисков, предлагая решения, рассчитанные на долгосрочную перспективу.</p>
+      </div>
+
 
       <div class="why-text-block why-expertise">
         <h3>Экспертиза и развитие</h3>
@@ -2558,7 +2771,7 @@ body,
 <span>ГЛАВНЫЕ ЦЕННОСТИ</span>
 <h3>Принципы, на которых строится наша работа</h3>
 </div>
-<div class="values-grid">
+<div class="values-grid horizontal-card-strip" aria-label="Принципы, на которых строится наша работа">
 <article class="value-card reveal"><span class="value-number">01</span><h3>Фундаментальная академическая школа</h3><p>Наша работа основана на глубоком понимании права, судебной практики и современной юридической доктрины. Мы предлагаем решения, выстроенные на прочной профессиональной базе, а не на шаблонных подходах.</p></article>
 <article class="value-card reveal delay-1"><span class="value-number">02</span><h3>Предиктивная аналитика</h3><p>Мы не только применяем право — мы участвуем в его развитии. Благодаря участию в экспертной и законотворческой деятельности мы помогаем клиентам учитывать будущие изменения законодательства и принимать решения на шаг вперед.</p></article>
 <article class="value-card reveal delay-2"><span class="value-number">03</span><h3>8+ лет практики</h3><p>Более восьми лет сопровождаем бизнес и частных клиентов в вопросах корпоративного права, налогов, судебной защиты и интеллектуальной собственности, успешно решая задачи различной сложности.</p></article>
@@ -2569,6 +2782,67 @@ body,
 <p class="why-closing reveal">«Мы не просто сопровождаем бизнес в рамках действующего законодательства — мы участвуем в формировании правовой среды, в которой ему предстоит работать».</p>
 </div>
 </section>
+
+<section class="support-level-section section" id="support-level">
+  <div class="section-shell">
+    <div class="support-level-intro reveal">
+      <h2>Другой уровень юридического сопровождения</h2>
+      <p>
+        Мы считаем, что хороший юрист — это не тот, кто появляется, когда проблема уже возникла.<br>
+        Это специалист, который знает ваш бизнес, понимает его задачи и остаётся рядом на каждом этапе.
+      </p>
+    </div>
+
+    <div class="support-level-grid horizontal-card-strip" aria-label="Другой уровень юридического сопровождения">
+      <article class="value-card support-level-card reveal">
+        <span class="value-number">01</span>
+        <h3>Персональный юрист</h3>
+        <p>За каждым клиентом закрепляется юрист, который погружается в его бизнес, знает историю работы и всегда остаётся на связи.</p>
+        <p>Вам не нужно каждый раз объяснять ситуацию заново или искать свободного специалиста. Вы знаете, к кому обратиться — и кто отвечает за ваш вопрос.</p>
+      </article>
+
+      <article class="value-card support-level-card reveal delay-1">
+        <span class="value-number">02</span>
+        <h3>Всё в одном пространстве</h3>
+        <p>Для каждого клиента мы создаём личный защищённый кабинет.</p>
+        <p>В нём собраны документы, материалы, результаты работы и отчётность. Никаких потерянных файлов, бесконечных переписок и поиска нужного документа по чатам.</p>
+        <p>Вся юридическая работа — в одном месте и всегда под рукой.</p>
+      </article>
+
+      <article class="value-card support-level-card reveal delay-2">
+        <span class="value-number">03</span>
+        <h3>Полная прозрачность</h3>
+        <p>Вы понимаете, что происходит с каждой задачей.</p>
+        <p>Мы фиксируем результаты работы, предоставляем необходимые материалы и сохраняем историю взаимодействия в личном кабинете.</p>
+        <p>Вам не нужно постоянно спрашивать: «Что с моим вопросом?»</p>
+      </article>
+
+      <article class="value-card support-level-card reveal">
+        <span class="value-number">04</span>
+        <h3>Не шаблон — решение</h3>
+        <p>Мы не создаём документы ради того, чтобы закрыть задачу формально.</p>
+        <p>Сначала разбираемся в ситуации, целях и рисках бизнеса. Затем определяем, какое решение действительно будет работать именно в вашем случае.</p>
+        <p>Поэтому результат нашей работы — не просто документ, а понятная юридическая стратегия, которую можно применять на практике.</p>
+      </article>
+
+      <article class="value-card support-level-card reveal delay-1">
+        <span class="value-number">05</span>
+        <h3>Глубокое погружение</h3>
+        <p>Мы смотрим на задачу не изолированно.</p>
+        <p>Учитываем специфику бизнеса, его процессы, цели и возможные последствия принимаемых решений. Это позволяет не только решать текущие вопросы, но и заранее видеть риски, которые могут возникнуть дальше.</p>
+      </article>
+
+      <article class="value-card support-level-card reveal delay-2">
+        <span class="value-number">06</span>
+        <h3>Ответственность за результат</h3>
+        <p>Мы не оставляем клиента один на один с юридической задачей.</p>
+        <p>От первого обращения до завершения работы вы понимаете, кто отвечает за вопрос, что уже сделано и какие следующие шаги.</p>
+        <p><strong>Вы занимаетесь бизнесом.<br>Мы занимаемся тем, чтобы у бизнеса была надёжная юридическая опора.</strong></p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <div class="materials-jump-wrap">
 <div class="section-shell">
 <a aria-label="Перейти к полезным материалам и экспертным статьям" class="materials-jump-link reveal" href="#articles">
@@ -2899,5 +3173,59 @@ body,
 })();
 
 </script>
+
+
+<script>
+(() => {
+  const strips = document.querySelectorAll('.horizontal-card-strip');
+
+  strips.forEach((strip) => {
+    strip.addEventListener('wheel', (event) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+
+      const max = strip.scrollWidth - strip.clientWidth;
+      if (max <= 1) return;
+
+      const movingForward = event.deltaY > 0;
+      const canMoveForward = strip.scrollLeft < max - 1;
+      const canMoveBack = strip.scrollLeft > 1;
+
+      if ((movingForward && canMoveForward) || (!movingForward && canMoveBack)) {
+        event.preventDefault();
+        strip.scrollBy({ left: event.deltaY, behavior: 'auto' });
+      }
+    }, { passive: false });
+
+    let active = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    strip.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'touch') return;
+      active = true;
+      startX = event.clientX;
+      startScroll = strip.scrollLeft;
+      strip.setPointerCapture?.(event.pointerId);
+    });
+
+    strip.addEventListener('pointermove', (event) => {
+      if (!active) return;
+      strip.scrollLeft = startScroll - (event.clientX - startX);
+    });
+
+    const stop = (event) => {
+      active = false;
+      if (event?.pointerId !== undefined) {
+        try { strip.releasePointerCapture?.(event.pointerId); } catch (_) {}
+      }
+    };
+
+    strip.addEventListener('pointerup', stop);
+    strip.addEventListener('pointercancel', stop);
+    strip.addEventListener('lostpointercapture', () => { active = false; });
+  });
+})();
+</script>
+
 </body>
 </html>
