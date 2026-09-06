@@ -160,14 +160,23 @@
     }
 
     async function loadCatalog() {
-        const api = window.BespalovaApi;
-        if (!api) {
-            renderUnavailable();
-            return;
-        }
-
         try {
-            const payload = await api.get("/api/v1/catalog");
+            const response = await fetch("/api/v1/catalog", {
+                method: "GET",
+                credentials: "same-origin",
+                mode: "same-origin",
+                cache: "no-store",
+                redirect: "error",
+                headers: {
+                    Accept: "application/json"
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("catalog_http");
+            }
+
+            const payload = await response.json();
             const items = Array.isArray(payload?.items) ? payload.items : [];
             renderCatalog(items);
         } catch (_error) {

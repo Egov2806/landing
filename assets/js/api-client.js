@@ -23,7 +23,8 @@
             throw new TypeError("API path must start with '/'");
         }
 
-        return `${config.apiBaseUrl.replace(/\/+$/, "")}${path}`;
+        // Same-origin on the public site. Apex nginx proxies /api/v1/* to the platform.
+        return path;
     }
 
     async function request(path, options = {}) {
@@ -61,8 +62,8 @@
                 method: options.method ?? "GET",
                 headers,
                 body,
-                credentials: "include",
-                mode: "cors",
+                credentials: "same-origin",
+                mode: "same-origin",
                 cache: "no-store",
                 redirect: "error",
                 signal: controller.signal
