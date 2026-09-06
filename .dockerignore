@@ -1,0 +1,7 @@
+.git
+.github
+CNAME
+docs
+scripts
+.gitignore
+*.md
