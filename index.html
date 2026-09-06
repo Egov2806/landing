@@ -3096,7 +3096,14 @@ body,
   document.getElementById('checkoutButton')?.addEventListener('click', () => {
     closeCart();
     const comment = document.getElementById('comment');
-    if (comment && !comment.value.trim()) comment.value = 'Хочу оформить выбранные цифровые продукты.';
+    if (comment) {
+      const lines = cart.map((item) =>
+        `${item.title} (${money.format(item.price)} ₽)`
+      );
+      comment.value = lines.length
+        ? `Хочу оформить: ${lines.join(', ')}`
+        : 'Хочу оформить выбранные цифровые продукты.';
+    }
     document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
     setTimeout(() => document.getElementById('name')?.focus(), 650);
   });
