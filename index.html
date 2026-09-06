@@ -257,6 +257,7 @@ img { max-width: 100%; }
 .product-grid-single { grid-template-columns: minmax(0, 650px); justify-content: center; }
 .product-grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .product-card { min-height: 390px; padding: 35px 34px 31px; display: flex; flex-direction: column; background: #10100f; border: 1px solid rgba(255,255,255,.075); position: relative; overflow: hidden; transition: transform .35s var(--ease), border-color .35s ease, background .35s ease; }
+.catalog-empty { margin: 0; padding: 28px 8px; color: rgba(255,255,255,.72); font-size: 15px; line-height: 1.5; }
 .product-card:hover { transform: translateY(-4px); border-color: rgba(201,153,94,.45); background: #131310; }
 .product-card.featured { background: linear-gradient(145deg, #16130f, #0e0e0d 65%); border-color: rgba(201,153,94,.35); }
 .product-card.featured::before { content: ""; position: absolute; width: 280px; height: 280px; right: -120px; top: -120px; border-radius: 50%; background: radial-gradient(circle, rgba(190,130,67,.16), transparent 70%); }
@@ -2876,38 +2877,16 @@ body,
 <button aria-selected="false" class="tab-button" data-tab="launch" role="tab" type="button">ЗАПУСК</button>
 </div>
 <div class="tab-panel active" id="panel-checkup" role="tabpanel">
-<div class="product-grid product-grid-single">
-<article class="product-card featured reveal">
-<div class="product-top"><span class="product-category">ДИАГНОСТИКА</span><span class="product-badge">БЕСТСЕЛЛЕР</span></div>
-<span class="product-number">01</span>
-<h3>Юридический Check-up</h3>
-<p>Диагностика устойчивости бизнеса. Методология заменяет первичный аудит и показывает системные точки риска.</p>
-<ul><li>Алгоритм самодиагностики</li><li>Критически уязвимые точки</li><li>Пошаговый план устранения рисков</li></ul>
-<div class="product-bottom"><strong>1 990 <small>₽</small></strong><button data-add="checkup" data-price="1990" data-title="Юридический Check-up" type="button">В КОРЗИНУ <span>⟶</span></button></div>
-</article>
-</div>
+<div class="product-grid product-grid-single" data-catalog-tab="checkup"></div>
 </div>
 <div class="tab-panel" hidden="" id="panel-taxes" role="tabpanel">
-<div class="product-grid">
-<article class="product-card"><div class="product-top"><span class="product-category">ЧЕК-ЛИСТ</span></div><span class="product-number">01</span><h3>3-НДФЛ в 2026 году</h3><p>Кому подавать декларацию, какие доходы учитывать и как избежать штрафа.</p><div class="product-bottom"><strong>1 990 <small>₽</small></strong><button data-add="ndfl" data-price="1990" data-title="3-НДФЛ в 2026 году" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-<article class="product-card"><div class="product-top"><span class="product-category">ЧЕК-ЛИСТ</span></div><span class="product-number">02</span><h3>Осмотр налоговым органом</h3><p>Процедура, типовые нарушения инспекторов и алгоритм защиты прав.</p><div class="product-bottom"><strong>2 490 <small>₽</small></strong><button data-add="tax-inspection" data-price="2490" data-title="Осмотр налоговым органом" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-<article class="product-card featured"><div class="product-top"><span class="product-category">ЧЕК-ЛИСТ</span><span class="product-badge">ХИТ</span></div><span class="product-number">03</span><h3>Безопасный контрагент</h3><p>Защита от доначислений по статье 54.1 НК РФ и фиксация деловой цели.</p><div class="product-bottom"><strong>3 990 <small>₽</small></strong><button data-add="safe-agent" data-price="3990" data-title="Безопасный контрагент" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-<article class="product-card"><div class="product-top"><span class="product-category">ЧЕК-ЛИСТ</span></div><span class="product-number">04</span><h3>Маркеры дробления</h3><p>15+ маркеров риска, пороги НДС и рекомендации по безопасной перестройке.</p><div class="product-bottom"><strong>1 299 <small>₽</small></strong><button data-add="division" data-price="1299" data-title="Маркеры дробления" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-</div>
+<div class="product-grid" data-catalog-tab="taxes"></div>
 </div>
 <div class="tab-panel" hidden="" id="panel-infobiz" role="tabpanel">
-<div class="product-grid">
-<article class="product-card"><div class="product-top"><span class="product-category">РУКОВОДСТВО</span></div><span class="product-number">01</span><h3>Контент под защитой</h3><p>Авторство, защита от утечек и алгоритм ликвидации незаконных сливов.</p><div class="product-bottom"><strong>5 000 <small>₽</small></strong><button data-add="content-protect" data-price="5000" data-title="Контент под защитой" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-<article class="product-card featured"><div class="product-top"><span class="product-category">ПРОТОКОЛ</span><span class="product-badge">РЕКОМЕНДУЮ</span></div><span class="product-number">02</span><h3>Юрпротокол запуска</h3><p>Налоги, контракты, персональные данные и защита от возвратов до первого клиента.</p><div class="product-bottom"><strong>7 000 <small>₽</small></strong><button data-add="launch-protocol" data-price="7000" data-title="Юрпротокол запуска" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-<article class="product-card"><div class="product-top"><span class="product-category">РУКОВОДСТВО</span></div><span class="product-number">03</span><h3>Персональные данные</h3><p>152-ФЗ, уведомление Роскомнадзора и безопасное хранение данных в CRM.</p><div class="product-bottom"><strong>5 000 <small>₽</small></strong><button data-add="personal-data" data-price="5000" data-title="Персональные данные" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-<article class="product-card"><div class="product-top"><span class="product-category">ГИД</span></div><span class="product-number">04</span><h3>Реклама без штрафов</h3><p>Маркировка, токены erid, ОРД и безопасные договоры с блогерами.</p><div class="product-bottom"><strong>5 000 <small>₽</small></strong><button data-add="ad-marking" data-price="5000" data-title="Реклама без штрафов" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-</div>
+<div class="product-grid" data-catalog-tab="infobiz"></div>
 </div>
 <div class="tab-panel" hidden="" id="panel-launch" role="tabpanel">
-<div class="product-grid product-grid-two">
-<article class="product-card"><div class="product-top"><span class="product-category">КОМПЛЕКТ</span></div><span class="product-number">01</span><h3>Base: Юридический старт</h3><p>Оферта, политика конфиденциальности, согласия на персональные данные и отзывы.</p><div class="product-bottom"><strong>12 000 <small>₽</small></strong><button data-add="base-start" data-price="12000" data-title="Base: Юридический старт" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-<article class="product-card featured"><div class="product-top"><span class="product-category">КОМПЛЕКТ</span><span class="product-badge">МАКСИМУМ</span></div><span class="product-number">02</span><h3>Expert: Право и Налоги</h3><p>Всё из Base, чек-лист дробления, налоговый гид и скидка на стратегическую сессию.</p><div class="product-bottom"><strong>15 000 <small>₽</small></strong><button data-add="expert-tax" data-price="15000" data-title="Expert: Право и Налоги" type="button">В КОРЗИНУ <span>⟶</span></button></div></article>
-</div>
+<div class="product-grid product-grid-two" data-catalog-tab="launch"></div>
 </div>
 </div>
 </section>
@@ -2983,6 +2962,9 @@ body,
 <div class="cart-footer" hidden="" id="cartFooter"><div><span>ИТОГО</span><strong id="cartTotal">0 ₽</strong></div><button class="button button-gold" id="checkoutButton" type="button">ОФОРМИТЬ ЗАКАЗ</button></div>
 </aside>
 </div>
+<script src="/assets/js/config.uat.js"></script>
+<script src="/assets/js/api-client.js"></script>
+<script src="/assets/js/catalog.js"></script>
 <script>
 (() => {
   const API_CONFIG = {
@@ -2992,6 +2974,19 @@ body,
 
   const money = new Intl.NumberFormat('ru-RU');
   let cart = [];
+  window.BespalovaStore = {
+    get cart() { return cart; },
+    money,
+    updateCart() { updateCart(); },
+    openCart() { openCart(); },
+    notify(message) {
+      const box = document.getElementById('formMessage');
+      if (box) {
+        box.className = 'form-message full';
+        box.textContent = message;
+      }
+    }
+  };
 
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -3097,16 +3092,6 @@ body,
   cartOverlay?.addEventListener('click', event => { if (event.target === cartOverlay) closeCart(); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && !cartOverlay.hidden) closeCart(); });
 
-  document.querySelectorAll('[data-add]').forEach(button => {
-    button.addEventListener('click', () => {
-      const id = button.dataset.add;
-      const found = cart.find(item => item.id === id);
-      if (found) found.quantity += 1;
-      else cart.push({ id, title: button.dataset.title, price: Number(button.dataset.price), quantity: 1 });
-      updateCart();
-      openCart();
-    });
-  });
 
   document.getElementById('checkoutButton')?.addEventListener('click', () => {
     closeCart();

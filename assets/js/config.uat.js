@@ -2,7 +2,7 @@
     environment: "uat",
 
     // Новый API будет развернут позднее на VDS.
-    apiBaseUrl: "https://api-uat.bespalovalegal.ru",
+    apiBaseUrl: "https://api.bespalovalegal.ru",
 
     requestTimeoutMs: 15000,
 

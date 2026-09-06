@@ -30,6 +30,7 @@ $requiredFiles = @(
     ".gitignore",
     "assets/js/config.uat.js",
     "assets/js/api-client.js",
+    "assets/js/catalog.js",
     "assets/js/uat-bootstrap.js",
     "docs/UAT_BASELINE.md",
     ".github/workflows/uat-checks.yml"
