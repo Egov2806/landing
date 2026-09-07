@@ -85,13 +85,18 @@
                 };
             }
 
+            const errorBody =
+                payload?.error && typeof payload.error === "object"
+                    ? payload.error
+                    : payload;
+
             if (!response.ok) {
                 throw new ApiError(
-                    payload?.message ?? "Ошибка API",
+                    errorBody?.message ?? "Ошибка API",
                     response.status,
-                    payload?.code ?? "api_error",
+                    errorBody?.code ?? "api_error",
                     responseRequestId,
-                    payload?.details ?? null
+                    errorBody?.details ?? null
                 );
             }
 

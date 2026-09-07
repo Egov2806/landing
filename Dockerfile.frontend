@@ -6,6 +6,7 @@ COPY index.html /usr/share/nginx/html/index.html
 COPY lk/ /usr/share/nginx/html/lk/
 COPY services/ /usr/share/nginx/html/services/
 COPY viewer/ /usr/share/nginx/html/viewer/
+COPY checkout/ /usr/share/nginx/html/checkout/
 COPY assets/ /usr/share/nginx/html/assets/
 
 USER 101

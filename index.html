@@ -2962,9 +2962,10 @@ body,
 <div class="cart-footer" hidden="" id="cartFooter"><div><span>ИТОГО</span><strong id="cartTotal">0 ₽</strong></div><button class="button button-gold" id="checkoutButton" type="button">ОФОРМИТЬ ЗАКАЗ</button></div>
 </aside>
 </div>
-<script src="/assets/js/config.uat.js?v=20260907-so"></script>
-<script src="/assets/js/api-client.js?v=20260907-so"></script>
-<script src="/assets/js/catalog.js?v=20260907-so"></script>
+<script src="/assets/js/config.uat.js?v=20260907-co"></script>
+<script src="/assets/js/api-client.js?v=20260907-co"></script>
+<script src="/assets/js/cart-store.js?v=20260907-co"></script>
+<script src="/assets/js/catalog.js?v=20260907-co"></script>
 <script>
 (() => {
   const API_CONFIG = {
@@ -3094,18 +3095,9 @@ body,
 
 
   document.getElementById('checkoutButton')?.addEventListener('click', () => {
-    closeCart();
-    const comment = document.getElementById('comment');
-    if (comment) {
-      const lines = cart.map((item) =>
-        `${item.title} (${money.format(item.price)} ₽)`
-      );
-      comment.value = lines.length
-        ? `Хочу оформить: ${lines.join(', ')}`
-        : 'Хочу оформить выбранные цифровые продукты.';
-    }
-    document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
-    setTimeout(() => document.getElementById('name')?.focus(), 650);
+    if (!cart.length) return;
+    window.BespalovaCartStore?.setSlugs(cart.map((item) => item.id));
+    window.location.href = '/checkout/';
   });
 
   const form = document.getElementById('leadForm');

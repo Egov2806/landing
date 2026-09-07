@@ -6,8 +6,8 @@
 
     requestTimeoutMs: 15000,
 
-    // До отдельного этапа Prodamus checkout полностью отключён.
-    paymentsEnabled: false,
+    // UAT public checkout UI. GATE-LIVE-HOSTING / PUBLIC_LIVE_PAYMENTS не закрываем.
+    paymentsEnabled: true,
     livePaymentsEnabled: false,
 
     // Выдача доступа на первоначальном UAT только ручная.

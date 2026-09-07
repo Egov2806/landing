@@ -61,25 +61,14 @@
         root.querySelectorAll("[data-add]").forEach((button) => {
             button.addEventListener("click", () => {
                 const store = window.BespalovaStore;
+                const cartStore = window.BespalovaCartStore;
                 const item = itemsBySlug[button.dataset.add];
-                if (!store || !item || !item.is_purchasable) {
+                if (!store || !cartStore || !item || !item.is_purchasable) {
                     return;
                 }
-
-                const price = Number(item.price_kopecks || 0) / 100;
-                const found = store.cart.find((row) => row.id === item.slug);
-                if (found) {
-                    found.quantity = 1;
-                    found.title = item.title;
-                    found.price = price;
-                } else {
-                    store.cart.push({
-                        id: item.slug,
-                        title: item.title,
-                        price,
-                        quantity: 1
-                    });
-                }
+                cartStore.add(item.slug);
+                const hydrated = cartStore.hydrate(Object.values(itemsBySlug));
+                store.cart.splice(0, store.cart.length, ...hydrated.items);
                 store.updateCart();
                 store.openCart();
             });
@@ -88,28 +77,13 @@
 
     function syncCart(items) {
         const store = window.BespalovaStore;
-        if (!store || !Array.isArray(store.cart)) {
+        const cartStore = window.BespalovaCartStore;
+        if (!store || !cartStore || !Array.isArray(store.cart)) {
             return;
         }
-
-        const bySlug = new Map(items.map((item) => [item.slug, item]));
-        const next = [];
-        let removed = false;
-        store.cart.forEach((row) => {
-            const live = bySlug.get(row.id);
-            if (!live || !live.is_purchasable) {
-                removed = true;
-                return;
-            }
-            next.push({
-                id: live.slug,
-                title: live.title,
-                price: Number(live.price_kopecks || 0) / 100,
-                quantity: 1
-            });
-        });
-        store.cart.splice(0, store.cart.length, ...next);
-        if (removed && typeof store.notify === "function") {
+        const hydrated = cartStore.hydrate(items);
+        store.cart.splice(0, store.cart.length, ...hydrated.items);
+        if (hydrated.removed && typeof store.notify === "function") {
             store.notify("Некоторые позиции больше недоступны для покупки и удалены из корзины.");
         }
         store.updateCart();
