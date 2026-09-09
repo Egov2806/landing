@@ -51,11 +51,24 @@ h1 { margin: 0 0 12px; font-weight: 300; font-size: clamp(34px, 6vw, 52px); }
   <div class="panel">
     <p class="lead">Оплата принята. Доступ будет предоставлен администратором в течение 24 часов.</p>
     <p class="lead">Повторная оплата не требуется. Когда доступ выдадут, на указанный email придёт письмо со входом в личный кабинет.</p>
+    <p class="lead" id="kassaReceiptHint" hidden>Электронный чек отправит онлайн-касса на email, указанный при оплате. Это не письмо со входом в личный кабинет.</p>
   </div>
   <div class="links">
     <a href="/account">ЛИЧНЫЙ КАБИНЕТ</a>
     <a href="/">НА ГЛАВНУЮ</a>
   </div>
 </div>
+<script>
+(function () {
+  var hint = document.getElementById("kassaReceiptHint");
+  if (!hint) return;
+  fetch("/api/v1/catalog", { credentials: "omit" })
+    .then(function (response) { return response.ok ? response.json() : null; })
+    .then(function (payload) {
+      if (payload && payload.provider_kassa_enabled) hint.hidden = false;
+    })
+    .catch(function () {});
+})();
+</script>
 </body>
 </html>
