@@ -608,8 +608,8 @@ img { max-width: 100%; }
 .site-footer { padding: 54px 0; background: #050505; border-top: 1px solid var(--line-soft); }
 .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; }
 .brand-footer { transform: scale(.72); transform-origin: left center; margin-right: -90px; }
-.footer-links { display: flex; gap: 30px; justify-content: flex-end; }
-.footer-links a { color: #8d8982; font-size: 9px; letter-spacing: .13em; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 16px 30px; justify-content: flex-end; }
+.footer-links a { color: #8d8982; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
 .footer-links a:hover { color: var(--gold-pale); }
 .footer-inner > p { grid-column: 1 / -1; color: #5f5c57; font-size: 10px; margin: -15px 0 0; }
 
@@ -2947,7 +2947,7 @@ body,
 <footer class="site-footer">
 <div class="section-shell footer-inner">
 <a class="brand brand-footer" href="#top"><img alt="" aria-hidden="true" class="brand-logo" src="/assets/img/image-211e8c8394.webp" loading="lazy" decoding="async" /><span class="brand-copy"><strong>БЕСПАЛОВА И ПАРТНЕРЫ</strong><small>ЮРИДИЧЕСКИЙ БУТИК</small></span></a>
-<div class="footer-links"><a href="/lk">ЛИЧНЫЙ КАБИНЕТ</a><a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></div>
+<div class="footer-links"></div>
 <div class="footer-requisites">
 <div>ИП Беспалова Марина Константиновна</div>
 <div>ИНН 772606129659</div>
@@ -2966,6 +2966,7 @@ body,
 <script src="/assets/js/api-client.js?v=20260907-co"></script>
 <script src="/assets/js/cart-store.js?v=20260907-co"></script>
 <script src="/assets/js/catalog.js?v=20260907-co"></script>
+<script src="/assets/js/site-documents.js?v=20260911-g6fix"></script>
 <script>
 (() => {
   const API_CONFIG = {
