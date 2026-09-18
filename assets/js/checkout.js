@@ -1,6 +1,66 @@
 (() => {
     "use strict";
 
+    /* G2-B4-phone-mask */
+    function ruPhoneNationalDigits(value) {
+      let digits = String(value || "").replace(/\D/g, "");
+      if (digits.startsWith("8") || digits.startsWith("7")) digits = digits.slice(1);
+      return digits.slice(0, 10);
+    }
+    function formatRuPhoneMask(digits) {
+      const d = ruPhoneNationalDigits(digits);
+      if (!d.length) return "+7 (";
+      let out = "+7 (" + d.slice(0, 3);
+      if (d.length < 3) return out;
+      out += ") " + d.slice(3, 6);
+      if (d.length < 6) return out;
+      out += "-" + d.slice(6, 8);
+      if (d.length < 8) return out;
+      return out + "-" + d.slice(8, 10);
+    }
+    function canonicalRuPhone(value) {
+      const d = ruPhoneNationalDigits(value);
+      return d ? "+7" + d : "";
+    }
+    function bindRuPhoneMask(input) {
+      if (!input || input.dataset.ruPhoneMask === "1") return input;
+      input.dataset.ruPhoneMask = "1";
+      input.setAttribute("autocomplete", "tel");
+      input.setAttribute("inputmode", "tel");
+      input.setAttribute("maxlength", "18");
+      if (!input.getAttribute("placeholder")) input.setAttribute("placeholder", "+7 (___) ___-__-__");
+      function paint(raw, moveCaret) {
+        const d = ruPhoneNationalDigits(raw);
+        const formatted = d.length ? formatRuPhoneMask(d) : (document.activeElement === input ? "+7 (" : "");
+        input.value = formatted;
+        if (moveCaret && typeof input.setSelectionRange === "function") {
+          const pos = formatted.length;
+          try { input.setSelectionRange(pos, pos); } catch (_error) {}
+        }
+      }
+      input.addEventListener("focus", function () {
+        if (!ruPhoneNationalDigits(input.value).length) input.value = "+7 (";
+      });
+      input.addEventListener("blur", function () {
+        if (!ruPhoneNationalDigits(input.value).length) input.value = "";
+      });
+      input.addEventListener("input", function () { paint(input.value, true); });
+      input.addEventListener("keydown", function (event) {
+        if (event.key !== "Backspace" || event.ctrlKey || event.metaKey || event.altKey) return;
+        event.preventDefault();
+        const d = ruPhoneNationalDigits(input.value);
+        paint(d.slice(0, Math.max(0, d.length - 1)), true);
+      });
+      input.addEventListener("paste", function (event) {
+        event.preventDefault();
+        const text = ((event.clipboardData || window.clipboardData).getData("text") || "");
+        paint(text, true);
+      });
+      if (input.value) paint(input.value, false);
+      return input;
+    }
+    /* G2-B4-phone-mask-end */
+
     const money = new Intl.NumberFormat("ru-RU");
     const IDEMPOTENCY_KEY = "bespalova.checkout.idempotency";
     const CONSENT_VERSION = "3.1";
@@ -144,7 +204,7 @@
                 idempotency_key: ensureIdempotencyKey(),
                 name: document.getElementById("checkoutName").value.trim(),
                 email: document.getElementById("checkoutEmail").value.trim(),
-                phone: document.getElementById("checkoutPhone").value.trim(),
+                phone: canonicalRuPhone(document.getElementById("checkoutPhone").value),
                 product_slugs: items.map((item) => item.id),
                 consent_personal_data: true,
                 privacy_policy_version: CONSENT_VERSION,
@@ -201,6 +261,7 @@
             setPayEnabled(false);
         }
 
+        bindRuPhoneMask(document.getElementById("checkoutPhone"));
         form?.addEventListener("submit", submitCheckout);
     });
 })();

@@ -8,8 +8,6 @@
         "МАКСИМУМ"
     ]);
 
-    const FALLBACK_TAB = "checkup";
-
     function escapeHtml(value) {
         return String(value ?? "")
             .replaceAll("&", "&amp;")
@@ -19,8 +17,14 @@
             .replaceAll("'", "&#39;");
     }
 
-    function tabFor(item) {
-        return item && item.tab ? String(item.tab) : FALLBACK_TAB;
+    function gridClass(count) {
+        if (count === 1) {
+            return "product-grid product-grid-single";
+        }
+        if (count === 2) {
+            return "product-grid product-grid-two";
+        }
+        return "product-grid";
     }
 
     function setPanelMessage(panel, message) {
@@ -89,11 +93,67 @@
         store.updateCart();
     }
 
-    function renderCatalog(items) {
-        const panels = document.querySelectorAll("[data-catalog-tab]");
+    function bindTabButtons(root) {
+        root.querySelectorAll(".tab-button").forEach((button) => {
+            button.addEventListener("click", () => {
+                const selected = button.dataset.tab;
+                root.querySelectorAll(".tab-button").forEach((item) => {
+                    const active = item === button;
+                    item.classList.toggle("active", active);
+                    item.setAttribute("aria-selected", String(active));
+                });
+                document.querySelectorAll("[data-catalog-panels] .tab-panel").forEach((panel) => {
+                    const active = panel.id === `panel-${selected}`;
+                    panel.classList.toggle("active", active);
+                    panel.hidden = !active;
+                    if (active) {
+                        panel.querySelectorAll(".reveal").forEach((item) => {
+                            item.classList.add("visible");
+                        });
+                    }
+                });
+            });
+        });
+    }
+
+    function renderSections(sections) {
+        const tabs = document.querySelector("[data-catalog-tabs]");
+        const panels = document.querySelector("[data-catalog-panels]");
+        if (!tabs || !panels) {
+            return [];
+        }
+        if (!sections.length) {
+            tabs.innerHTML = "";
+            panels.innerHTML =
+                '<p class="catalog-empty">В каталоге пока нет опубликованных продуктов.</p>';
+            return [];
+        }
+        tabs.innerHTML = sections.map((section, index) => {
+            const slug = escapeHtml(section.slug || "");
+            const title = escapeHtml(section.title || section.slug || "");
+            const active = index === 0;
+            return `<button aria-selected="${active ? "true" : "false"}" class="tab-button${active ? " active" : ""}" data-tab="${slug}" role="tab" type="button">${title}</button>`;
+        }).join("");
+        panels.innerHTML = sections.map((section, index) => {
+            const slug = escapeHtml(section.slug || "");
+            const active = index === 0;
+            return `<div class="tab-panel${active ? " active" : ""}" id="panel-${slug}" role="tabpanel"${active ? "" : " hidden"}><div class="product-grid" data-catalog-tab="${slug}"></div></div>`;
+        }).join("");
+        bindTabButtons(tabs);
+        return sections;
+    }
+
+    function renderCatalog(payload) {
+        const items = Array.isArray(payload?.items) ? payload.items : [];
+        const sections = Array.isArray(payload?.sections) ? payload.sections : [];
+        renderSections(sections);
+
         const grouped = {};
         items.forEach((item) => {
-            const tab = tabFor(item);
+            const tab = item && item.tab ? String(item.tab) : "";
+            if (!tab) {
+                return;
+            }
             grouped[tab] = grouped[tab] || [];
             grouped[tab].push(item);
         });
@@ -103,9 +163,10 @@
             itemsBySlug[item.slug] = item;
         });
 
-        panels.forEach((panel) => {
+        document.querySelectorAll("[data-catalog-tab]").forEach((panel) => {
             const tab = panel.getAttribute("data-catalog-tab");
             const tabItems = grouped[tab] || [];
+            panel.className = gridClass(tabItems.length);
             if (!tabItems.length) {
                 setPanelMessage(panel, "В этой категории пока нет опубликованных продуктов.");
                 return;
@@ -120,6 +181,15 @@
     }
 
     function renderUnavailable() {
+        const tabs = document.querySelector("[data-catalog-tabs]");
+        const panels = document.querySelector("[data-catalog-panels]");
+        if (tabs) {
+            tabs.innerHTML = "";
+        }
+        if (panels) {
+            panels.innerHTML =
+                '<p class="catalog-empty">Каталог временно недоступен. Покупка приостановлена.</p>';
+        }
         document.querySelectorAll("[data-catalog-tab]").forEach((panel) => {
             setPanelMessage(
                 panel,
@@ -151,8 +221,7 @@
             }
 
             const payload = await response.json();
-            const items = Array.isArray(payload?.items) ? payload.items : [];
-            renderCatalog(items);
+            renderCatalog(payload);
         } catch (_error) {
             renderUnavailable();
         }

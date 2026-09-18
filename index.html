@@ -593,7 +593,26 @@ img { max-width: 100%; }
 .contact-planet { width: 520px; height: 520px; left: -290px; bottom: -310px; opacity: .55; }
 .contact-form { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 25px; padding-top: 10px; }
 .contact-form label { display: flex; flex-direction: column; gap: 10px; }
+.contact-form label[hidden] { display: none !important; }
 .contact-form label.full, .contact-form .full { grid-column: 1 / -1; }
+.lead-code-action { display: flex; align-items: flex-end; }
+.lead-code-request {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid #745730;
+  background: transparent;
+  color: var(--gold-pale);
+  font-size: 11px;
+  letter-spacing: .03em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .25s var(--ease), background .25s ease, color .25s ease, border-color .25s ease;
+}
+.lead-code-request:hover { color: #fff; border-color: var(--gold); background: rgba(185,132,73,.15); }
+.lead-code-request:disabled { opacity: .55; cursor: wait; }
 .contact-form label > span { color: #817e78; font-size: 9px; letter-spacing: .17em; }
 .contact-form input, .contact-form textarea { width: 100%; border: 0; border-bottom: 1px solid #3d3b37; background: transparent; color: var(--text); border-radius: 0; padding: 12px 0; outline: none; transition: border-color .25s ease; }
 .contact-form textarea { resize: vertical; min-height: 96px; }
@@ -2870,24 +2889,8 @@ body,
 <span>Применяете решения самостоятельно</span>
 <span>Экономите время и бюджет</span>
 </div>
-<div aria-label="Категории продуктов" class="tabs reveal" role="tablist">
-<button aria-selected="true" class="tab-button active" data-tab="checkup" role="tab" type="button">CHECK-UP</button>
-<button aria-selected="false" class="tab-button" data-tab="taxes" role="tab" type="button">НАЛОГИ</button>
-<button aria-selected="false" class="tab-button" data-tab="infobiz" role="tab" type="button">ИНФОБИЗНЕС</button>
-<button aria-selected="false" class="tab-button" data-tab="launch" role="tab" type="button">ЗАПУСК</button>
-</div>
-<div class="tab-panel active" id="panel-checkup" role="tabpanel">
-<div class="product-grid product-grid-single" data-catalog-tab="checkup"></div>
-</div>
-<div class="tab-panel" hidden="" id="panel-taxes" role="tabpanel">
-<div class="product-grid" data-catalog-tab="taxes"></div>
-</div>
-<div class="tab-panel" hidden="" id="panel-infobiz" role="tabpanel">
-<div class="product-grid" data-catalog-tab="infobiz"></div>
-</div>
-<div class="tab-panel" hidden="" id="panel-launch" role="tabpanel">
-<div class="product-grid product-grid-two" data-catalog-tab="launch"></div>
-</div>
+<div aria-label="Категории продуктов" class="tabs reveal" role="tablist" data-catalog-tabs></div>
+<div data-catalog-panels></div>
 </div>
 </section>
 <div aria-hidden="true" class="theme-transition light-to-dark"></div>
@@ -2914,8 +2917,12 @@ body,
 </div>
 <form class="contact-form reveal delay-1" id="leadForm" novalidate="">
 <label><span>ВАШЕ ИМЯ</span><input autocomplete="name" id="name" name="name" required="" type="text"/></label>
-<label><span>ТЕЛЕФОН</span><input autocomplete="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required="" type="tel"/></label>
-<label><span>EMAIL</span><input autocomplete="email" id="email" name="email" type="email"/></label>
+<label><span>ТЕЛЕФОН</span><input autocomplete="tel" id="phone" inputmode="tel" maxlength="18" name="phone" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" placeholder="+7 (___) ___-__-__" type="tel"/></label>
+<label><span>EMAIL</span><input autocomplete="email" id="email" name="email" required="" type="email"/></label>
+<div class="lead-code-action">
+<button class="lead-code-request" id="leadCodeButton" type="button">ПОЛУЧИТЬ КОД НА ПОЧТУ</button>
+</div>
+<label class="full" id="leadCodeRow" hidden=""><span>КОД ИЗ ПИСЬМА</span><input autocomplete="one-time-code" id="leadCode" inputmode="numeric" maxlength="6" name="lead_code" pattern="\d{6}" placeholder="000000"/></label>
 <label class="full"><span>ОПИШИТЕ ЗАДАЧУ</span><textarea id="comment" name="comment" rows="4"></textarea></label>
 <input aria-hidden="true" autocomplete="off" class="honeypot" name="website" tabindex="-1" type="text"/>
 <div class="form-bottom full">
@@ -2965,7 +2972,7 @@ body,
 <script src="/assets/js/config.uat.js?v=20260907-co"></script>
 <script src="/assets/js/api-client.js?v=20260907-co"></script>
 <script src="/assets/js/cart-store.js?v=20260907-co"></script>
-<script src="/assets/js/catalog.js?v=20260907-co"></script>
+<script src="/assets/js/catalog.js?v=20260919-sections"></script>
 <script src="/assets/js/site-documents.js?v=20260911-g6fix"></script>
 <script>
 (() => {
@@ -3101,8 +3108,122 @@ body,
     window.location.href = '/checkout/';
   });
 
+  /* G2-B4-phone-mask */
+  function ruPhoneNationalDigits(value) {
+    let digits = String(value || "").replace(/\D/g, "");
+    if (digits.startsWith("8") || digits.startsWith("7")) digits = digits.slice(1);
+    return digits.slice(0, 10);
+  }
+  function formatRuPhoneMask(digits) {
+    const d = ruPhoneNationalDigits(digits);
+    if (!d.length) return "+7 (";
+    let out = "+7 (" + d.slice(0, 3);
+    if (d.length < 3) return out;
+    out += ") " + d.slice(3, 6);
+    if (d.length < 6) return out;
+    out += "-" + d.slice(6, 8);
+    if (d.length < 8) return out;
+    return out + "-" + d.slice(8, 10);
+  }
+  function canonicalRuPhone(value) {
+    const d = ruPhoneNationalDigits(value);
+    return d ? "+7" + d : "";
+  }
+  function bindRuPhoneMask(input) {
+    if (!input || input.dataset.ruPhoneMask === "1") return input;
+    input.dataset.ruPhoneMask = "1";
+    input.setAttribute("autocomplete", "tel");
+    input.setAttribute("inputmode", "tel");
+    input.setAttribute("maxlength", "18");
+    if (!input.getAttribute("placeholder")) input.setAttribute("placeholder", "+7 (___) ___-__-__");
+    function paint(raw, moveCaret) {
+      const d = ruPhoneNationalDigits(raw);
+      const formatted = d.length ? formatRuPhoneMask(d) : (document.activeElement === input ? "+7 (" : "");
+      input.value = formatted;
+      if (moveCaret && typeof input.setSelectionRange === "function") {
+        const pos = formatted.length;
+        try { input.setSelectionRange(pos, pos); } catch (_error) {}
+      }
+    }
+    input.addEventListener("focus", function () {
+      if (!ruPhoneNationalDigits(input.value).length) input.value = "+7 (";
+    });
+    input.addEventListener("blur", function () {
+      if (!ruPhoneNationalDigits(input.value).length) input.value = "";
+    });
+    input.addEventListener("input", function () { paint(input.value, true); });
+    input.addEventListener("keydown", function (event) {
+      if (event.key !== "Backspace" || event.ctrlKey || event.metaKey || event.altKey) return;
+      event.preventDefault();
+      const d = ruPhoneNationalDigits(input.value);
+      paint(d.slice(0, Math.max(0, d.length - 1)), true);
+    });
+    input.addEventListener("paste", function (event) {
+      event.preventDefault();
+      const text = ((event.clipboardData || window.clipboardData).getData("text") || "");
+      paint(text, true);
+    });
+    if (input.value) paint(input.value, false);
+    return input;
+  }
+  /* G2-B4-phone-mask-end */
+
   const form = document.getElementById('leadForm');
   const message = document.getElementById('formMessage');
+  const leadCodeRow = document.getElementById('leadCodeRow');
+  const leadCodeButton = document.getElementById('leadCodeButton');
+  bindRuPhoneMask(document.getElementById('phone'));
+  const leadJsonHeaders = { 'Content-Type': 'application/json', 'X-API-Key': API_CONFIG.key };
+  const leadCodeUrl = API_CONFIG.url.replace(/\/api\/lead$/, '/api/lead/email/request-code');
+
+  function setLeadMessage(text, isError) {
+    message.className = isError ? 'form-message full error' : 'form-message full';
+    message.textContent = text;
+  }
+
+  async function leadApiError(response, fallback) {
+    let payload = {};
+    try { payload = await response.json(); } catch (_error) {}
+    const code = payload && payload.error && payload.error.code;
+    if (response.status === 429 || code === 'RATE_LIMIT_EXCEEDED') {
+      return 'Слишком много попыток. Подождите минуту и повторите.';
+    }
+    if (code === 'EMAIL_CODE_INVALID') {
+      return 'Неверный или просроченный код. Запросите новый код на почту.';
+    }
+    return fallback;
+  }
+
+  leadCodeButton?.addEventListener('click', async () => {
+    message.className = 'form-message full';
+    message.textContent = '';
+    const email = document.getElementById('email').value.trim();
+    if (!email) {
+      document.getElementById('email').reportValidity();
+      return;
+    }
+    leadCodeButton.disabled = true;
+    try {
+      const response = await fetch(leadCodeUrl, {
+        method: 'POST',
+        headers: leadJsonHeaders,
+        body: JSON.stringify({ email, website: form.elements.website?.value || '' })
+      });
+      if (!response.ok) throw new Error(await leadApiError(response, 'CODE'));
+      leadCodeRow.hidden = false;
+      document.getElementById('leadCode').required = true;
+      setLeadMessage('Код отправлен на почту. Введите его и отправьте заявку.');
+    } catch (error) {
+      console.error(error);
+      const text = String(error && error.message || '');
+      setLeadMessage(
+        /подождите/i.test(text) ? text : 'Не удалось отправить код. Проверьте почту и повторите попытку.',
+        true
+      );
+    } finally {
+      leadCodeButton.disabled = false;
+    }
+  });
 
   form?.addEventListener('submit', async event => {
     event.preventDefault();
@@ -3123,31 +3244,44 @@ body,
     const orderLines = cart.map(item => `- ${item.title} × ${item.quantity}: ${money.format(item.price * item.quantity)} ₽`);
     const orderTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     const cartInfo = orderLines.length ? `\n\nЗаказ:\n${orderLines.join('\n')}\nИтого: ${money.format(orderTotal)} ₽` : '';
-
-    const payload = {
-      name: document.getElementById('name').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      comment: document.getElementById('comment').value.trim() + cartInfo,
-      cart
-    };
+    const email = document.getElementById('email').value.trim();
+    const code = document.getElementById('leadCode').value.trim();
 
     try {
+      const payload = {
+        name: document.getElementById('name').value.trim(),
+        phone: canonicalRuPhone(document.getElementById('phone').value),
+        email,
+        code,
+        comment: document.getElementById('comment').value.trim() + cartInfo,
+        cart
+      };
+
       const response = await fetch(API_CONFIG.url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-API-Key': API_CONFIG.key },
+        headers: leadJsonHeaders,
         body: JSON.stringify(payload)
       });
 
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      message.textContent = 'Заявка отправлена. Я свяжусь с вами в ближайшее время.';
+      if (!response.ok) throw new Error(await leadApiError(
+        response,
+        'Не удалось отправить заявку. Проверьте код из письма или повторите попытку позже.'
+      ));
+      setLeadMessage('Заявка отправлена. Я свяжусь с вами в ближайшее время.');
       form.reset();
+      leadCodeRow.hidden = true;
+      document.getElementById('leadCode').required = false;
       cart = [];
       updateCart();
     } catch (error) {
       console.error(error);
-      message.classList.add('error');
-      message.textContent = 'Не удалось отправить заявку. Проверьте соединение или повторите попытку позже.';
+      const text = String(error && error.message || '');
+      setLeadMessage(
+        text && text !== 'CODE'
+          ? text
+          : 'Не удалось отправить заявку. Проверьте код из письма или повторите попытку позже.',
+        true
+      );
     } finally {
       submit.disabled = false;
       submit.textContent = 'ОТПРАВИТЬ ЗАЯВКУ';
