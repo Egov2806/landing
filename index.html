@@ -972,7 +972,7 @@ img { max-width: 100%; }
   border-top: 1px solid rgba(215,178,124,.34);
   border-left: 2px solid var(--gold);
   color: var(--gold-pale);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
   font-size: clamp(23px, 3vw, 37px);
   line-height: 1.45;
 }
@@ -2433,7 +2433,7 @@ body,
   max-width: 1050px;
   margin: 0;
   color: #9a672d !important;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
   font-size: clamp(20px, 2.15vw, 30px);
   line-height: 1.58;
   font-weight: 400;
@@ -2628,6 +2628,706 @@ body,
   }
 }
 
+/* ===== P9 C1–C7: structured modules matching the rest of the page ===== */
+.why-section .why-heading h2 {
+  font-size: clamp(38px, 4.4vw, 60px);
+  font-weight: 300;
+  letter-spacing: -.035em;
+  line-height: 1.12;
+}
+.why-section .why-copy-p9 {
+  display: block;
+  max-width: none;
+  margin-top: 0;
+}
+.why-section .why-copy-p9 p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #5f554a;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+.why-section .why-copy-p9 .why-caps,
+.why-section .why-copy-p9 .p9-group-title {
+  padding: 0;
+  color: #6f4722;
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+.why-section .why-copy-p9 strong {
+  color: #211c16;
+  font-weight: 700;
+}
+.p9-lead {
+  max-width: 820px;
+}
+
+.p9-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  gap: 20px 48px;
+  align-items: start;
+}
+.p9-voice {
+  margin: 28px 0;
+  padding: 22px 0;
+  border-top: 1px solid rgba(142,97,46,.28);
+  border-bottom: 1px solid rgba(142,97,46,.18);
+}
+.why-section .why-copy-p9 .p9-voice > p {
+  color: #9a672d;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1.45;
+}
+.p9-voice > p + p {
+  margin-top: 10px;
+}
+.why-section .why-copy-p9 .p9-voice .p9-voice-note {
+  color: #5f554a;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.p9-voice.p9-voice-side {
+  margin: 0;
+  padding: 2px 0 2px 28px;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 1px solid rgba(142,97,46,.28);
+}
+.p9-kicker {
+  margin: 0 0 12px !important;
+  color: #9a672d !important;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif !important;
+  font-size: clamp(18px, 1.7vw, 24px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.4 !important;
+}
+.p9-changes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 0 14px !important;
+  color: #6f4722 !important;
+}
+.p9-changes span {
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  margin: 0 12px;
+  background: #8e612e;
+}
+.p9-ink {
+  color: #8e612e;
+}
+.p9-ink-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 28px;
+  margin: 16px 0 18px;
+  padding: 0;
+  list-style: none;
+}
+.p9-ink-list li {
+  margin: 0;
+  padding: 0 0 0 14px;
+  border-left: 1px solid #8e612e;
+  color: #443b31;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.p9-arch,
+.p9-expertise,
+.p9-close {
+  max-width: none;
+}
+.p9-risks {
+  margin: 22px 0 8px;
+}
+.p9-lead p + p,
+.p9-arch > p + p,
+.p9-expertise p + p,
+.p9-close > p + p {
+  margin-top: 8px;
+}
+.p9-lead-first {
+  color: #2d261e !important;
+  font-size: clamp(18px, 1.8vw, 22px) !important;
+  line-height: 1.55 !important;
+}
+.p9-highlight {
+  max-width: 980px;
+  margin: 36px 0 28px;
+  padding: 26px 0 26px 22px;
+  border-top: 1px solid rgba(142,97,46,.28);
+  border-bottom: 1px solid rgba(142,97,46,.18);
+  border-left: 2px solid #8e612e;
+}
+.why-section .why-copy-p9 .p9-highlight-caps,
+.products-copy .p9-highlight p {
+  margin: 0;
+  padding: 0;
+  color: #9a672d;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 300;
+  line-height: 1.4;
+}
+.why-section .why-copy-p9 .p9-highlight p + p {
+  margin-top: 10px;
+  color: #5f554a;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.p9-arch {
+  margin: 8px 0 32px;
+}
+.p9-arch .why-points {
+  margin: 18px 0 16px;
+}
+.why-section .p9-risks li,
+.why-section .p9-arch .why-points-areas li {
+  min-height: 0;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.p9-expertise {
+  margin: 8px 0 36px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(83,60,35,.16);
+}
+.p9-close > p {
+  max-width: 860px;
+}
+.p9-quotes {
+  margin: 16px 0 20px;
+  padding: 4px 0 4px 22px;
+  border-left: 2px solid #8e612e;
+}
+.why-section .why-copy-p9 .p9-quotes p {
+  color: #6f4722 !important;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  font-size: clamp(18px, 1.8vw, 24px) !important;
+  line-height: 1.45 !important;
+}
+.p9-quotes p + p {
+  margin-top: 8px;
+}
+.why-section .why-copy-p9 .p9-quotes p:last-child {
+  color: #9a672d !important;
+}
+.p9-group-title {
+  margin: 0 0 18px;
+}
+.why-section .p9-strip,
+.products-copy .p9-strip {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 18px;
+  width: 100%;
+  margin: 0 0 36px;
+  padding: 4px 0 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(142,97,46,.5) rgba(83,60,35,.08);
+  cursor: grab;
+}
+.why-section .p9-strip:active,
+.products-copy .p9-strip:active {
+  cursor: grabbing;
+}
+.why-section .p9-strip .value-card,
+.products-copy .p9-strip .value-card {
+  flex: 0 0 clamp(280px, 30vw, 380px);
+  width: clamp(280px, 30vw, 380px);
+  min-height: 280px;
+  scroll-snap-align: start;
+  transform: none !important;
+  border-radius: 0 !important;
+}
+.p9-self-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px 28px;
+  margin: 36px 0 28px;
+  padding: 0;
+  list-style: none;
+  counter-reset: self-point;
+}
+.p9-self-list li {
+  counter-increment: self-point;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-height: 88px;
+  margin: 0;
+  padding: 16px 8px 16px 0;
+  border-bottom: 1px solid #e2d9d0;
+  color: #443b31;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.p9-self-list li::before {
+  content: counter(self-point, decimal-leading-zero);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #f2e9df;
+  color: #a4442d;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+.products-copy {
+  padding-bottom: 40px;
+}
+.products-copy + .products {
+  padding-top: 8px;
+}
+.products-copy .section-heading-wide {
+  max-width: 920px;
+  margin-bottom: 8px;
+}
+.products-copy .section-heading h2 {
+  font-size: clamp(38px, 4.4vw, 60px);
+  font-weight: 300;
+  letter-spacing: -.035em;
+  line-height: 1.12;
+  color: #211c16;
+}
+.products-copy .heading-rule {
+  background: linear-gradient(90deg, #8e612e, transparent);
+}
+.preview-categories h2,
+.preview-tail h2 {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 300;
+  letter-spacing: -.025em;
+  line-height: 1.2;
+  color: #211c16;
+}
+.products-copy .section-heading-wide p,
+.products-copy .p9-note,
+.preview-tail p {
+  max-width: 820px;
+  margin: 22px 0 0;
+  color: #5f554a;
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.products-copy .section-heading-wide strong,
+.preview-tail strong,
+.products-copy .p9-highlight strong,
+.p9-pdf-card strong {
+  color: #a4442d;
+  font-weight: 300;
+}
+.p9-note {
+  margin: 8px 0 28px !important;
+}
+.p9-pdf-composition {
+  position: relative;
+  z-index: 0;
+  margin: 44px 0 64px;
+  padding: 42px 0 24px;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+.p9-pdf-composition::before,
+.p9-pdf-composition::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.p9-pdf-composition::before {
+  top: 0;
+  z-index: 1;
+  height: 2px;
+  background: #a4442d;
+}
+.p9-pdf-composition::after {
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background: #f7f1e8;
+  border-bottom: 2px solid #a4442d;
+}
+.p9-pdf-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(420px, 1.12fr);
+  align-items: stretch;
+  gap: 0;
+}
+.p9-pdf-card {
+  display: block;
+  max-width: none;
+  margin: 0;
+  padding: 4px clamp(36px, 5vw, 74px) 4px 0;
+  border: 0;
+  border-right: 1px solid rgba(142,97,46,.22);
+  background: transparent;
+}
+.p9-pdf-card .p9-pdf-intro {
+  margin: 0 0 12px !important;
+  color: #786d62;
+  font-size: 14px;
+}
+.p9-pdf-card .p9-highlight {
+  max-width: 620px;
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.p9-pdf-card .p9-highlight p {
+  margin: 0;
+  color: #5f554a;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.62;
+}
+.p9-situations {
+  align-self: stretch;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 clamp(18px, 2.6vw, 38px);
+  margin: 0;
+  padding: 0 0 0 clamp(36px, 5vw, 74px);
+}
+.p9-situations li {
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 14px;
+  min-height: 92px;
+  padding: 14px 4px 14px 0;
+  border-bottom: 1px solid rgba(142,97,46,.16);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.p9-situations li::before {
+  width: 48px;
+  height: 48px;
+  background: #edcbb8;
+  color: #8d3825;
+  font-size: 13px;
+}
+.p9-pdf-card h3 {
+  margin: 0 0 20px;
+  color: #211c16;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  font-size: clamp(34px, 3.7vw, 52px);
+  font-weight: 300;
+  letter-spacing: -.035em;
+  line-height: 1.15;
+}
+.p9-pdf-card p {
+  margin: 0 0 12px;
+  color: #5f554a;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.p9-pdf-keep {
+  display: block;
+  margin: 22px 0 20px !important;
+  padding: 0;
+  background: transparent;
+  color: #a4442d !important;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  font-size: clamp(22px, 2.4vw, 30px) !important;
+  font-weight: 300 !important;
+  line-height: 1.25 !important;
+}
+.p9-pdf-foot {
+  max-width: none !important;
+  margin: 24px 0 0 !important;
+  color: #786d62 !important;
+  font-size: 12px !important;
+  letter-spacing: .12em;
+  line-height: 1.5 !important;
+  text-transform: uppercase;
+}
+.preview-categories {
+  margin: 36px 0 40px;
+}
+.preview-categories h2 {
+  margin: 0 0 22px;
+}
+.preview-panel[hidden] {
+  display: none;
+}
+.products-copy .product-card {
+  min-height: 390px;
+}
+.products-copy .product-card strong {
+  color: inherit;
+  font-weight: 400;
+}
+.preview-card-cta {
+  color: #2b241d;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .12em;
+}
+.preview-card-cta:hover {
+  color: #211c16;
+}
+.preview-tail {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, .75fr);
+  align-items: center;
+  gap: clamp(34px, 5vw, 76px);
+  max-width: none;
+  min-height: 410px;
+  margin: 72px 0 8px;
+  padding: 52px clamp(32px, 5vw, 68px);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(142,97,46,.18);
+  background:
+    radial-gradient(circle at 83% 50%, rgba(164,68,45,.07), transparent 24%),
+    linear-gradient(115deg, rgba(255,255,255,.34), rgba(246,239,230,.44));
+  box-shadow: 0 18px 42px rgba(83,60,35,.06);
+}
+.preview-tail::before,
+.preview-tail::after {
+  content: "";
+  position: absolute;
+  left: clamp(32px, 5vw, 68px);
+  right: clamp(32px, 5vw, 68px);
+  height: 1px;
+  z-index: 0;
+  background: rgba(142,97,46,.2);
+}
+.preview-tail::before {
+  top: 24px;
+}
+.preview-tail::after {
+  bottom: 24px;
+}
+.preview-tail-copy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  max-width: 760px;
+}
+.preview-tail h2 {
+  margin: 0 0 18px;
+  font-size: clamp(32px, 3.2vw, 46px);
+}
+.preview-tail p {
+  margin: 10px 0 0;
+}
+.preview-tail-cta-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  width: 300px;
+  height: 300px;
+  background:
+    linear-gradient(90deg, transparent calc(50% - .5px), rgba(142,97,46,.2) 50%, transparent calc(50% + .5px)),
+    linear-gradient(0deg, transparent calc(50% - .5px), rgba(142,97,46,.2) 50%, transparent calc(50% + .5px));
+}
+.preview-tail-cta-stage::before,
+.preview-tail-cta-stage::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(142,97,46,.18);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.preview-tail-cta-stage::before {
+  width: 236px;
+  height: 236px;
+}
+.preview-tail-cta-stage::after {
+  width: 292px;
+  height: 292px;
+  border-color: rgba(142,97,46,.1);
+}
+.preview-tail-cta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 176px;
+  height: 176px;
+  margin: 0;
+  padding: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: #a4442d;
+  color: #f7f1e8;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .06em;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  flex-shrink: 0;
+  box-shadow: 0 16px 38px rgba(126,48,30,.2);
+  transition: background .25s ease, transform .25s var(--ease), box-shadow .25s ease;
+}
+.preview-tail-cta span {
+  display: block;
+  max-width: 8.5em;
+}
+.preview-tail-cta-arrow {
+  margin-top: 10px;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+.preview-tail-cta:hover {
+  background: #8d3825;
+  color: #fff;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 44px rgba(126,48,30,.27);
+}
+
+@media (max-width: 900px) {
+  .p9-split,
+  .p9-ink-list,
+  .p9-self-list,
+  .p9-pdf-layout,
+  .preview-tail {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .p9-pdf-card {
+    padding: 0 0 32px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(142,97,46,.22);
+  }
+  .p9-situations {
+    grid-template-columns: 1fr 1fr;
+    padding: 24px 0 0;
+  }
+  .p9-voice.p9-voice-side {
+    padding-left: 0;
+    border-left: 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(142,97,46,.28);
+  }
+  .preview-tail {
+    justify-items: stretch;
+    gap: 20px;
+    min-height: 0;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .preview-tail-cta-stage {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 720px) {
+  .why-section .why-copy-p9 {
+    margin-top: 36px;
+  }
+  .p9-self-list,
+  .p9-situations {
+    grid-template-columns: 1fr;
+  }
+  .p9-pdf-composition {
+    margin: 36px 0 48px;
+    padding: 32px 0 22px;
+  }
+  .p9-pdf-card h3 {
+    font-size: clamp(32px, 10vw, 42px);
+  }
+  .p9-situations {
+    padding-top: 18px;
+  }
+  .p9-situations li {
+    min-height: 76px;
+  }
+  .p9-pdf-foot {
+    font-size: 10px !important;
+    letter-spacing: .08em;
+  }
+  .preview-tail {
+    margin-top: 52px;
+    padding: 42px 20px 34px;
+  }
+  .preview-tail h2 {
+    font-size: clamp(28px, 8.8vw, 38px);
+  }
+  .preview-tail p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .preview-tail-cta-stage {
+    width: 224px;
+    height: 224px;
+  }
+  .preview-tail-cta-stage::before {
+    width: 194px;
+    height: 194px;
+  }
+  .preview-tail-cta-stage::after {
+    width: 222px;
+    height: 222px;
+  }
+  .preview-tail-cta {
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+    font-size: 11px;
+  }
+  .why-section .p9-strip .value-card,
+  .products-copy .p9-strip .value-card {
+    flex-basis: 82vw;
+    width: 82vw;
+  }
+  .products-copy {
+    padding-bottom: 24px;
+  }
+  .products-copy .product-grid-two {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .why-section .why-copy-p9 > *:hover {
+    transform: none;
+    color: inherit;
+  }
+  .p9-self-list li {
+    transition: transform .32s var(--ease);
+  }
+  .p9-self-list li:hover {
+    transform: translateX(4px);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2680,7 +3380,7 @@ body,
 <span class="gold">НА ВАШ БИЗНЕС</span>
 </h1>
 <div aria-hidden="true" class="gold-line"><i></i></div>
-<p>Защита бизнеса, брендов<br/>и интеллектуальной собственности.</p>
+<p>Выстраиваем юридическую систему бизнеса:<br/>от первого продукта и сделки до масштабирования и корпоративного уровня.</p>
 <div class="hero-actions">
 <a class="button button-gold" href="#contacts">ОБСУДИТЬ ПРОЕКТ</a>
 <a class="arrow-link" href="/services/">УЗНАТЬ БОЛЬШЕ <span>⟶</span></a>
@@ -2737,7 +3437,7 @@ body,
     <div class="about-heading-row">
       <div class="section-heading why-heading reveal">
         <span class="eyebrow">О НАС И НАШИ ЦЕННОСТИ</span>
-        <h2>Правовая архитектура,<br/>работающая на результат</h2>
+        <h2>МЫ НЕ ЖДЕМ, КОГДА У БИЗНЕСА НАЧНЕТСЯ ПРАВОВАЯ ПРОБЛЕМА.</h2>
         <div class="heading-rule"></div>
       </div>
 
@@ -2746,41 +3446,50 @@ body,
       </div>
     </div>
 
-    <div class="why-copy why-copy-updated reveal delay-1">
-      <div class="why-text-block why-text-wide">
-        <p class="why-lead">Мы убеждены, что сильная юридическая защита начинается задолго до возникновения спора. Поэтому мы строим правовую архитектуру бизнеса как целостную систему, где каждое решение работает на:</p>
-        <ul class="why-points">
-          <li>Снижение рисков</li>
-          <li>Сохранение активов</li>
-          <li>Устойчивое развитие</li>
-        </ul>
-      </div>
+    <div class="why-copy-p9 bp-approved" id="bp-approved-fragment" data-approved-reference="final_mockup_text_restored.png">
+  <link rel="stylesheet" href="assets/design/bp-about-only-v2.css?v=20260920-practice1"/>
 
-      <div class="why-text-block">
-        <p>В основе нашей работы — фундаментальная академическая школа, многолетний опыт сопровождения бизнеса в консалтинге и постоянное профессиональное развитие. Мы объединяем глубокую теоретическую подготовку с практикой решения сложных задач в сфере:</p>
-      </div>
-
-      <div class="why-practice-wide reveal">
-        <ul class="why-points why-points-areas">
-          <li>Корпоративного права</li>
-          <li>Налогового консультирования</li>
-          <li>Защиты персональных данных</li>
-          <li>Интеллектуальной собственности</li>
-          <li>Судебной защиты</li>
-        </ul>
-      </div>
-
-      <div class="why-history-highlight reveal delay-1">
-        <p>За годы работы мы сопровождали бизнес на разных этапах: от создания и структурирования компаний до защиты интересов в корпоративных, налоговых и коммерческих спорах. Этот опыт позволяет нам видеть не отдельную юридическую проблему, а всю систему рисков, предлагая решения, рассчитанные на долгосрочную перспективу.</p>
-      </div>
-
-
-      <div class="why-text-block why-expertise">
-        <h3>Экспертиза и развитие</h3>
-        <p>Мы регулярно повышаем квалификацию, выступаем экспертами на профессиональных площадках и участвуем в законотворческой деятельности. Это позволяет нам понимать не только действующее законодательство, но и направления его развития, помогая клиентам принимать решения, которые останутся эффективными не только сегодня, но и в будущем.</p>
-        <p>Нас выбирают компании и предприниматели, которым необходим не просто исполнитель отдельных задач, а долгосрочный партнер, способный обеспечить комплексную защиту бизнеса и сопровождать его развитие на каждом этапе.</p>
-      </div>
-    </div>
+  <section class="bp-intro" aria-labelledby="bp-intro-title">
+   <div class="bp-container bp-intro-inner">
+    <div class="bp-intro-copy reveal"><p class="bp-eyebrow">НАШ ПОДХОД</p><h3 id="bp-intro-title"><span class="bp-desktop-line">Мы предпочитаем,</span> <span class="bp-desktop-line">чтобы ее не пришлось</span> <span class="bp-desktop-line">решать.</span></h3><p class="bp-intro-description">Сильная юридическая система начинается не с претензии, суда или письма из контролирующего органа.</p></div>
+    <ol class="bp-stages reveal delay-1" aria-label="Когда начинается юридическая система"><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6M10 21h4M8.6 14.5C7 13.4 6 11.5 6 9.5a6 6 0 0 1 12 0c0 2-1 3.9-2.6 5L15 18H9z"/></svg><p>Она начинается раньше.</p></li><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="7" r="3"/><path d="M3 20v-4a5 5 0 0 1 10 0v4zM15 4a3 3 0 0 1 0 6M17 12a5 5 0 0 1 4 5v3h-5"/></svg><p>Когда создается продукт. Собирается команда.</p></li><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 2h9l5 5v15H5zM14 2v6h5M8 12h8M8 16h8M8 19h5"/></svg><p>Заключается первая сделка.</p></li><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10v5h5l10 4V5L8 10zM8 15l2 7H6l-2-7M21 9l1-1M21 15l1 1"/></svg><p>Запускается реклама.</p></li><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 22v-6h3v6zM10 22V11h3v11zM17 22V6h3v16zM3 10l6-5 4 2 7-6M16 1h4v4"/></svg><p>Оформляется бренд. Появляются партнеры. Растет компания.</p></li></ol>
+   </div>
+  </section>
+  <section class="bp-view" aria-labelledby="bp-view-title">
+   <div class="bp-container bp-view-grid">
+    <div class="bp-view-copy reveal"><p class="bp-eyebrow">НАШ ВЗГЛЯД</p><h3 id="bp-view-title"><span><span class="bp-desktop-line">МЫ СМОТРИМ</span> <span class="bp-desktop-line">НЕ НА ОТДЕЛЬНЫЙ</span> <span class="bp-desktop-line">ДОКУМЕНТ.</span></span> <span><span class="bp-desktop-line">МЫ СМОТРИМ</span> <span class="bp-desktop-line">НА БИЗНЕС ЦЕЛИКОМ.</span></span></h3><div class="bp-short-rule" aria-hidden="true"></div><p class="bp-view-description">Как устроены процессы. Где деньги и активы. Кто за что отвечает. Кому принадлежат результаты работы. Какие обязательства берет на себя бизнес. Где находятся риски.</p></div>
+    <ol class="bp-risk-list reveal delay-1" aria-label="Почему система важнее отдельных документов"><li><span class="bp-step-index" aria-hidden="true">01</span><p>Потому что можно иметь десятки договоров и все равно не иметь юридической системы.</p></li><li><span class="bp-step-index" aria-hidden="true">02</span><p>Можно зарегистрировать компанию и оставить без защиты интеллектуальную собственность.</p></li><li><span class="bp-step-index" aria-hidden="true">03</span><p>Можно собрать сильную команду и не оформить права на результаты ее работы.</p></li><li><span class="bp-step-index" aria-hidden="true">04</span><p>Можно запустить красивую рекламу и потом объяснять, что вы «имели в виду немного другое».</p></li></ol>
+   </div>
+  </section>
+  <section class="bp-position" aria-labelledby="bp-position-title">
+   <div class="bp-position-sky" aria-hidden="true"></div>
+   <img class="bp-mountains" src="assets/design/position-mountains.webp" alt="" aria-hidden="true" width="1024" height="230" decoding="async"/>
+   <div class="bp-container bp-position-inner reveal"><h3 class="bp-eyebrow" id="bp-position-title">НАША ПОЗИЦИЯ</h3><div class="bp-position-copy"><p class="bp-position-lead">МЫ КАК РАЗ ПРО ТО, ЧТОБЫ ЭТОГО<span class="bp-desktop-break"></span> НЕ ПРОИСХОДИЛО.</p><p class="bp-position-accent">НАША ЗАДАЧА — НЕ ПРОСТО ЗАЩИТИТЬ БИЗНЕС.</p><p class="bp-position-accent">НАША ЗАДАЧА — ПОМОЧЬ ЕМУ РАСТИ,<span class="bp-desktop-break"></span> НЕ СОЗДАВАЯ ЮРИДИЧЕСКИХ ПРОБЛЕМ ПО ДОРОГЕ.</p></div></div>
+  </section>
+  <section class="bp-architecture" aria-labelledby="bp-architecture-title">
+   <div class="bp-container bp-architecture-grid">
+    <div class="bp-architecture-copy reveal"><h3 class="bp-eyebrow" id="bp-architecture-title">ПРАВОВАЯ АРХИТЕКТУРА</h3><p class="bp-architecture-description">Поэтому мы выстраиваем правовую архитектуру бизнеса так, чтобы она развивалась вместе с ним:</p><ol class="bp-directions"><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2 2 7v11l10 5 10-5V7zM2 7l10 5 10-5M12 12v11M7 4.5l10 5"/></svg><span class="bp-direction-index" aria-hidden="true">01</span><p>от первого продукта до большой компании;</p></li><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 2h9l5 5v15H5zM14 2v6h5M8 12h8M8 16h8M8 19h5"/></svg><span class="bp-direction-index" aria-hidden="true">02</span><p>от первого договора до сложных сделок;</p></li><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3 3-6 4-10 4v7c0 5 5 8 10 11 5-3 10-6 10-11V6c-4 0-7-1-10-4z"/></svg><span class="bp-direction-index" aria-hidden="true">03</span><p>от защиты контента и бренда до управления интеллектуальной собственностью;</p></li><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="7" r="3"/><path d="M3 20v-4a5 5 0 0 1 10 0v4zM15 4a3 3 0 0 1 0 6M17 12a5 5 0 0 1 4 5v3h-5"/></svg><span class="bp-direction-index" aria-hidden="true">04</span><p>от персональных данных и рекламы до налоговых и корпоративных вопросов.</p></li></ol><p class="bp-dispute-note">А если спор все-таки случился — подключаемся и защищаем интересы бизнеса уже в конфликте.</p></div>
+    <aside class="bp-expertise reveal delay-1" aria-labelledby="bp-expertise-title">
+ <p class="bp-eyebrow bp-expertise-label">НАША ЭКСПЕРТИЗА — НЕ ЗАСТЫВШАЯ КАРТИНКА.</p>
+ <h3 id="bp-expertise-title">НАМ ВАЖНО ПОНИМАТЬ НЕ ТОЛЬКО, КАК ПРАВО РАБОТАЕТ СЕГОДНЯ.</h3>
+ <p class="bp-expertise-direction">Но и <span>КУДА ОНО ДВИЖЕТСЯ.</span></p>
+ <div class="bp-expertise-copy"><p class="bp-changes">Закон меняется. Бизнес меняется. Правила игры меняются.</p><p>Поэтому мы регулярно повышаем квалификацию, выступаем экспертами на профессиональных площадках и участвуем в законотворческой деятельности.</p><p>Потому что хороший юридический совет должен учитывать не только сегодняшнюю ситуацию, но и планы бизнеса.</p><p>Мы соединяем академическую юридическую школу, практический опыт и постоянное профессиональное развитие, чтобы решения были не просто формально правильными, а применимыми к реальной работе бизнеса.</p></div>
+</aside>
+   </div>
+  </section>
+  <section class="bp-practice" aria-labelledby="bp-practice-title"><div class="bp-container"><h3 id="bp-practice-title" class="reveal">ЧТО ВХОДИТ В НАШУ ПРАКТИКУ</h3><div class="bp-practice-grid"><article class="bp-practice-card reveal"><span class="bp-card-number">01</span><div class="bp-card-copy"><h4>Корпоративное право</h4><p>структура бизнеса, корпоративные отношения, сделки и управление.</p></div></article>
+<article class="bp-practice-card reveal delay-1"><span class="bp-card-number">02</span><div class="bp-card-copy"><h4>Налоговое консультирование</h4><p>правовые вопросы налоговой модели и налоговые риски бизнеса.</p></div></article>
+<article class="bp-practice-card reveal delay-2"><span class="bp-card-number">03</span><div class="bp-card-copy"><h4>Интеллектуальная собственность</h4><p>защита брендов, контента, разработок и других интеллектуальных активов.</p></div></article>
+<article class="bp-practice-card reveal"><span class="bp-card-number">04</span><div class="bp-card-copy"><h4>Персональные данные</h4><p>выстраивание процессов работы с данными и снижение регуляторных рисков.</p></div></article>
+<article class="bp-practice-card reveal delay-1"><span class="bp-card-number">05</span><div class="bp-card-copy"><h4>Договорная работа</h4><p>договоры, оферты, сделки и юридическая конструкция отношений с клиентами, партнерами и командой.</p></div></article>
+<article class="bp-practice-card reveal delay-2"><span class="bp-card-number">06</span><div class="bp-card-copy"><h4>Реклама и цифровой бизнес</h4><p>правовая сторона продвижения, размещения рекламы и работы в цифровой среде.</p></div></article>
+<article class="bp-practice-card reveal"><span class="bp-card-number">07</span><div class="bp-card-copy"><h4>Судебная защита</h4><p>защита интересов бизнеса в спорах и конфликтных ситуациях.</p></div></article>
+</div></div></section>
+  <section class="bp-partnership" aria-labelledby="bp-partnership-title"><div class="bp-container"><div class="bp-partnership-grid">
+   <div class="bp-partnership-copy reveal"><p class="bp-eyebrow">НАШ ПОДХОД К СОТРУДНИЧЕСТВУ</p><h3 id="bp-partnership-title">ПОЭТОМУ К НАМ ПРИХОДЯТ НЕ ТОЛЬКО ЗА ДОКУМЕНТОМ.</h3><p>К нам приходят предприниматели и компании, которым нужен <span class="p9-ink">не исполнитель отдельных задач, а юридический партнер.</span></p></div>
+   <div class="bp-partnership-detail reveal delay-1"><ul class="bp-qualities"><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 22v-6h3v6zM10 22V11h3v11zM17 22V6h3v16zM3 10l6-5 4 2 7-6M16 1h4v4"/></svg><p>Тот, кто знает контекст бизнеса.</p></li><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M1 12S5 5 12 5s11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3.5"/></svg><p>Понимает, куда он движется.</p></li><li><svg class="bp-icon" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m2 7 4-3 5 2 3-2 8 4-4 10-4 3-9-8-3-2zM11 6l-4 5 2 2 5-4 6 6M6 14l-2 2 3 3 2-2M9 17l3 3M13 15l4 4"/></svg><p>Может увидеть проблему раньше, чем она стала проблемой.</p></li></ul><blockquote class="bp-quote"><span class="bp-quote-mark" aria-hidden="true">“</span><div><p class="bp-quote-intro">И способен сказать не только:</p><p>«Вот что написано в законе».</p><p>Но и: «Вот что это значит именно для вашего бизнеса. И вот что с этим делать».</p></div></blockquote></div>
+  </div><div class="bp-partnership-closing reveal delay-2"><p>МЫ НЕ ПРОСТО РЕШАЕМ ЮРИДИЧЕСКИЕ ЗАДАЧИ.</p><p>МЫ ПОМОГАЕМ БИЗНЕСУ НЕ СПОТЫКАТЬСЯ О НИХ.</p></div></div></section>
+ </div>
 
   </div>
 </section>
@@ -2799,7 +3508,6 @@ body,
 <article class="value-card reveal delay-1"><span class="value-number">05</span><h3>Индивидуальные решения</h3><p>Мы не используем универсальные шаблоны. Каждое решение разрабатывается с учетом особенностей бизнеса, отрасли, поставленных задач и уровня возможных рисков.</p></article>
 <article class="value-card reveal delay-2"><span class="value-number">06</span><h3>Конфиденциальность и надежность</h3><p>Мы строго соблюдаем принципы профессиональной этики, обеспечиваем полную конфиденциальность информации и выстраиваем долгосрочные отношения, основанные на доверии, ответственности и высоких стандартах юридической практики.</p></article>
 </div>
-<p class="why-closing reveal">«Мы не просто сопровождаем бизнес в рамках действующего законодательства — мы участвуем в формировании правовой среды, в которой ему предстоит работать».</p>
 </div>
 </section>
 
@@ -2876,19 +3584,130 @@ body,
 </div>
 </div>
 <div aria-hidden="true" class="theme-transition dark-to-light"></div>
-<section class="products section" id="products">
+<section aria-labelledby="digitalProductsTitle" class="products products-copy section">
 <div class="section-shell">
 <div class="section-heading section-heading-wide product-heading reveal">
 <span class="eyebrow">ЦИФРОВЫЕ ПРОДУКТЫ</span>
-<h2>Самостоятельные решения</h2>
-<p class="product-lead"><strong>Для тех, кому достаточно готового решения.</strong><br/>Проверенные шаблоны, чек-листы и практические руководства, которые помогут самостоятельно решить типовые юридические задачи без привлечения юриста.</p>
+<h2 id="digitalProductsTitle">НЕ КАЖДЫЙ ЮРИДИЧЕСКИЙ ВОПРОС ТРЕБУЕТ ЮРИСТА НА СОЗВОНЕ.</h2>
+<div class="heading-rule"></div>
+<p>Иногда вам нужно не поручить задачу юристу, а <strong>самому понять, что делать</strong>.</p>
 </div>
-<div aria-label="Преимущества самостоятельных решений" class="product-benefits reveal delay-1">
-<span>Изучаете в удобное время</span>
-<span>Получаете готовые решения</span>
-<span>Применяете решения самостоятельно</span>
-<span>Экономите время и бюджет</span>
+<ul class="p9-self-list reveal" aria-label="Что можно сделать самостоятельно">
+<li>Проверить бизнес перед запуском.</li>
+<li>Разобраться в договоре.</li>
+<li>Понять, что не так с рекламой.</li>
+<li>Проверить работу с персональными данными.</li>
+<li>Разобраться в налогах.</li>
+<li>Убедиться, что бизнес не держится на «да все так делают».</li>
+</ul>
+<div class="p9-pdf-composition reveal">
+<div class="p9-pdf-layout">
+<div class="p9-pdf-card">
+<div class="p9-pdf-copy">
+<p class="p9-note p9-pdf-intro">Для этого мы создаем цифровые продукты.</p>
+<h3>НЕ ПРОСТО PDF</h3>
+<div class="p9-highlight">
+<p><strong>Гайды, чек-листы, инструкции и практические разборы</strong>, которые помогают самостоятельно разобраться в юридической стороне бизнеса и избежать ошибок, за которые потом приходится платить.</p>
 </div>
+<p class="p9-pdf-keep"><strong>Материалы остаются с вами.</strong></p>
+<p>Каждый приобретенный продукт появляется в <strong>личном кабинете клиента</strong>.</p>
+<p>Вы изучаете его в удобное время, проходите чек-лист, сохраняете результат и можете возвращаться к материалам тогда, когда они снова понадобятся.</p>
+</div>
+</div>
+<ul class="p9-self-list p9-situations" aria-label="Когда материалы снова нужны">
+<li>Запускаете новый продукт?</li>
+<li>Нанимаете человека?</li>
+<li>Заключаете договор?</li>
+<li>Меняете подрядчика?</li>
+<li>Запускаете рекламу?</li>
+<li>Собираете персональные данные?</li>
+</ul>
+</div>
+<p class="p9-note p9-pdf-foot">Открыли личный кабинет — и нужный материал снова под рукой.</p>
+</div>
+
+<link rel="stylesheet" href="assets/design/legal-check.css?v=20260920-c6d"/>
+<section class="legal-check reveal" data-legal-check aria-labelledby="lc-heading">
+  <div class="lc-shell">
+    <h2 class="legal-check__title" id="lc-heading">ЧТО МОЖНО ПРОВЕРИТЬ САМОСТОЯТЕЛЬНО</h2>
+    <nav class="legal-check__tabs" aria-label="Категории самостоятельной проверки">
+      <button class="legal-check__tab" type="button" data-category="people" aria-pressed="true" aria-controls="lcViewport">БИЗНЕС И ЛЮДИ</button>
+      <button class="legal-check__tab" type="button" data-category="product" aria-pressed="false" aria-controls="lcViewport">ПРОДУКТ И ПРОДАЖИ</button>
+      <button class="legal-check__tab" type="button" data-category="security" aria-pressed="false" aria-controls="lcViewport">БЕЗОПАСНОСТЬ БИЗНЕСА</button>
+    </nav>
+    <div class="legal-check__viewport" id="lcViewport" role="region" aria-roledescription="карусель" aria-label="Направления самостоятельной проверки" tabindex="0">
+      <button class="teaser teaser--prev" type="button" data-prev aria-label="Предыдущая тема: НАЛОГИ">
+        <img class="teaser__bg" data-prev-image alt="" width="1254" height="1254" decoding="async" draggable="false">
+        <span class="teaser__content">
+          <span class="teaser__num" data-prev-num>06</span>
+          <span class="teaser__title" data-prev-title>НАЛОГИ</span>
+          <span class="teaser__hint">← Предыдущая тема</span>
+        </span>
+      </button>
+      <article class="feature" data-feature data-id="contracts" aria-roledescription="слайд" aria-label="1 из 6: ДОГОВОРЫ">
+        <div class="feature__copy">
+          <div class="feature__eyebrow" data-category-label>БИЗНЕС И ЛЮДИ</div>
+          <div class="feature__num" data-num>01</div>
+          <h3 class="feature__title" data-title>ДОГОВОРЫ</h3>
+          <p class="feature__summary" data-summary>Проверьте договор до того, как подпишете.</p>
+          <p class="feature__description" data-description>Чек-листы и инструкции, которые помогут увидеть существенные условия, риски и слабые места договора до возникновения проблемы.</p>
+          <div class="feature__footer">
+            <a class="feature__button" data-link href="#products">Смотреть продукты →</a>
+          </div>
+        </div>
+        <div class="feature__media">
+          <img class="feature__image" data-image src="/assets/design/lc-contracts.webp" alt="Папка с договором, золотая печать и весы правосудия." width="1254" height="1254" decoding="async" fetchpriority="high" draggable="false">
+        </div>
+      </article>
+      <button class="teaser teaser--next" type="button" data-next aria-label="Следующая тема: КОМАНДА">
+        <img class="teaser__bg" data-next-image alt="" width="1254" height="1254" decoding="async" draggable="false">
+        <span class="teaser__content">
+          <span class="teaser__num" data-next-num>02</span>
+          <span class="teaser__title" data-next-title>КОМАНДА</span>
+          <span class="teaser__hint">Следующая тема →</span>
+        </span>
+      </button>
+      <button class="edge-arrow edge-arrow--prev" type="button" data-arrow="-1" aria-label="Предыдущая тема">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m12 5-5 5 5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="edge-arrow edge-arrow--next" type="button" data-arrow="1" aria-label="Следующая тема">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <p class="legal-check__mobile-description" data-mobile-description>Чек-листы и инструкции, которые помогут увидеть существенные условия, риски и слабые места договора до возникновения проблемы.</p>
+    <div class="legal-check__footer">
+      <div class="counter"><b data-current>01</b> / <span data-total>06</span></div>
+      <div class="progress" data-progress role="group" aria-label="Выбрать тему"></div>
+      <div class="footer-nav">
+        <button class="foot-arrow" type="button" data-arrow="-1" aria-label="Предыдущая тема">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m12 5-5 5 5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="foot-arrow" type="button" data-arrow="1" aria-label="Следующая тема">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <p class="tagline">Маленькая проверка —<br> большая уверенность</p>
+    </div>
+    <p class="lc-sr-only" data-announcement aria-live="polite" aria-atomic="true"></p>
+  </div>
+</section>
+
+<div class="preview-tail reveal">
+<div class="preview-tail-copy">
+<h2>А ЕСЛИ САМОСТОЯТЕЛЬНО РАЗОБРАТЬСЯ НЕ ПОЛУЧИТСЯ?</h2>
+<p>Ничего страшного.</p>
+<p>Цифровые продукты созданы не для того, чтобы заменить юриста во всех вопросах.</p>
+<p>Они нужны, чтобы <strong>вы сначала разобрались сами</strong> и поняли масштаб задачи.</p>
+<p>А если после этого станет понятно, что нужен индивидуальный разбор, аудит или сопровождение — <strong>мы рядом</strong>.</p>
+</div>
+<div class="preview-tail-cta-stage">
+<a class="preview-tail-cta" href="#contacts"><span>Обсудить проект</span><span class="preview-tail-cta-arrow" aria-hidden="true">→</span></a>
+</div>
+</div>
+</div>
+</section>
+<section class="products section" id="products">
+<div class="section-shell">
 <div aria-label="Категории продуктов" class="tabs reveal" role="tablist" data-catalog-tabs></div>
 <div data-catalog-panels></div>
 </div>
@@ -2972,6 +3791,7 @@ body,
 <script src="/assets/js/config.uat.js?v=20260907-co"></script>
 <script src="/assets/js/api-client.js?v=20260907-co"></script>
 <script src="/assets/js/cart-store.js?v=20260907-co"></script>
+<script src="/assets/js/legal-check.js?v=20260920-c6"></script>
 <script src="/assets/js/catalog.js?v=20260919-sections"></script>
 <script src="/assets/js/site-documents.js?v=20260911-g6fix"></script>
 <script>
@@ -3029,15 +3849,15 @@ body,
     revealItems.forEach(item => item.classList.add('visible'));
   }
 
-  document.querySelectorAll('.tab-button').forEach(button => {
+  document.querySelectorAll('[data-catalog-tabs] .tab-button').forEach(button => {
     button.addEventListener('click', () => {
       const selected = button.dataset.tab;
-      document.querySelectorAll('.tab-button').forEach(item => {
+      document.querySelectorAll('[data-catalog-tabs] .tab-button').forEach(item => {
         const active = item === button;
         item.classList.toggle('active', active);
         item.setAttribute('aria-selected', String(active));
       });
-      document.querySelectorAll('.tab-panel').forEach(panel => {
+      document.querySelectorAll('[data-catalog-panels] .tab-panel').forEach(panel => {
         const active = panel.id === `panel-${selected}`;
         panel.classList.toggle('active', active);
         panel.hidden = !active;
