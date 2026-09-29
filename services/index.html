@@ -1135,6 +1135,16 @@ img { max-width: 100%; }
 .service-offer::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 2px; background: linear-gradient(180deg, var(--gold), transparent 73%); opacity: .68; }
 .service-offer:hover { transform: translateY(-5px); border-color: rgba(201,153,94,.42); background: linear-gradient(145deg, #171611, #0d0d0b); box-shadow: 0 23px 60px rgba(0,0,0,.28); }
 .service-offer.featured-service { border-color: rgba(201,153,94,.42); background: linear-gradient(145deg, rgba(201,153,94,.12), #0c0c0a 62%); }
+#online-projects .service-offer.featured-service:last-child {
+  grid-column: 1 / -1;
+}
+@media (min-width: 721px) {
+  #online-projects .service-offer.featured-service:last-child ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+}
 .service-offer h4 { margin: 0 0 15px; color: #eee9e1; font-size: 20px; line-height: 1.34; font-weight: 400; }
 .service-offer p { margin: 0; color: #999288; font-size: 13px; line-height: 1.72; }
 .service-offer ul { margin: 18px 0 0; padding: 0; list-style: none; }
@@ -1763,6 +1773,7 @@ body.services-page {
 }
 
 </style>
+<link rel="stylesheet" href="/assets/design/cookie-banner.css?v=20260923-cookie"/>
 </head>
 <body class="services-page">
 <header class="site-header" id="top">
@@ -1841,7 +1852,7 @@ body.services-page {
 <div class="service-offers"><article class="service-offer"><div class="service-offer-main"><h4>Трудовые споры</h4><p>Взыскание заработной платы, оспаривание увольнения, восстановление на работе, переквалификация гражданско-правовых отношений в трудовые, защита работников и работодателей.</p></div><strong>от 30 000 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Защита прав потребителей и взыскание убытков</h4><p>Претензии, возврат денежных средств, неустойка, штрафы, компенсация морального вреда и сопровождение споров с продавцами и исполнителями.</p></div><strong>от 15 000 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Жилищные споры</h4><p>Споры с ТСЖ и управляющими компаниями, ущерб при заливе, пользование жильем, выкуп доли, выселение, вселение и иные жилищные вопросы.</p></div><strong>от 15 000 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Претензионная работа</h4><p>Подготовка претензий, переговоры и досудебное урегулирование для защиты интересов и минимизации судебных расходов.</p></div><strong>от 8 000 ₽</strong></article></div>
 </section><section class="service-category reveal" id="online-projects">
 <header class="service-category-head"><span>10</span><div><p>ОТ ЗАПУСКА ДО МАСШТАБИРОВАНИЯ</p><h3>Онлайн-проекты</h3><div class="service-category-rule"></div><div class="service-category-intro"><p>Помогаем экспертам, блогерам, онлайн-школам и образовательным платформам выстроить законную и безопасную работу, минимизировать риски и защитить проект от претензий государственных органов, конкурентов и клиентов.</p></div></div></header>
-<div class="service-offers"><article class="service-offer"><div class="service-offer-main"><h4>Юридический аудит сайта или блога</h4><p>Проверка оферты, политики обработки персональных данных, согласий, обязательной информации, рекламы, пользовательского пути и иных значимых элементов. По итогам — отчет с рисками и рекомендациями.</p></div><strong>от 10 000 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Лицензирование образовательной деятельности</h4><p>Анализ необходимости лицензии, подготовка полного пакета документов и сопровождение процедуры лицензирования.</p></div><strong>от 80 000 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Маркировка рекламы</h4><p>Консультации, проверка рекламных материалов, помощь в корректной маркировке и взаимодействии с оператором рекламных данных.</p></div><strong>от 3 500 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Экспертная деятельность</h4><p>Юридическое сопровождение участия в качестве спикера, проведения вебинаров, мастер-классов и выступлений.</p></div><strong>от 30 000 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Оферта для онлайн-проекта</h4><p>Индивидуальная оферта с учетом продукта, способов оплаты, порядка оказания услуг, возвратов и защиты интересов владельца проекта.</p></div><strong>от 20 000 ₽</strong></article><article class="service-offer featured-service"><div class="service-offer-main"><h4>Упаковка сайта или блога</h4><p>Полный комплект документов для законной работы.</p><ul><li>оферта</li><li>политика обработки персональных данных</li><li>согласие на обработку персональных данных</li><li>согласие на рекламные и информационные рассылки</li></ul></div><strong>40 000 ₽</strong></article></div>
+<div class="service-offers"><article class="service-offer"><div class="service-offer-main"><h4>Юридический аудит сайта или блога</h4><p>Проверка оферты, политики обработки персональных данных, согласий, обязательной информации, рекламы, пользовательского пути и иных значимых элементов. По итогам — отчет с рисками и рекомендациями.</p></div><strong>от 10 000 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Лицензирование образовательной деятельности</h4><p>Анализ необходимости лицензии, подготовка полного пакета документов и сопровождение процедуры лицензирования.</p></div><strong>от 80 000 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Маркировка рекламы</h4><p>Консультации, проверка рекламных материалов, помощь в корректной маркировке и взаимодействии с оператором рекламных данных.</p></div><strong>от 3 500 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Экспертная деятельность</h4><p>Юридическое сопровождение участия в качестве спикера, проведения вебинаров, мастер-классов и выступлений.</p></div><strong>от 30 000 ₽</strong></article><article class="service-offer"><div class="service-offer-main"><h4>Оферта для онлайн-проекта</h4><p>Индивидуальная оферта с учетом продукта, способов оплаты, порядка оказания услуг, возвратов и защиты интересов владельца проекта.</p></div><strong>от 20 000 ₽</strong></article><article class="service-offer featured-service"><div class="service-offer-main"><h4>Упаковка сайта или блога</h4><p>Полный комплект документов для законной работы.</p><ul><li>оферта</li><li>политика обработки персональных данных</li><li>согласие на обработку персональных данных</li><li>согласие на рекламные и информационные рассылки</li></ul></div><strong>40 000 ₽</strong></article><article class="service-offer featured-service"><div class="service-offer-main"><h4>Концентрат реализации</h4><p>Индивидуальная разработка проекта от теста идеи и полной модели бизнеса до безопасного запуска.</p><ul><li>тест идеи и концепции проекта</li><li>разработка полной модели бизнеса</li><li>анализ продукта и бизнес-модели</li><li>юридическая конструкция проекта</li><li>документы для работы с клиентами</li><li>оформление отношений с командой и подрядчиками</li><li>защита интеллектуальных прав</li><li>проверка персональных данных и рекламы</li><li>выявление ключевых юридических рисков</li><li>подготовка проекта к безопасному запуску</li></ul></div><strong>150 000 ₽</strong></article></div>
 </section></div></div>
 </div>
 </section>
@@ -1870,7 +1881,16 @@ body.services-page {
 <p>© 2026. Все права защищены.</p>
 </div>
 </footer>
+<div class="cookie-banner" hidden data-cookie-banner role="dialog" aria-label="Согласие на использование cookie">
+  <div class="cookie-banner__text">
+    <p>Мы используем файлы cookie, чтобы предлагать вам наилучший контент и делать использование сайта максимально удобным.</p>
+    <a class="cookie-banner__policy" data-cookie-policy hidden rel="noopener noreferrer" target="_blank">Политика конфиденциальности.</a>
+  </div>
+  <button class="cookie-banner__accept" data-cookie-accept type="button">принять</button>
+  <button aria-label="Закрыть" class="cookie-banner__close" data-cookie-dismiss type="button">×</button>
+</div>
 <script src="/assets/js/site-documents.js?v=20260911-g6fix"></script>
+<script src="/assets/js/cookie-banner.js?v=20260923-cookie"></script>
 <script>
 (() => {
   const toggle = document.querySelector('.menu-toggle');

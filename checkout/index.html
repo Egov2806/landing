@@ -6,6 +6,7 @@
 <meta content="#050505" name="theme-color"/>
 <meta content="Оформление заказа — Беспалова и партнеры" name="description"/>
 <title>Оформление заказа — Беспалова и партнеры</title>
+<link rel="stylesheet" href="/assets/design/cookie-banner.css?v=20260923-cookie"/>
 <style>
 :root {
   --black: #050505;
@@ -137,9 +138,18 @@ input:focus { border-color: var(--gold); }
     <div aria-live="polite" class="checkout-message" id="checkoutMessage" role="status"></div>
   </form>
 </div>
+<div class="cookie-banner" hidden data-cookie-banner role="dialog" aria-label="Согласие на использование cookie">
+  <div class="cookie-banner__text">
+    <p>Мы используем файлы cookie, чтобы предлагать вам наилучший контент и делать использование сайта максимально удобным.</p>
+    <a class="cookie-banner__policy" data-cookie-policy hidden rel="noopener noreferrer" target="_blank">Политика конфиденциальности.</a>
+  </div>
+  <button class="cookie-banner__accept" data-cookie-accept type="button">принять</button>
+  <button aria-label="Закрыть" class="cookie-banner__close" data-cookie-dismiss type="button">×</button>
+</div>
 <script src="/assets/js/config.uat.js?v=20260907-co"></script>
 <script src="/assets/js/api-client.js?v=20260907-co"></script>
 <script src="/assets/js/cart-store.js?v=20260907-co"></script>
 <script src="/assets/js/checkout.js?v=20260918-g2"></script>
+<script src="/assets/js/cookie-banner.js?v=20260923-cookie"></script>
 </body>
 </html>

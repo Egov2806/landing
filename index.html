@@ -3627,6 +3627,7 @@ body,
 </div>
 
 <link rel="stylesheet" href="assets/design/legal-check.css?v=20260920-c6d"/>
+<link rel="stylesheet" href="assets/design/cookie-banner.css?v=20260923-cookie"/>
 <section class="legal-check reveal" data-legal-check aria-labelledby="lc-heading">
   <div class="lc-shell">
     <h2 class="legal-check__title" id="lc-heading">ЧТО МОЖНО ПРОВЕРИТЬ САМОСТОЯТЕЛЬНО</h2>
@@ -3781,6 +3782,14 @@ body,
 <p>© 2026. Все права защищены.</p>
 </div>
 </footer>
+<div class="cookie-banner" hidden data-cookie-banner role="dialog" aria-label="Согласие на использование cookie">
+  <div class="cookie-banner__text">
+    <p>Мы используем файлы cookie, чтобы предлагать вам наилучший контент и делать использование сайта максимально удобным.</p>
+    <a class="cookie-banner__policy" data-cookie-policy hidden rel="noopener noreferrer" target="_blank">Политика конфиденциальности.</a>
+  </div>
+  <button class="cookie-banner__accept" data-cookie-accept type="button">принять</button>
+  <button aria-label="Закрыть" class="cookie-banner__close" data-cookie-dismiss type="button">×</button>
+</div>
 <div class="cart-overlay" hidden="" id="cartOverlay">
 <aside aria-labelledby="cartTitle" aria-modal="true" class="cart-drawer" role="dialog">
 <div class="cart-header"><h2 id="cartTitle">Корзина</h2><button aria-label="Закрыть корзину" data-cart-close="" type="button">×</button></div>
@@ -3794,6 +3803,7 @@ body,
 <script src="/assets/js/legal-check.js?v=20260920-c6"></script>
 <script src="/assets/js/catalog.js?v=20260919-sections"></script>
 <script src="/assets/js/site-documents.js?v=20260911-g6fix"></script>
+<script src="/assets/js/cookie-banner.js?v=20260923-cookie"></script>
 <script>
 (() => {
   const API_CONFIG = {
